@@ -32,6 +32,42 @@ $(document).ready(function(){
          });
     });
 });
+function postdata(var post_fname,var post_mname,var post_lname,var post_clg_id,var post_univ_no,var post_dept,var post_mobile,var post_email,var post_password,var post_question,var post_answer){
+			$.ajax({
+			url: "https://data.bulimic45.hasura-app.io/v1/query",
+			contentType: "application/json",
+			data: JSON.stringify({
+		      "type": "insert",
+		      "args": {
+		            "table": "student",
+		            "objects": [
+		                  {
+		                        "fname": post_fname,
+		                        "mname": post_mname,
+		                        "lname": post_lname,
+		                        "clg_id": post_clg_id,
+		                        "university reg_no": post_univ_no,
+		                        "department": post_dept,
+		                        "mobile": post_mobile,
+		                        "email": post_email,
+		                        "password": post_password,
+		                        "question": post_question,
+		                        "answer": post_answer
+		                  }
+		            ]
+		      }
+			}),
+			type: "POST",
+			dataType: "json"
+		}).done(function(json) {
+			// Handle Response
+		}).fail(function(xhr, status, errorThrown) {
+			console.log("Error: " + errorThrown);
+			console.log("Status: " + status);
+			console.dir(xhr);
+		});
+}
+
 function validate() {
 	// body...
 	var fname=document.signup.fname.value;
@@ -48,113 +84,117 @@ function validate() {
 	var answer=document.signup.answer.value
 	
 	var Name=/^[A-za-z]+$/,id=/^[0-9]{4,4}[a-z]+[0-9]{4,4}$/;
-	var uno=/^2127[0-9]{8,8}$/,mobile=/^[0-9]{12,12}$/;
+	var uno=/^2127[0-9]{8,8}$/,mobile=/^[0-9]{10,10}$/;
 	var ans=/^[A-za-z0-9]+$/;
-		
-		if(fname=="")
-			{
-				alert("first name is empty")
-				return false;	
-			}
-		else if(!Name.test(fname))
-			{
-				alert("first name is is invalid")
-				return false;		
-			}
 
-		if(lname=="")
-			{
-				alert("Last name is empty")
-				return false;	
-			}
-		else if(!Name.test(lname))
-			{
-				alert("Last name is is invalid")
-				return false;		
-			}
-		if(!Name.test(mname)&&!(mname==""))
-			{
-				alert("Middle name is is invalid")
-				return false;		
-			}
+				function data_validate(){
+						
+					if(fname=="")
+						{
+							alert("first name is empty")
+							return false;	
+						}
+					else if(!Name.test(fname))
+						{
+							alert("first name is is invalid")
+							return false;		
+						}
 
-		if(clg_id=="")
-			{
-				alert("college id is empty")
-				return false;	
-			}
-		else if(!id.test(clg_id))
-			{
-				alert("college id  is is invalid")
-				return false;		
-			}
+					if(lname=="")
+						{
+							alert("Last name is empty")
+							return false;	
+						}
+					else if(!Name.test(lname))
+						{
+							alert("Last name is is invalid")
+							return false;		
+						}
 
-		if(univ_no=="")
-			{
-				alert("University number is empty")
-				return false;	
-			}
-		else if(!uno.test(univ_no))
-			{
-				alert("University number  is is invalid")
-				return false;		
-			}
-		if(dept=="NA")
-			{
-				alert("Department is invalid")
-				return false;	
-			}
-		if(mobile_no=="")
-			{
-				alert("Mobile number is empty")
-				return false;	
-			}
-		else if(!mobile.test(mobile_no))
-			{
-				alert("Mobile number  is is invalid")
-				return false;		
-			}
-		if(email=="")
-			{
-				alert("Email id  is empty")
-				return false;	
-			}
-		
-		if(password=="")
-			{
-				alert("password  is empty")
-				return false;	
-			}
-		
-		if(confirmation_password=="")
-			{
-				alert("confirmation password is empty")
-				return false;	
-			}
+					if(!Name.test(mname)&&!(mname==""))
+						{
+							alert("Middle name is is invalid")
+							return false;		
+						}
 
-		if(password!=confirmation_password)
-			{
-				alert("password missmatched")
-				return false;	
-			}
-		
-		
-		if(question=="NA")
-			{
-				alert("Select a Security question")
-				return false;	
-			}
-		if(answer=="")
-			{
-				alert("answer is empty")
-				return false;	
-			}
-		else if(!ans.test(answer))
-			{
-				alert("answer  is is invalid")
-				return false;		
-			}
-		
-	//alert("passed");
-	return true;
+					if(clg_id=="")
+						{
+							alert("college id is empty")
+							return false;	
+						}
+					else if(!id.test(clg_id))
+						{
+							alert("college id  is is invalid")
+							return false;		
+						}
+
+					if(univ_no=="")
+						{
+							alert("University number is empty")
+							return false;	
+						}
+					else if(!uno.test(univ_no))
+						{
+							alert("University number  is is invalid")
+							return false;		
+						}
+					if(dept=="NA")
+						{
+							alert("Department is invalid")
+							return false;	
+						}
+					if(mobile_no=="")
+						{
+							alert("Mobile number is empty")
+							return false;	
+						}
+					else if(!mobile.test(mobile_no))
+						{
+							alert("Mobile number  is is invalid")
+							return false;		
+						}
+					if(email=="")
+						{
+							alert("Email id  is empty")
+							return false;	
+						}
+					
+					if(password=="")
+						{
+							alert("password  is empty")
+							return false;	
+						}
+					
+					if(confirmation_password=="")
+						{
+							alert("confirmation password is empty")
+							return false;	
+						}
+
+					if(password!=confirmation_password)
+						{
+							alert("password missmatched")
+							return false;	
+						}
+					
+					
+					if(question=="NA")
+						{
+							alert("Select a Security question")
+							return false;	
+						}
+					if(answer=="")
+						{
+							alert("answer is empty")
+							return false;	
+						}
+					else if(!ans.test(answer))
+						{
+							alert("answer  is is invalid")
+							return false;		
+						}
+					return true;
+			}	
+		if(data_validate()) alert("done");
 }
+
