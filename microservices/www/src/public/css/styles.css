@@ -1,6 +1,25 @@
 .row-header{
  margin:30px auto;
  padding:0px auto;
- background-image:url("image/header.jpg");
+ background-color: #CCEEff;
  color:blue;
+}
+.row-footer{
+ background-color:#CCEEff;
+
+}
+.form{
+ border:2px lightblue solid;
+ padding:10px 10px 10px 10px;
+}
+.bkclr-blue{
+background-color:lightblue;
+}
+.lightblue{
+ background-color:lightblue;
+ margin:-8px;
+}
+
+body{
+  font-family:Palatino;
 }
