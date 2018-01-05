@@ -39,7 +39,7 @@
 
 </header>
 <br><br>
-    <form id="form" name="signup" action="#" method="post"  onsubmit="return validate()">
+    <form id="form" name="signup" method="post"  onsubmit="return false">
     <!--onsubmit="return validate()"-->
     <div class="container form">
         <div class="row justify-content-center">
@@ -282,7 +282,7 @@
 <div class="row align-items-center justify-content-center">
 
              <div class="col-3 col-sm-3" style="margin:0px 20px 0px 0px;">
-             <input type="submit" value="Submit" style="background-color:skyblue">
+             <input type="submit" value="Submit" style="background-color:skyblue" onclick="return validate()">
              </div>
 
              <div class="col-3 col-sm-3" style="margin:0px 20px 0px 0px;">

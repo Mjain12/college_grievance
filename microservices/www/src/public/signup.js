@@ -1,39 +1,31 @@
-$(document).ready(function(){
-    /*$("form").submit(function(event){
-        // Stop form from submitting normally
-        //$("form").trigger('reset');
-        event.preventDefault();
-        
-        // Get action URL
-		var actionFile = $(this).attr("action");
+function post_Email(email_id,email_fname,email_mname,email_lname,email_clg_id,email_password){
+		$.ajax({
+			url: "https://notify.bulimic45.hasura-app.io/v1/send/email",
+			contentType: "application/json",
+			headers: {
+		      "Authorization": "Bearer 4af1623b3c51f78e03754e69c60d3490f5509de98a7cc57a"
+			},
+			data: JSON.stringify({
+		      "to": email_id,
+		      "from": "clggrievances@gmail.com",
+		      "fromName": "SVCE Grievance Redressal Committee",
+		      "sub": "SVCE College Grievance Account Registration",
+		      "text": "Dear "+email_fname+" "+email_mname+" "+email_lname+",Greetings from SVCE Grievance Redressal System.!!Thanks for Registration, Your Login Id: "+email_clg_id+"Password: "+email_password+"Regards,SVCE Grievance Team",
+		      "html": "Dear "+email_fname+" "+email_mname+" "+email_lname+",<br><br>Greetings from SVCE Grievance Redressal System.!!<br>Thanks for Registration, <br><br> Your Login Id: "+email_clg_id+"<br>Password: "+email_password+"<br><br>Regards,<br>SVCE Grievance Team<br>"
+			}),
+			type: "POST",
+			dataType: "json"
+		}).done(function(json) {
+			console.log("email posted");
+		}).fail(function(xhr, status, errorThrown) {
+			alert("Error: " + errorThrown);
+			console.log("Status: " + status);
+			console.dir(xhr);
+		});
+}
 
-         Serialize the submitted form control values to be sent to the web server with the request 
-        var formValues = $(this).serialize();
-		//alert(actionFile,formValues);        
-        // Send the form data using post
-        if(validate())
-        $.post(actionFile, formValues, function(result){
-            // Display the returned data in browser
-           //alert(result);
-           if(result == 0)
-           	{
-           		alert("you have already registered")
-               window.open("http://127.0.0.1/clg_Grievance/index.html","_self");
-            }
-           else if( result==1 )
-           {
-           	alert("successfully  registered")
-               window.open("http://127.0.0.1/clg_Grievance/login.html","_self");
-           }
-           else
-       		 {alert("error in  registration")
-               window.open("http://127.0.0.1/clg_Grievance/index.html","_self");
-            }
-         });
-    });*/
-});
-
-function postdata(var post_fname,var post_mname,var post_lname,var post_clg_id,var post_univ_no,var post_dept,var post_mobile,var post_email,var post_password,var post_question,var post_answer){
+function postdata(post_fname,post_mname,post_lname,post_clg_id,post_univ_no,post_dept,post_mobile,post_email,post_password,post_question,post_answer){
+			
 			$.ajax({
 			url: "https://data.bulimic45.hasura-app.io/v1/query",
 			contentType: "application/json",
@@ -61,8 +53,12 @@ function postdata(var post_fname,var post_mname,var post_lname,var post_clg_id,v
 			type: "POST",
 			dataType: "json"
 		}).done(function(json) {
-			// Handle Response
+			alert("Congratulation, You Have Successfully Registered and you soon receive email confirmation");
+			wind=window.open("https://www.bulimic45.hasura-app.io/","_self");
+			wind.onload=post_Email(post_email,post_fname,post_mname,post_lname,post_clg_id,post_password);
 		}).fail(function(xhr, status, errorThrown) {
+			alert("you have already registered");
+			window.open("https://www.bulimic45.hasura-app.io/","_self");
 			console.log("Error: " + errorThrown);
 			console.log("Status: " + status);
 			console.dir(xhr);
@@ -84,6 +80,7 @@ function validate() {
 	var question=document.signup.Security_question.value
 	var answer=document.signup.answer.value
 	
+
 	var Name=/^[A-za-z]+$/,id=/^[0-9]{4,4}[a-z]+[0-9]{4,4}$/;
 	var uno=/^2127[0-9]{8,8}$/,mobile=/^[0-9]{10,10}$/;
 	var ans=/^[A-za-z0-9]+$/;
@@ -194,8 +191,11 @@ function validate() {
 							alert("answer  is is invalid")
 							return false;		
 						}
+					
 					return true;
 			}	
-		if(data_validate()) alert("done");
+		if(data_validate()){ 
+			postdata(fname,mname,lname,clg_id,univ_no,dept,mobile_no,email,password,question,answer);
+		}		
 }
 
