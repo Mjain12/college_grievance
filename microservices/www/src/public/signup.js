@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("form").submit(function(event){
+    /*$("form").submit(function(event){
         // Stop form from submitting normally
         //$("form").trigger('reset');
         event.preventDefault();
@@ -7,7 +7,7 @@ $(document).ready(function(){
         // Get action URL
 		var actionFile = $(this).attr("action");
 
-        /* Serialize the submitted form control values to be sent to the web server with the request */
+         Serialize the submitted form control values to be sent to the web server with the request 
         var formValues = $(this).serialize();
 		//alert(actionFile,formValues);        
         // Send the form data using post
@@ -30,8 +30,9 @@ $(document).ready(function(){
                window.open("http://127.0.0.1/clg_Grievance/index.html","_self");
             }
          });
-    });
+    });*/
 });
+
 function postdata(var post_fname,var post_mname,var post_lname,var post_clg_id,var post_univ_no,var post_dept,var post_mobile,var post_email,var post_password,var post_question,var post_answer){
 			$.ajax({
 			url: "https://data.bulimic45.hasura-app.io/v1/query",
