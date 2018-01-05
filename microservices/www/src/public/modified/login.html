@@ -10,12 +10,11 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap-social-gh-pages/bootstrap-social.css">
-    <link rel="stylesheet" href="css/styles.css">
-    
-    
+
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-toggleable bg-primary fixed-top" >
@@ -27,9 +26,10 @@
     <a class="navbar-brand" href='#'>SVCE</a>
     <div class="collapse navbar-collapse" id="Navbar">
      <ul class="navbar-nav">
-       <li class="nav-item active"><a class="nav-link" href='index.html'><span class="fa fa-home "></span> Home</a></li>
+       <li class="nav-item active"><a class="nav-link" href='login.html'><span class="fa fa-home "></span> Home</a></li>
        
-       <li class="nav-item"><a class="nav-link" href='signup.html'><span class="fa fa-list "></span> Signup</a></li>
+       <li class="nav-item"><a class="nav-link" href='index.html'><span class="fa fa-list "></span> Signup</a></li>
+       
        
      </ul>
    </div>
@@ -76,6 +76,8 @@
 
 </header>
 <br>
+<br>
+<br>
 <div id="content">
 <div class='container'>
     <div class="row">
@@ -92,7 +94,7 @@
             </div>
         </div>
         <div class="col-8 col-sm-6" style="border: 1px solid lightblue;">
-        <form name="login"  action="http://127.0.0.1/clg_Grievance/login.php" method="post">
+        <form name="login" method="post" action="http://127.0.0.1/clg_grievance/login.php" onsubmit="return validate()">
             <br>
             <div class="container">
                 <div class="row justify-content-center">
@@ -107,7 +109,7 @@
                       Login Id:
                     </div> 
                     <div class="col-8 offser-1 col-sm-7">
-                      <input type="text" name="loginid" id="loginid" placeholder="Login Id" class="form-control">
+                      <input type="text" name="loginid" placeholder="Login Id" class="form-control">
                     </div>
                 </div><br>
                 <div class="row">
@@ -118,24 +120,31 @@
                       <input type="password" name="loginpassword" placeholder="password" class="form-control">
                     </div>
                 </div><br>
-   
+                 <div class="row">
+                    
+                    <div class="col-3 col-sm-3">
+                    <input type="radio" name="profession" value="student" checked>Student
+                    </div>
+                    <div class="col-3 col-sm-3">
+                    <input type="radio" name="profession" value="Parent" >Parent
+                    </div>
+                    <div class="col-3 col-sm-3">
+                    <input type="radio" name="profession"  value="faculty" >faculty
+                    </div><br>
+                </div> <br>       
                     <div class="row justify-content-center">
                     
                     
                     <div class="col-3 col-sm-3">
-                    <a href='#' id='Link'>
-                    <input type="submit" name="submit" value="Login">
+                    <a href='#' id='Link' onclick="return change()">
+                    <input type="button" name="submit" value="Login">
                     </a></div>
-                    <div class="col-3 offset-1 col-sm-3">
+                    <div class="col-3  col-sm-3">
                     <input type="reset" name="reset" value="reset">
                     </div> 
-                    </div><br>
-                
-                <div class="row">
-                    <div class="col-3 push-9 col-sm-3">
-                    <a href="signup.html">Signup</a>
+                    <div class="col-3  col-sm-3">
+                    <a href="index.html"><input type="button" name="register" value="Signup"></a>
                     </div>                    
-
                 </div><br>
 
         </form>
@@ -145,14 +154,14 @@
 </div>
 <br>
 <br>
-<footer style="margin-top:-10px;">
-<img src="./image/footer.png" width="100%" >
+<footer style="margin-top:70px;">
+<img src="./image/footer.png" width="100%">
 
 </footer>
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="css/jquery.min.js"></script>
-    <script src="css/tether.min.js"></script>
-    <script src="css/bootstrap.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/tether/dist/js/tether.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="login.js"></script>
 </body>
 

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+       <title>Faculty Menu</title>
+        <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap-social-gh-pages/bootstrap-social.css">
+    
+</head>
+<body onload="hidden()" >
+<nav class="navbar navbar-inverse navbar-toggleable bg-primary fixed-top" >
+  <div class="container">
+   
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+      <span class="fa fa-bars"></span>
+    </button>
+    <a class="navbar-brand" href='#'>SVCE</a>
+    <div class="collapse navbar-collapse" id="Navbar">
+     <ul class="navbar-nav">
+       <li class="nav-item "><a class="nav-link" href='login.html'><span class="fa fa-home "></span> Home</a></li>
+       
+       <li class="nav-item active"><a class="nav-link" href='student_menu.html'><span class="fa fa-list "></span> menu</a></li>
+       
+       
+       
+       <li class="nav-item"><a class="nav-link" href='#'><span class="fa fa-address-card "></span> Contact</a></li>
+       
+     </ul>
+   </div>
+  </div>
+</nav>
+<header style="margin-top:70px;">
+<center><img src="./image/header.png"  style="width:100%;"></center>
+
+</header>
+<br>
+
+<div name="content">
+  
+        <div style="border:1px solid lightblue;">
+         <br>
+          <center><h3 style="color:blue">Menu</h3></center><br>
+          <div class="container text-center">
+           <div class="row">
+              <div class="col-3 col-sm-3">
+                <button onclick="profile()"><span class="fa fa-user"> <b>Profile</b></span></button>
+              </div>  
+               
+              <div class="col-3 col-sm-3">
+                <button onclick="status()"><span class="fa fa-id-card"> <b> Problems</b></span></button>
+              </div>  
+              <div class="col-3 col-sm-3">
+                <button id="clear"><span class="fa fa-eraser"> <b>Clear</b></span></button>
+              </div>  
+          </div>
+        </div> 
+        <br>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-12" style="border:1px solid lightblue; "  >
+          <br>
+          <center><h3 style="color:blue">Content</h3></center>
+           <div id="text" value="" style="margin-left: 50px;">
+            </div>
+            <div id="griv_form">
+            <form onreset="clear_dept()" >  
+            <b>Date: </b><span id="Date"></span>&emsp;&emsp;&emsp;
+            <b>Time: </b><span id="Time"></span>
+            <br> 
+
+            <b>Referances:</b> &emsp;&emsp;&emsp;&emsp;<input type="text" name="ref" >
+            <br>
+            
+            <p><b><span style="color:red;">*</span>Grievance Category</b>
+
+            <select id="Grievance_Category" name="Grievance_Category" style="max-width: 200px" onchange="dept()">
+                 <option value="" selected>--SELECT</option>
+                 <option value="Academic">Academic</option>
+                 <option value="Non-Academic">Non-Academic</option>
+                 <option value="Grievance related to Assessment">Grievance related to Assessment</option>
+                 <option value="Grievance related to Victimization">Grievance related to Victimization</option>
+                 <option value=c>Grievance related to Attendance</option>
+                 <option value="Grievance related to charging of fees">Grievance related to charging of fees</option>
+                 <option value="Grievance regarding conducting of examinations">Grievance regarding conducting of examinations</option>
+                 <option value="Harassment by colleague students or the teachers etc">Harassment by colleague students or the teachers etc</option>
+                 </select>
+                 </p>
+            <b>Grievance Redressal Committee: </b>&emsp;<span id="griv_dept"></span><br><br>
+
+            <b><span style="color:red;">*</span>Grievance: </b><br>
+             <textarea name="Grievance" cols="50" rows="10" class="form-control"></textarea><br><br>
+
+            <span  style="color: blue">or </span>
+             <b> Upload: </b><input type="file" name="griv_form" accept=".doc,docx,pdf">
+             <br><br>&emsp;&emsp;&emsp;
+             <input type="submit" name="submit" value="submit">&emsp;
+             <input type="reset" name="reset" value="reset" >
+          </form>
+             <br>
+            </div>
+            <div id="griv_status" class="table-reponsive">
+            <table class="table table-striped">
+               <thead class="table-inverse">
+                    <tr>
+                        <th>S.no</th>
+                        <th>Grievance Name</th>
+                        <th>Category</th>
+                        <th>Solution</th>
+
+                    </tr>
+                
+               </thead>
+              
+              <tbody id="datas">
+              
+              </tbody>
+            </table>
+              
+            </div>
+            <div id="problems"></div>
+        </div> 
+      </div>
+  </div><br><br>
+</div>
+
+<footer style="margin-top:70px;">
+<img src="./image/footer.png" width="100%">
+
+</footer>
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/tether/dist/js/tether.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="faculty_menu.js"></script>
+</body>
+
+</html>
