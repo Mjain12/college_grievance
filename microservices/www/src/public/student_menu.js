@@ -83,7 +83,7 @@ function profile(){
                 type: "POST",
                 dataType: "json"
               }).done(function(json) {
-                  alert(typeof(json));
+                  alert(json);
                   /*if(json[0].length==1)
                   {
                     row=json[0][0];
