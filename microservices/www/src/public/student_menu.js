@@ -19,9 +19,6 @@ function profile(){
                 url: "https://data.bulimic45.hasura-app.io/v1/query",
                 contentType: "application/json",
                 data: JSON.stringify({
-                    "type": "bulk",
-                    "args": [
-                          {
                                 "type": "select",
                                 "args": {
                                       "table": "student",
@@ -34,33 +31,17 @@ function profile(){
                                             }
                                       }
                                 }
-                          },
-                          {
-                                "type": "select",
-                                "args": {
-                                      "table": "faculty",
-                                      "columns": [
-                                            "*"
-                                      ],
-                                      "where": {
-                                            "college_id": {
-                                                  "$eq": Id
-                                            }
-                                      }
-                                }
-                          }
-                    ]
-                }),
+                          }),
                 type: "POST",
                 dataType: "json"
               }).done(function(json) {
                   //alert(json[0][0]);
-                  if(json[0].length==1)
+                  if(json.length==1)
                   {
-                    row=json[0][0];
+                    row=json[0];
                     
                     //alert(row["fname"]);
-                    result='<b>Name: &emsp;</b><span style="margin-left:90px;"></span>'+row['fname']+' '+row['mname']+' '+row['lname']+'<br><br><b>College Id:&emsp;<span style="margin-left:58px;"></span></b>'+row['clg_id']+'<br><br><b>University Roll no:</b>&emsp;'+row['university_reg_no']+'<br><br><b>Department:</b>&emsp;<span style="margin-left:45px;"></span>'+row['department']+'<br><br><b>Mobile no:&emsp;<span style="margin-left:55px;"></span>+</b>'+row['mobile']+'<br><br><b>Email:&emsp;<span style="margin-left:85px;"></span></b>'+row['email']+"<br><br>";
+                    result='<b>Name: &emsp;</b><span style="margin-left:90px;"></span>'+row['fname']+' '+row['mname']+' '+row['lname']+'<br><br><b>College Id:&emsp;<span style="margin-left:58px;"></span></b>'+row['clg_id']+'<br><br><b>University Roll no:</b>&emsp;'+row['university_reg_no']+'<br><br><b>Department:</b>&emsp;<span style="margin-left:45px;"></span>'+row['department']+'<br><br><b>Mobile no:&emsp;<span style="margin-left:55px;"></span>+91</b>'+row['mobile']+'<br><br><b>Email:&emsp;<span style="margin-left:85px;"></span></b>'+row['email']+"<br><br>";
                     $("#text").append(result);
                   }
                   else if(json[1].length==1){
