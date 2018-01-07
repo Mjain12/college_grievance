@@ -38,10 +38,10 @@ $(document).ready(function(){
 });
 
 function profile(){
+    hidden();
     Id = document.cookie;
-    alert(Id);
- 	  hidden();
-        if(document.getElementById("text").value!="profile" && profileflag==0){
+    //alert(Id);
+ 	      if(document.getElementById("text").value!="profile" && profileflag==0){
 
             $("#text").show();
 
