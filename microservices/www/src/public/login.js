@@ -69,9 +69,9 @@ $(document).ready(function(){
 				if(json[0].length==0 && json[1].length==0)
 					alert("invalid username or password");
 				else if(json[0].length==1)
-					 window.open(stu,"_self");
+					 window.open(stu,"_self","location=0");
 				else if(json[1].length==1)
-					window.open(fac,"_self");
+					window.open(fac,"_self","location=0");
 			}).fail(function(xhr, status, errorThrown) {
 				console.log("Error: " + errorThrown);
 				console.log("Status: " + status);
