@@ -1,5 +1,7 @@
 
 $(document).ready(function(){
+    profileflag=0;
+    statusflag=0;
     profile(); 
     //alert(Id);
     $("form").submit(function(event){
@@ -24,9 +26,6 @@ $(document).ready(function(){
 
         });
     });
-    profileflag=0;
-    statusflag=0;
-    
     $("#clear").click(function(){
         //alert(document.getElementById("text").html());
         hidden();
