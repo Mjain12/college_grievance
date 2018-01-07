@@ -6,9 +6,9 @@ $(document).ready(function(){
 	    //alert(ID);
 	    document.cookie=ID;
 	    //alert(document.cookie);
-	    		var stu="./student_menu.html?"+ID;	
-                var par="./parent_menu.html?"+ID;
-                var fac="./faculty_menu.html?"+ID;
+	    		var stu="./student_menu.html";	
+                var par="./parent_menu.html";
+                var fac="./faculty_menu.html";
 			$.ajax({
 				url: "https://data.bulimic45.hasura-app.io/v1/query",
 				contentType: "application/json",

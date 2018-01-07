@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 
 
-     Id = document.cookie;
+     
     //alert(Id);
     $("form").submit(function(event){
         // Stop form from submitting normally
@@ -38,7 +38,8 @@ $(document).ready(function(){
 });
 
 function profile(){
-
+    Id = document.cookie;
+    alert(Id);
  	  hidden();
         if(document.getElementById("text").value!="profile" && profileflag==0){
 
@@ -83,7 +84,7 @@ function profile(){
                 type: "POST",
                 dataType: "json"
               }).done(function(json) {
-                  alert(json);
+                  alert(json[0][0]);
                   /*if(json[0].length==1)
                   {
                     row=json[0][0];

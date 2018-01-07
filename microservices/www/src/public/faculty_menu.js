@@ -1,8 +1,8 @@
 
 $(document).ready(function(){ 
   
-    Id=document.cookie;
-    alert(Id);
+    //Id=document.cookie;
+    //alert(Id);
     profileflag=0;
     statusflag=0;
     $("#clear").click(function(){
@@ -19,7 +19,8 @@ $(document).ready(function(){
 });
 
 function profile(){
-
+    Id = document.cookie;
+    alert(Id);
  	  hidden();
         if(document.getElementById("text").value!="profile" && profileflag==0){
 
