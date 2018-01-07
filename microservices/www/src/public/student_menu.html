@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+       <title>Student Menu</title>
+        <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-social-gh-pages/bootstrap-social.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    
+</head>
+<body onload="hidden()">
+<nav class="navbar navbar-inverse navbar-toggleable bg-primary fixed-top" >
+  <div class="container">
+   
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+      <span class="fa fa-bars"></span>
+    </button>
+    <a class="navbar-brand" href='#'>SVCE</a>
+    <div class="collapse navbar-collapse" id="Navbar">
+     <ul class="navbar-nav">
+       <li class="nav-item "><a class="nav-link" href='login.html'><span class="fa fa-home "></span> Home</a></li>
+       
+       <li class="nav-item active"><a class="nav-link" href='student_menu.html'><span class="fa fa-list "></span> menu</a></li>
+       
+       
+       
+       <li class="nav-item"><a class="nav-link" href='#'><span class="fa fa-address-card "></span> Contact</a></li>
+       
+     </ul>
+   </div>
+  </div>
+</nav>
+<header style="margin-top:70px;">
+<center><img src="./image/header.png"  style="width:100%;"></center>
+
+</header>
+<br>
+
+<div name="content">
+  <div class="container">
+      <div class="row align-items-center;" style="min-height: 400px">
+        <div class="col-3 col-sm-3" style="border:1px solid lightblue;">
+         <br>
+          <center><h3 style="color:blue">Menu</h3><br>
+          <div class="container text-left">
+           <div class="row">
+              <div class="col-12 col-sm-12">
+                <button onclick="profile()"><span class="fa fa-user"> <b>Profile</b></span></button>
+              </div>  
+           </div>
+
+
+          <br>
+           <div class="row">
+              <div class="col-12 col-sm-12">
+                <button onclick="Form()"><span class="fa fa-file-text"> <b>Grievance Form</b></span></button>
+              </div>  
+           </div>
+
+           <br>
+           <div class="row">
+              <div class="col-12 col-sm-12">
+                <button onclick="status()"><span class="fa fa-id-card"> <b>Grievance Status</b></span></button>
+              </div>  
+           </div>
+
+
+          <br>
+           <div class="row">
+              <div class="col-12 col-sm-12">
+                <button id="clear"><span class="fa fa-eraser"> <b>Clear</b></span></button>
+              </div>  
+           </div>
+
+
+          </div>
+ 
+        </div> 
+        <div class="col-9 col-sm-9" style="border:1px solid lightblue; "  >
+          <br>
+          <center><h3 style="color:blue">Content</h3></center>
+           <div id="text" value="" style="margin-left: 50px;">
+            </div>
+            <div id="griv_form">
+            <form action="http://127.0.0.1/clg_Grievance/stu_grivence.php" method="post" onreset="clear_dept()" >  
+            <b>Date: </b><span id="Date" name="date" value="" ></span>&emsp;&emsp;&emsp;
+            <b>Time: </b><span id="Time" name="time" value="" ></span>
+            <br> 
+
+            <b>Grievance Name:</b> &emsp;<input type="text"  name="griv_name" style="margin-left:10px">
+           
+            <br> 
+
+            <b>Referances:</b> &emsp;&emsp;&emsp;&emsp;<input type="text" name="ref" value="NULL">
+            <br>
+            
+            <p><b><span style="color:red;">*</span>Grievance Category</b>
+
+            <select id="Grievance_Category" name="Grievance_Category" style="max-width: 200px" onchange="dept()">
+                 <option value="" selected>--SELECT</option>
+                 <option value="Academic">Academic</option>
+                 <option value="Non-Academic">Non-Academic</option>
+                 <option value="Grievance related to Assessment">Grievance related to Assessment</option>
+                 <option value="Grievance related to Victimization">Grievance related to Victimization</option>
+                 <option value=c>Grievance related to Attendance</option>
+                 <option value="Grievance related to charging of fees">Grievance related to charging of fees</option>
+                 <option value="Grievance regarding conducting of examinations">Grievance regarding conducting of examinations</option>
+                 <option value="Harassment by colleague students or the teachers etc">Harassment by colleague students or the teachers etc</option>
+                 </select>
+                 </p>
+            <b>Grievance Redressal Committee: </b>&emsp;<span id="griv_dept" name="griv_dept" value=""></span><br><br>
+
+            <b><span style="color:red;">*</span>Grievance: </b><br>
+             <textarea name="Grievance" cols="50" rows="10" class="form-control"></textarea><br><br>
+
+            <span  style="color: blue">or </span>
+             <b> Upload: </b><input type="file" name="griv_form" accept=".doc,docx,pdf">
+             <br><br>&emsp;&emsp;&emsp;
+             <input type="submit" name="submit" value="submit">&emsp;
+             <input type="reset" name="reset" value="reset" >
+          </form>
+             <br>
+            </div>
+            <div id="griv_status" class="table-reponsive">
+            <table class="table table-striped">
+               <thead class="table-inverse">
+                    <tr>
+                        <th>Problem Id</th>
+                        <th>Grievance Name</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Category</th>
+                        <th>reference</th>
+                        <th>Status</th>
+                    </tr>
+                
+               </thead>
+              
+              <tbody id="datas">
+              
+              </tbody>
+            </table>
+              
+            </div>
+            <div id="problems"></div>
+        </div> 
+      </div>
+  </div>
+</div>
+
+<footer style="margin-top:70px;">
+<img src="./image/footer.png" width="100%">
+
+</footer>
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="css/jquery.min.js"></script>
+    <script src="css/tether.min.js"></script>
+    <script src="css/bootstrap.min.js"></script>
+    <script src="student_menu.js"></script>
+</body>
+
+</html>

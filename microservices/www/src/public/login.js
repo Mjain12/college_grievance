@@ -1,58 +1,81 @@
 $(document).ready(function(){
     $("form").submit(function(event){
-        // Stop form from submitting normally
-        //$("form").trigger('reset');
         event.preventDefault();
-        
-        // Get action URL
-        var actionFile = $(this).attr("action");
+        id=login.loginid.value;
+	    psw=login.loginpassword.value;
 
-        /* Serialize the submitted form control values to be sent to the web server with the request */
-        var formValues = $(this).serialize();
-        //alert(actionFile,formValues);        
-        // Send the form data using post
-        //if(validate())
-        $.post(actionFile, formValues, function(result){
-            // Display the returned data in browser
-           //var data="success";
-            //alert(result);
-            var Id=$("#loginid").val();
-            document.cookie=Id; 
-                
-                var stu="http://127.0.0.1/clg_Grievance/student_menu.html";
-                var par="http://127.0.0.1/clg_Grievance/parent_menu.html";
-                var fac="http://127.0.0.1/clg_Grievance/faculty_menu.html";
-           
-            if(result==1){
-                
-                    window.open(stu,"_self");
-            }
-            else if(result==2)
-                window.open(fac,"_self");
-            else{   
-                    alert("Invalid login or password");
-                }
+	    		var stu="./student_menu.html";	
+                var par="./parent_menu.html";
+                var fac="./faculty_menu.html";
+			$.ajax({
+				url: "https://data.bulimic45.hasura-app.io/v1/query",
+				contentType: "application/json",
+				data: JSON.stringify({
+			      "type": "bulk",
+			      "args": [
+			            {
+			                  "type": "select",
+			                  "args": {
+			                        "table": "student",
+			                        "columns": [
+			                              "email"
+			                        ],
+			                        "where": {
+			                              "$and": [
+			                                    {
+			                                          "clg_id": {
+			                                                "$eq": id
+			                                          }
+			                                    },
+			                                    {
+			                                          "password": {
+			                                                "$eq": psw
+			                                          }
+			                                    }
+			                              ]
+			                        }
+			                  }
+			            },
+			            {
+			                  "type": "select",
+			                  "args": {
+			                        "table": "faculty",
+			                        "columns": [
+			                              "email"
+			                        ],
+			                        "where": {
+			                              "$and": [
+			                                    {
+			                                          "college_id": {
+			                                                "$eq": id
+			                                          }
+			                                    },
+			                                    {
+			                                          "password": {
+			                                                "$eq": psw
+			                                          }
+			                                    }
+			                              ]
+			                        }
+			                  }
+			            }
+			      ]
+				}),
+				type: "POST",
+				dataType: "json"
+			}).done(function(json) {
+				if(json[0].length==0 && json[1].length==0)
+					alert("invalid username or password");
+				else if(json[0].length==1)
+					 window.open(stu,"_self");
+				else if(json[1].length==1)
+					window.open(fac,"_self");
+			}).fail(function(xhr, status, errorThrown) {
+				console.log("Error: " + errorThrown);
+				console.log("Status: " + status);
+				console.dir(xhr);
+			});
 
-        });
     });
 });
-function validate()
-    {
-        id=login.loginid.value;
-        psw=login.loginpassword.value;
-        beg=/^[A-Za-z_][A-Za-z0-9]{1,}$/;
-        caps=/[A-z]$/;
-        small=/[a-z]$/;
-        num=/[0-9]$/;
-        if(!(beg.test(id)))
-        {
-        	alert("id is invalid");
-        	return false;
-        }
-    	else if(!(caps.test(psw) || small.test(psw) || num.test(psw)))
-    		{
-    			alert("password is not valid");
-        		return false;
-        	}
-        return true;
-    }
+
