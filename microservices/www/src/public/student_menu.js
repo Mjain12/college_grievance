@@ -1,3 +1,6 @@
+profileflag=0;
+statusflag=0;
+
  function hidden()
  {
     $("#griv_form").hide();
@@ -89,8 +92,7 @@ $(document).ready(function(){
 
         });
     });
-    profileflag=0;
-    statusflag=0;
+    
     $("#clear").click(function(){
         //alert(document.getElementById("text").html());
         hidden();
