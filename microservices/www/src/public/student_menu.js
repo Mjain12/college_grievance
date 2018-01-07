@@ -94,7 +94,7 @@ function profile(){
                   }
                   else if(json[1].length==1){
                     row=json[0][1];
-                    result='<b>Name: &emsp;</b><span style="margin-left:90px;"></span>'+row['fname']+' '+row['mname']+' '+row['lname'].+'<br><br><b>College Id:&emsp;<span style="margin-left:58px;"></span></b>'+row['clg_id']+'<br><br><b>University Roll no:</b>&emsp;'+row['university reg_no']+'<br><br><b>Department:</b>&emsp;<span style="margin-left:45px;"></span>'+row['department']+'<br><br><b>Mobile no:&emsp;<span style="margin-left:55px;"></span>+</b>'+row['mobile']+'<br><br><b>Email:&emsp;<span style="margin-left:85px;"></span></b>'+email+"<br><br>";
+                    //result='<b>Name: &emsp;</b><span style="margin-left:90px;"></span>'+row['fname']+' '+row['mname']+' '+row['lname'].+'<br><br><b>College Id:&emsp;<span style="margin-left:58px;"></span></b>'+row['clg_id']+'<br><br><b>University Roll no:</b>&emsp;'+row['university reg_no']+'<br><br><b>Department:</b>&emsp;<span style="margin-left:45px;"></span>'+row['department']+'<br><br><b>Mobile no:&emsp;<span style="margin-left:55px;"></span>+</b>'+row['mobile']+'<br><br><b>Email:&emsp;<span style="margin-left:85px;"></span></b>'+email+"<br><br>";
                   }
               }).fail(function(xhr, status, errorThrown) {
                 console.log("Error: " + errorThrown);
