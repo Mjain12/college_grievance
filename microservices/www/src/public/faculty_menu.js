@@ -2,7 +2,7 @@
 $(document).ready(function(){ 
   
     Id=document.cookie;
-
+    alert(Id);
     profileflag=0;
     statusflag=0;
     $("#clear").click(function(){

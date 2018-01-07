@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 
      Id = document.cookie;
-    //alert(Id);
+    alert(Id);
     $("form").submit(function(event){
         // Stop form from submitting normally
         //$("form").trigger('reset');

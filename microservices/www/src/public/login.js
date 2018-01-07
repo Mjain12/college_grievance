@@ -1,12 +1,14 @@
 $(document).ready(function(){
     $("form").submit(function(event){
         event.preventDefault();
-        id=login.loginid.value;
+        ID=login.loginid.value;
 	    psw=login.loginpassword.value;
-
-	    		var stu="./student_menu.html";	
-                var par="./parent_menu.html";
-                var fac="./faculty_menu.html";
+	    //alert(ID);
+	    document.cookie=ID;
+	    alert(document.cookie);
+	    		var stu="./student_menu.html?"+ID;	
+                var par="./parent_menu.html?"+ID;
+                var fac="./faculty_menu.html?"+ID;
 			$.ajax({
 				url: "https://data.bulimic45.hasura-app.io/v1/query",
 				contentType: "application/json",
@@ -24,7 +26,7 @@ $(document).ready(function(){
 			                              "$and": [
 			                                    {
 			                                          "clg_id": {
-			                                                "$eq": id
+			                                                "$eq": ID
 			                                          }
 			                                    },
 			                                    {
@@ -47,7 +49,7 @@ $(document).ready(function(){
 			                              "$and": [
 			                                    {
 			                                          "college_id": {
-			                                                "$eq": id
+			                                                "$eq":ID
 			                                          }
 			                                    },
 			                                    {
