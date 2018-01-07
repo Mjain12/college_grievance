@@ -36,7 +36,6 @@ $(document).ready(function(){
         });
     });
 });
-
 function validate()
     {
         id=login.loginid.value;
