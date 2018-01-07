@@ -1,5 +1,40 @@
-profileflag=0;
-statusflag=0;
+
+$(document).ready(function(){
+    profile(); 
+    //alert(Id);
+    $("form").submit(function(event){
+        // Stop form from submitting normally
+        //$("form").trigger('reset');
+        event.preventDefault();
+        
+        // Get action URL
+    var actionFile = $(this).attr("action");
+
+        /* Serialize the submitted form control values to be sent to the web server with the request */
+        var formValues = $(this).serialize();
+    //alert(actionFile,formValues);        
+        // Send the form data using post
+        //alert(formValues+"\n");
+        formValues=formValues+"&Id="+Id+"&time="+$('#Time').val()+"&griv_dept="+$("#griv_dept").val();
+        //alert(formValues);
+        $.post(actionFile, formValues, function(result){
+            // Display the returned data in browser
+           alert(result);
+           window.open("http://127.0.0.1/clg_Grievance/student_menu.html","_self");
+
+        });
+    });
+    profileflag=0;
+    statusflag=0;
+    
+    $("#clear").click(function(){
+        //alert(document.getElementById("text").html());
+        hidden();
+
+    }); 
+
+});
+
 
  function hidden()
  {
@@ -64,42 +99,6 @@ function profile(){
         $("#text").show();
  }
 
-$(document).ready(function(){
-
-
-
-     
-    //alert(Id);
-    $("form").submit(function(event){
-        // Stop form from submitting normally
-        //$("form").trigger('reset');
-        event.preventDefault();
-        
-        // Get action URL
-    var actionFile = $(this).attr("action");
-
-        /* Serialize the submitted form control values to be sent to the web server with the request */
-        var formValues = $(this).serialize();
-    //alert(actionFile,formValues);        
-        // Send the form data using post
-        //alert(formValues+"\n");
-        formValues=formValues+"&Id="+Id+"&time="+$('#Time').val()+"&griv_dept="+$("#griv_dept").val();
-        //alert(formValues);
-        $.post(actionFile, formValues, function(result){
-            // Display the returned data in browser
-           alert(result);
-           window.open("http://127.0.0.1/clg_Grievance/student_menu.html","_self");
-
-        });
-    });
-    
-    $("#clear").click(function(){
-        //alert(document.getElementById("text").html());
-        hidden();
-
-    }); 
-
-});
 
  function Form()
  {
