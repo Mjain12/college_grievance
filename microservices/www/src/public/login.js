@@ -5,7 +5,7 @@ $(document).ready(function(){
 	    psw=login.loginpassword.value;
 	    //alert(ID);
 	    document.cookie=ID;
-	    alert(document.cookie);
+	    //alert(document.cookie);
 	    		var stu="./student_menu.html?"+ID;	
                 var par="./parent_menu.html?"+ID;
                 var fac="./faculty_menu.html?"+ID;
