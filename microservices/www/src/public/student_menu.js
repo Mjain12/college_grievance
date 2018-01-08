@@ -58,9 +58,9 @@ $(document).ready(function(){
                                                                             "table": "Grievance",
                                                                             "objects": [
                                                                                   {
-                                                                                        "student_name": row['fname']+' '+row['mname']+' '+row['lname'],
-                                                                                        "student_clg_id": row['clg_id'],
-                                                                                        "student_university_id": row['university reg_no'],
+                                                                                        "student_name": profile_row['fname']+' '+profile_row['mname']+' '+profile_row['lname'],
+                                                                                        "student_clg_id": profile_row['clg_id'],
+                                                                                        "student_university_id": profile_row['university reg_no'],
                                                                                         "stage": "1",
                                                                                         "status": "Problem Posted",
                                                                                         "problem_id": new_id,
@@ -71,9 +71,9 @@ $(document).ready(function(){
                                                                                         "refernce": document.getElementById("ref").value,
                                                                                         "category": document.getElementById("Grievance_Category").value,
                                                                                         "commitee": "Department level Grievance Redressal Committee",
-                                                                                        "department": row['department'],
-                                                                                        "student_email":row['email'],
-                                                                                        "student_mobile":row['mobile']
+                                                                                        "department": profile_row['department'],
+                                                                                        "student_email":profile_row['email'],
+                                                                                        "student_mobile":profile_row['mobile']
                                                                                   }
                                                                             ]
                                                                       }
@@ -92,8 +92,8 @@ $(document).ready(function(){
                                                                               "from": "clggrievances@gmail.com",
                                                                               "fromName": "SVCE Grievance Redressal Committee",
                                                                               "sub": "successfully  post of your grievance",
-                                                                              "text": "Dear "+row['fname']+' '+row['mname']+' '+row['lname']+",\nGreetings from SVCE Grievance Redressal System.!! You have successfully posted your Problem to Department level Grievance Redressal Committee and \nYou will soon recieve the solution for your problem from our commitee Regards,SVCE Grievance Team",
-                                                                              "html": "Dear "+row['fname']+' '+row['mname']+' '+row['lname']+",<br><br>Greetings from SVCE Grievance Redressal System.!!<br>You have successfully posted your Problem to Department level Grievance Redressal Committee and <br>You will soon recieve the solution for your problem from our commitee<br><br>Regards,<br>SVCE Grievance Team<br>"
+                                                                              "text": "Dear "+profile_row['fname']+' '+profile_row['mname']+' '+profile_row['lname']+",\nGreetings from SVCE Grievance Redressal System.!! You have successfully posted your Problem to Department level Grievance Redressal Committee and \nYou will soon recieve the solution for your problem from our commitee Regards,SVCE Grievance Team",
+                                                                              "html": "Dear "+profile_row['fname']+' '+profile_row['mname']+' '+profile_row['lname']+",<br><br>Greetings from SVCE Grievance Redressal System.!!<br>You have successfully posted your Problem to Department level Grievance Redressal Committee and <br>You will soon recieve the solution for your problem from our commitee<br><br>Regards,<br>SVCE Grievance Team<br>"
                                                                           }),
                                                                           type: "POST",
                                                                           dataType: "json"
@@ -179,10 +179,10 @@ function profile(){
                   //alert(json[0][0]);
                   if(json.length==1)
                   {
-                  var  row=json[0];
+                    profile_row=json[0];
                     
                     //alert(row["fname"]);
-                    result='<b>Name: &emsp;</b><span style="margin-left:90px;"></span>'+row['fname']+' '+row['mname']+' '+row['lname']+'<br><br><b>College Id:&emsp;<span style="margin-left:58px;"></span></b>'+row['clg_id']+'<br><br><b>University Roll no:</b>&emsp;'+row['university reg_no']+'<br><br><b>Department:</b>&emsp;<span style="margin-left:45px;"></span>'+row['department']+'<br><br><b>Mobile no:&emsp;<span style="margin-left:55px;"></span>+91</b>'+row['mobile']+'<br><br><b>Email:&emsp;<span style="margin-left:85px;"></span></b>'+row['email']+"<br><br>";
+                    result='<b>Name: &emsp;</b><span style="margin-left:90px;"></span>'+profile_row['fname']+' '+profile_row['mname']+' '+profile_row['lname']+'<br><br><b>College Id:&emsp;<span style="margin-left:58px;"></span></b>'+profile_row['clg_id']+'<br><br><b>University Roll no:</b>&emsp;'+profile_row['university reg_no']+'<br><br><b>Department:</b>&emsp;<span style="margin-left:45px;"></span>'+profile_row['department']+'<br><br><b>Mobile no:&emsp;<span style="margin-left:55px;"></span>+91</b>'+profile_row['mobile']+'<br><br><b>Email:&emsp;<span style="margin-left:85px;"></span></b>'+profile_row['email']+"<br><br>";
                     $("#text").append(result);
                   }
                   
