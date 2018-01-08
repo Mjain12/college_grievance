@@ -297,7 +297,6 @@ $.ajax({
  function problem(Name)
  {
    hidden();
-   prob="&problem="+prob;
         //$("#datas").append(result);
           $.ajax({
             url: "https://data.bulimic45.hasura-app.io/v1/query",
