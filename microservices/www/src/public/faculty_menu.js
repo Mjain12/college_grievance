@@ -204,7 +204,7 @@ function status()
             dataType: "json"
           }).done(function(json) {
             $('#problems').append("<b>Problem Name</b>&emsp;&emsp;"+json[0]["problem_name"]+"<br><br><b>Date:&emsp;</b>"+json[0]["date"]+"&emsp;&emsp;<b>Time:</b>&emsp;"+json[0]["time"]+"<br><b>References:</b>&emsp;"+json[0]["refernce"]+"<br><b>Category:</b>&emsp;"+json[0]["category"]+"&emsp;&emsp;<b>Commitee:</b>&emsp;"+json[0]["commitee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json[0]["problem_discription"]+"<br><br>");
-            $('#problems').append('<form name="solution" id="solution" value ="'+prob+'" action="http://127.0.0.1/clg_Grievance/post_solution.php" method ="post" onsubmit = "return solution()"><textarea cols="10" rows="10" class="form-control" name="griv"></textarea><br><input type="submit" name="submit" value="submit">&emsp;<input type="reset" name="reset" value="reset"></form><br>');
+            $('#problems').append('<form name="solution" id="solution" value ="'+Name+'" action="http://127.0.0.1/clg_Grievance/post_solution.php" method ="post" onsubmit = "return solution()"><textarea cols="10" rows="10" class="form-control" name="griv"></textarea><br><input type="submit" name="submit" value="submit">&emsp;<input type="reset" name="reset" value="reset"></form><br>');
                           $("form").submit(function(event){
                       // Stop form from submitting normally
                       //$("form").trigger('reset');
