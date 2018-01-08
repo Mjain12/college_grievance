@@ -49,7 +49,7 @@ function profile(){
                     profile_row=json[0];
                     
                     //alert(row["fname"]);
-                    result='<b>Name: &emsp;</b><span style="margin-left:90px;"></span>'+profile_row['fname']+' '+profile_row['mname']+' '+profile_row['lname']+'<br><br><b>College Id:&emsp;<span style="margin-left:58px;"></span></b>'+profile_row['clg_id']+'<br><br><b>University Roll no:</b>&emsp;'+profile_row['university_reg_no']+'<br><br><b>Department:</b>&emsp;<span style="margin-left:45px;"></span>'+profile_row['department']+'<br><br><b>Mobile no:&emsp;<span style="margin-left:55px;"></span>+91</b>'+profile_row['mobile']+'<br><br><b>Email:&emsp;<span style="margin-left:85px;"></span></b>'+profile_row['email']+"<br><br>";
+                    result='<b>Name: &emsp;</b><span style="margin-left:90px;"></span>'+profile_row['fname']+' '+profile_row['mname']+' '+profile_row['lname']+'<br><br><b>College Id:&emsp;<span style="margin-left:58px;"></span></b>'+profile_row['college_id']+'<br><br><b>University Roll no:</b>&emsp;'+profile_row['university_reg_no']+'<br><br><b>Department:</b>&emsp;<span style="margin-left:45px;"></span>'+profile_row['department']+'<br><br><b>Mobile no:&emsp;<span style="margin-left:55px;"></span>+91</b>'+profile_row['mobile']+'<br><br><b>Email:&emsp;<span style="margin-left:85px;"></span></b>'+profile_row['email']+"<br><br>";
                     $("#text").append(result);
                   }
                   
