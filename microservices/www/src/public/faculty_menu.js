@@ -319,7 +319,7 @@ function status()
                     ],
                     "where": {
                           "problem_id": {
-                                "$eq": "ProblemID1"
+                                "$eq": Name
                           }
                     }
               }
