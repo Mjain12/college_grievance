@@ -142,12 +142,7 @@ function status()
                         "columns": [
                               "department","student_clg_id","stage","status","time","student_university_id","category","problem_name","problem_id","commitee","student_name","date","student_email","favourable","student_mobile","refernce"
                         ],
-                        "where": PROBLEMS,"order_by": [
-                              {
-                                  "column": "status",
-                                  "order": "asc"
-                              }
-                          ]
+                        "where": PROBLEMS
                   }
               }),
               type: "POST",
