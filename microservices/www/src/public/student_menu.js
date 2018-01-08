@@ -8,70 +8,105 @@ $(document).ready(function(){
         // Stop form from submitting normally
         //$("form").trigger('reset');
         event.preventDefault();
-                    $.ajax({
-              url: "https://data.bulimic45.hasura-app.io/v1/query",
-              contentType: "application/json",
-              data: JSON.stringify({
-                  "type": "select",
-                  "args": {
-                        "table": "grievance_problem_id",
-                        "columns": [
-                              "id"
-                        ]
-                  }
-              }),
-              type: "POST",
-              dataType: "json"
-            }).done(function(json) {
-              var old_id=(json[0]["id"]).split("D")
-              var new_id=old_id[0]+(parseInt(old_id[1])+1).toString();
-              alert([new_id]);
-            }).fail(function(xhr, status, errorThrown) {
-              console.log("Error: " + errorThrown);
-              console.log("Status: " + status);
-              console.dir(xhr);
-            });
+                        $.ajax({
+                                url: "https://data.bulimic45.hasura-app.io/v1/query",
+                                contentType: "application/json",
+                                data: JSON.stringify({
+                                    "type": "bulk",
+                                    "args": [
+                                          {
+                                                "type": "select",
+                                                "args": {
+                                                      "table": "grievance_problem_id",
+                                                      "columns": [
+                                                            "id"
+                                                      ]
+                                                }
+                                          },
+                                          {
+                                                "type": "select",
+                                                "args": {
+                                                      "table": "faculty",
+                                                      "columns": [
+                                                            "email"
+                                                      ],
+                                                      "where": {
+                                                            "department": {
+                                                                  "$eq": "Department of Computer Science"
+                                                            }
+                                                      }
+                                                }
+                                          }
+                                    ]
+                                }),
+                                type: "POST",
+                                dataType: "json"
+                              }).done(function(json) {
+                                              var old_id=(json[0][0]["id"]).split("D")
+                                              var new_id=old_id[0]+"D"+(parseInt(old_id[1])+1).toString();
+                                                        $.ajax({
+                                                                  url: "https://data.bulimic45.hasura-app.io/v1/query",
+                                                                  contentType: "application/json",
+                                                                  data: JSON.stringify({
+                                                                      "type": "insert",
+                                                                      "args": {
+                                                                            "table": "Grievance",
+                                                                            "objects": [
+                                                                                  {
+                                                                                        "student_name": row['fname']+' '+row['mname']+' '+row['lname'],
+                                                                                        "student_clg_id": row['clg_id'],
+                                                                                        "student_university_id": row['university reg_no'],
+                                                                                        "stage": "1",
+                                                                                        "status": "Problem Posted",
+                                                                                        "problem_id": new_id,
+                                                                                        "problem_discription": document.getElementById("Grievance").value,
+                                                                                        "problem_name": document.getElementById("griv_name").value,
+                                                                                        "date": ($('#Time').val()).split(" ")[0],
+                                                                                        "time": ($('#Time').val()).split(" ")[1],
+                                                                                        "refernce": document.getElementById("ref").value,
+                                                                                        "category": document.getElementById("Grievance_Category").value,
+                                                                                        "commitee": "Department level Grievance Redressal Committee",
+                                                                                        "department": row['department'],
+                                                                                        "student_email":row['email'],
+                                                                                        "student_mobile":row['mobile']
+                                                                                  }
+                                                                            ]
+                                                                      }
+                                                                  }),
+                                                                  type: "POST",
+                                                                  dataType: "json"
+                                                                }).done(function(json) {
+                                                                      $.ajax({
+                                                                        url: "https://data.bulimic45.hasura-app.io/v1/query",
+                                                                        contentType: "application/json",
+                                                                        data: JSON.stringify({
+                                                                            "type": "update",
+                                                                            "args": {
+                                                                                  "table": "grievance_problem_id",
+                                                                                  "where": {},
+                                                                                  "$set": {
+                                                                                        "id": new_id;
+                                                                                  }
+                                                                            }
+                                                                        }),
+                                                                        type: "POST",
+                                                                        dataType: "json"
+                                                                      });
+                                                                  alert("Congragulation you have succesfully posted the problem");
+                                                                  window.open("./student_menu.html","_self");
+                                                                }).fail(function(xhr, status, errorThrown) {
+                                                                  console.log("Error: " + errorThrown);
+                                                                  console.log("Status: " + status);
+                                                                  console.dir(xhr);
+                                                                }); 
+                              }).fail(function(xhr, status, errorThrown) {
+                                console.log("Error: " + errorThrown);
+                                console.log("Status: " + status);
+                                console.dir(xhr);
+                              });
 
-            /*$.ajax({
-                      url: "https://data.bulimic45.hasura-app.io/v1/query",
-                      contentType: "application/json",
-                      data: JSON.stringify({
-                          "type": "insert",
-                          "args": {
-                                "table": "Grievance",
-                                "objects": [
-                                      {
-                                            "student_name": row['fname']+' '+row['mname']+' '+row['lname'],
-                                            "student_clg_id": row['clg_id'],
-                                            "student_university_id": row['university reg_no'],
-                                            "stage": "1",
-                                            "status": "Problem Posted",
-                                            "problem_id": "ProblemID2",
-                                            "problem_discription": document.getElementById("Grievance").value,
-                                            "problem_name": document.getElementById("griv_name").value,
-                                            "date": ($('#Time').val()).split(" ")[0],
-                                            "time": ($('#Time').val()).split(" ")[1],
-                                            "refernce": document.getElementById("ref").value,
-                                            "category": document.getElementById("Grievance_Category").value,
-                                            "commitee": "Department level Grievance Redressal Committee",
-                                            "department": row['department'],
-                                            "student_email":row['email'],
-                                            "student_mobile":row['mobile']
-                                      }
-                                ]
-                          }
-                      }),
-                      type: "POST",
-                      dataType: "json"
-                    }).done(function(json) {
-                      alert("Congragulation you have succesfully posted the problem");
-                      window.open("./student_menu.html","_self");
-                    }).fail(function(xhr, status, errorThrown) {
-                      console.log("Error: " + errorThrown);
-                      console.log("Status: " + status);
-                      console.dir(xhr);
-                    });*/
-        
+
+
     });
     $("#clear").click(function(){
         //alert(document.getElementById("text").html());
