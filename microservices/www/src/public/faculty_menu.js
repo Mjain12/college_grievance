@@ -18,9 +18,10 @@ function profile(){
     Id=Id[0];
     //alert(document.cookie);
     if(DB=="faculty")
-     select_id="college_id";
+     select_id={"college_id" : {"$eq": Id} };
     else 
-      select_id="email";
+      select_id={"email" : {"$eq": Id} };;
+
  	  hidden();
         if(document.getElementById("text").value!="profile" && profileflag==0){
 
@@ -36,11 +37,7 @@ function profile(){
                                       "columns": [
                                             "*"
                                       ],
-                                      "where": {
-                                            select_id: {
-                                                  "$eq": Id
-                                            }
-                                      }
+                                      "where": select_id
                                 }
                           }),
                 type: "POST",
