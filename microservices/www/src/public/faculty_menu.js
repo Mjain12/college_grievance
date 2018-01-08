@@ -25,7 +25,7 @@ function profile(){
                 contentType: "application/json",
                 data: JSON.stringify({
                                 "type": "select",
-                                "args": {
+                               "args": {
                                       "table": "faculty",
                                       "columns": [
                                             "*"
