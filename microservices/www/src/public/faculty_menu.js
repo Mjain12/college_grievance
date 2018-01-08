@@ -252,7 +252,7 @@ function status()
                             }),
                             type: "POST",
                             dataType: "json"
-                          }).done(function(json) {
+                          }).done(function(json1) {
                                 $.ajax({
                                   url: "https://notify.bulimic45.hasura-app.io/v1/send/email",
                                   contentType: "application/json",
