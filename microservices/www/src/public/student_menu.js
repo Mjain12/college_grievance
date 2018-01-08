@@ -9,7 +9,7 @@ $(document).ready(function(){
         //$("form").trigger('reset');
         event.preventDefault();
             
-         alert(document.getElementById("ref").value); 
+         alert([($('#Time').val()).split(" ")[0],($('#Time').val()).split(" ")[1]]); 
           /*  $.ajax({
                       url: "https://data.bulimic45.hasura-app.io/v1/query",
                       contentType: "application/json",
@@ -25,10 +25,10 @@ $(document).ready(function(){
                                             "stage": "1",
                                             "status": "Problem Posted",
                                             "problem_id": "ProblemID1",
-                                            "problem_discription": "abc",
-                                            "problem_name": "abc",
-                                            "date": "12",
-                                            "time": "12",
+                                            "problem_discription": document.getElementById("Grievance").value,
+                                            "problem_name": document.getElementById("griv_name").value,
+                                            "date": ,
+                                            "time": ,
                                             "refernce": "null",
                                             "category": document.getElementById("Grievance_Category").value,
                                             "commitee": "Department level Grievance Redressal Committee",
