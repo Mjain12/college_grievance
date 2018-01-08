@@ -145,7 +145,7 @@ function status()
                         "where": PROBLEMS,"order_by": [
                               {
                                   "column": "status",
-                                  "order": "desc"
+                                  "order": "asc"
                               }
                           ]
                   }
