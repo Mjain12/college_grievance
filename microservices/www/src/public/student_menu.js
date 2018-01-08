@@ -9,43 +9,45 @@ $(document).ready(function(){
         //$("form").trigger('reset');
         event.preventDefault();
             
-         alert(row["fname"]); 
+         alert(document.form.ref.val()); 
           /*  $.ajax({
-              url: "https://data.bulimic45.hasura-app.io/v1/query",
-              contentType: "application/json",
-              data: JSON.stringify({
-                  "type": "insert",
-                  "args": {
-                        "table": "grievance",
-                        "objects": [
-                              {
-                                    "commitee": "Department level Grievance Redressal Committee",
-                                    "discription": "abc",
-                                    "status": "Problem Posted",
-                                    "department": "cs",
-                                    "stage": "1",
-                                    "time": "12/12/12",
-                                    "proble_name": "abc",
-                                    "student_clg_id": "2015cse0102",
-                                    "student_university_id": "212715104129",
-                                    "student_email": "santhoshkumar.ssk3222@gmail.com",
-                                    "problem_id": "ProblemId1",
-                                    "date": "21/12/1998",
-                                    "category": "a",
-                                    "refernces": "null"
-                              }
-                        ]
-                  }
-              }),
-              type: "POST",
-              dataType: "json"
-            }).done(function(json) {
-              // Handle Response
-            }).fail(function(xhr, status, errorThrown) {
-              console.log("Error: " + errorThrown);
-              console.log("Status: " + status);
-              console.dir(xhr);
-            });   
+                      url: "https://data.bulimic45.hasura-app.io/v1/query",
+                      contentType: "application/json",
+                      data: JSON.stringify({
+                          "type": "insert",
+                          "args": {
+                                "table": "Grievance",
+                                "objects": [
+                                      {
+                                            "student_name": row['fname']+' '+row['mname']+' '+row['lname'],
+                                            "student_clg_id": row['clg_id'],
+                                            "student_university_id": row['university reg_no'],
+                                            "stage": "1",
+                                            "status": "Problem Posted",
+                                            "problem_id": "ProblemID1",
+                                            "problem_discription": "abc",
+                                            "problem_name": "abc",
+                                            "date": "12",
+                                            "time": "12",
+                                            "refernce": "null",
+                                            "category": document.getElementById("Grievance_Category").value,
+                                            "commitee": "Department level Grievance Redressal Committee",
+                                            "department": row['department'],
+                                            "student_email":row['email'],
+                                            "student_mobile":row['mobile']
+                                      }
+                                ]
+                          }
+                      }),
+                      type: "POST",
+                      dataType: "json"
+                    }).done(function(json) {
+                      // Handle Response
+                    }).fail(function(xhr, status, errorThrown) {
+                      console.log("Error: " + errorThrown);
+                      console.log("Status: " + status);
+                      console.dir(xhr);
+                    });
         */
 
 
@@ -163,19 +165,13 @@ function profile(){
  {
     var dep = document.getElementById("Grievance_Category").value;
     $("#griv_dept").empty();    
-    if(dep=="Academic" || dep=="Grievance related to Attendance" || dep=="Harassment by colleague students or the teachers etc"){
+    if(dep!=""){
        $("#griv_dept").empty();
        $("#griv_dept").append("Department Level Grievance Redressal Committee");
        $("#griv_dept").val("Department%20Level%20Grievance%20Redressal%20Committee");
        
     }
-    else if(dep!="")
-    {
-        $("#griv_dept").empty();
-       $("#griv_dept").append("Institution Level Grievance Redressal Committee");
-       $("#griv_dept").val("Institution%20Level%20Grievance%20Redressal%20Committee");
-       
-    }
+    
  
 
 
