@@ -367,7 +367,84 @@ $.ajax({
           else if(json_solution[0]["favourable"]=="notfavourable")
             $('#problems').preappend("<span style='background-color:lightred;'><b>Solution NOT favourable</b></sapan><br>");
           else
-            $('#problems').append("<br><input type=\"button\" onclick='return Solutionfavourable()' value='favourable'>&emsp;&emsp<input type=\"button\" onclick='return Solutionnotfavourable()' value='Not Favourable'><br>");
+            $('#problems').append("<br><input type=\"button\" onclick='return Solutionfavourable()' value='favourable'>&emsp;&emsp;<input type=\"button\" onclick='return Solutionnotfavourable()' value='Not Favourable'><br>");
+            function Solutionfavourable(){
+                                $.ajax({
+                                  url: "https://data.bulimic45.hasura-app.io/v1/query",
+                                  contentType: "application/json",
+                                  data: JSON.stringify({
+                                      "type": "update",
+                                      "args": {
+                                            "table": "Grievance",
+                                            "where": {
+                                                  "problem_id": {
+                                                        "$eq": Name
+                                                  }
+                                            },
+                                            "$set": {
+                                                  "favourable": "favourable"
+                                            }
+                                      }
+                                  }),
+                                  type: "POST",
+                                  dataType: "json"
+                                });
+                                alert("Thankyou for using our portal");
+            }
+            function Solutionnotfavourable(){
+                                if(confirm("Do you want to post this problem to higher level")){
+                                    STAGE=parseInt(json_solution[0]["stage"];
+                                  if(parseInt(json_solution[0]["stage"])<=2) 
+                                    STAGE+=+1;
+                                  STAGE=STAGE.toString();
+                                $.ajax({
+                                  url: "https://data.bulimic45.hasura-app.io/v1/query",
+                                  contentType: "application/json",
+                                  data: JSON.stringify({
+                                      "type": "update",
+                                      "args": {
+                                            "table": "Grievance",
+                                            "where": {
+                                                  "problem_id": {
+                                                        "$eq": Name
+                                                  }
+                                            },
+                                            "$set": {
+                                                  "stage": STAGE,
+                                                  "favourable":"NULL",
+                                                  "status":"Problem Posted to Level "+STAGE
+                                            }
+                                      }
+                                  }),
+                                  type: "POST",
+                                  dataType: "json"
+                                });
+                                alert("Thankyou for using our portal");
+                              }
+                              else {
+                                $.ajax({
+                                  url: "https://data.bulimic45.hasura-app.io/v1/query",
+                                  contentType: "application/json",
+                                  data: JSON.stringify({
+                                      "type": "update",
+                                      "args": {
+                                            "table": "Grievance",
+                                            "where": {
+                                                  "problem_id": {
+                                                        "$eq": Name
+                                                  }
+                                            },
+                                            "$set": {
+                                                  "favourable": "notfavourable"
+                                            }
+                                      }
+                                  }),
+                                  type: "POST",
+                                  dataType: "json"
+                                });
+                                alert("Thankyou for using our portal");
+                              } 
+            }
         }).fail(function(xhr, status, errorThrown) {
           console.log("Error: " + errorThrown);
           console.log("Status: " + status);
