@@ -16,11 +16,21 @@ function profile(){
     Id = (document.cookie).split("&");
     DB=Id[1];
     Id=Id[0];
+    PROBLEMS;
     //alert(document.cookie);
-    if(DB=="faculty")
+    if(DB=="faculty"){
+      PROBLEMS={"$and": [ {  "department": {  "$eq": profile_row["department"]}},{"stage": {"$eq": "1"}}]};
      select_id={"college_id" : {"$eq": Id} };
-    else 
+
+    }
+    else if(DB=="institute_level_faculty"){
+      PROBLEMS={"stage" : {"$eq": 2} };
       select_id={"email" : {"$eq": Id} };;
+    }
+    else if(DB=="central_grievance_redressal_faculty"){
+      PROBLEMS={"stage" : {"$eq": 3} };
+      select_id={"email" : {"$eq": Id} };;
+    }
 
  	  hidden();
         if(document.getElementById("text").value!="profile" && profileflag==0){
@@ -134,20 +144,7 @@ function status()
                         "columns": [
                               "department","student_clg_id","stage","status","time","student_university_id","category","problem_name","problem_id","commitee","student_name","date","student_email","favourable","student_mobile","refernce"
                         ],
-                        "where": {
-                              "$and": [
-                                  {
-                                      "department": {
-                                          "$eq": profile_row["department"]
-                                      }
-                                  },
-                                  {
-                                      "stage": {
-                                          "$eq": "1"
-                                      }
-                                  }
-                              ]
-                          },"order_by": [
+                        "where": PROBLEMS,"order_by": [
                               {
                                   "column": "status",
                                   "order": "desc"
