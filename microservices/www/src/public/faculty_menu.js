@@ -13,10 +13,14 @@ $(document).ready(function(){
 });
 
 function profile(){
-    //Id = (document.cookie).split(";");
-    //DB=Id[1];
-    //Id=Id[0];
-    alert(document.cookie);
+    Id = (document.cookie).split("&");
+    DB=Id[1];
+    Id=Id[0];
+    //alert(document.cookie);
+    if(DB==faculty)
+     select_id="college_id";
+    else 
+      select_id="email";
  	  hidden();
         if(document.getElementById("text").value!="profile" && profileflag==0){
 
