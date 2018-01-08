@@ -402,6 +402,7 @@ $.ajax({
                                 window.open("./student_menu.html","_self");
             }
 function Solutionnotfavourable(Name,STAGE){
+                                alert(STAGE);
                                 if(confirm("Do you want to post this problem to higher level") && STAGE!="3"){
                                     if(STAGE=="1") STAGE="2";
                                     else if(STAGE=="2") STAGE="3";
