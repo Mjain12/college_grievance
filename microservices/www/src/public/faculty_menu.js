@@ -14,8 +14,8 @@ $(document).ready(function(){
 
 function profile(){
     Id = (document.cookie).split(";")[0];
-    DB=Id = (document.cookie).split(";")[1];
-    //alert(Id);
+    DB= (document.cookie).split(";")[1];
+    //alert(DB);
  	  hidden();
         if(document.getElementById("text").value!="profile" && profileflag==0){
 
@@ -121,7 +121,7 @@ function status()
     hidden();
     if(document.getElementById("text").value!="datas" && statusflag==0){
     $("#griv_status").show();
-        
+
             $.ajax({
               url: "https://data.bulimic45.hasura-app.io/v1/query",
               contentType: "application/json",
