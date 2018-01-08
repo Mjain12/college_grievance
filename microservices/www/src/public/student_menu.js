@@ -9,7 +9,7 @@ $(document).ready(function(){
         //$("form").trigger('reset');
         event.preventDefault();
             
-         alert(document.getElementById("griv_name").value); 
+         alert(document.getElementById("ref").value); 
           /*  $.ajax({
                       url: "https://data.bulimic45.hasura-app.io/v1/query",
                       contentType: "application/json",
