@@ -263,7 +263,12 @@ $.ajax({
             "where": {
                   "student_clg_id": {
                         "$eq": Id
-                  }
+                  },"order_by": [
+                        {
+                            "column": "status",
+                            "order": "asc"
+                        }
+                    ]
             }
       }
   }),
