@@ -1,0 +1,9 @@
+- args:
+    sql: ALTER TABLE "grievance" ALTER COLUMN "principal_solution" TYPE text;
+  type: run_sql
+- args:
+    sql: ALTER TABLE "grievance" ALTER COLUMN "principal_solution" DROP DEFAULT;
+  type: run_sql
+- args:
+    sql: ALTER TABLE "grievance" ALTER COLUMN "principal_solution" DROP NOT NULL;
+  type: run_sql
