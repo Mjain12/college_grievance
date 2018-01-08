@@ -1,0 +1,22 @@
+- args:
+    role: anonymous
+    table: central_grievance_redressal_faculty
+  type: drop_select_permission
+- args:
+    permission:
+      columns:
+      - question
+      - password
+      - email
+      - mobile
+      - department
+      - university_reg_no
+      - college_id
+      - lname
+      - mnane
+      - fname
+      - answer
+      filter: {}
+    role: anonymous
+    table: central_grievance_redressal_faculty
+  type: create_select_permission

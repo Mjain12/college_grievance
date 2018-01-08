@@ -1,0 +1,7 @@
+- args:
+    permission:
+      columns: []
+      filter: {}
+    role: anonymous
+    table: central_grievance_redressal_faculty
+  type: create_select_permission
