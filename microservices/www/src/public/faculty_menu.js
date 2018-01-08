@@ -1,4 +1,3 @@
-
 $(document).ready(function(){ 
   
     //Id=document.cookie;
@@ -11,33 +10,52 @@ $(document).ready(function(){
 
     });
     profile();
-    
-    
-    
-
-
 });
 
 function profile(){
     Id = document.cookie;
-    alert(Id);
+    //alert(Id);
  	  hidden();
         if(document.getElementById("text").value!="profile" && profileflag==0){
 
             $("#text").show();
-
-     	   //profile=" <b>Name:</b><span></span><br> <b>College Id no:</b><span></span>  <br> <b>Register no:</b><span></span><br> <b>Department:</b><span></span><br> <b>Section:</b><span></span>  <br> <b>Year:</b><span></span><br> <b>Mobile no:</b><span></span><br> <b>Email:</b><span></span><br> <b>Address:</b><span></span>    </div>"
-  
-     	   $.post('http://127.0.0.1/clg_Grievance/profile.php',"id="+Id, function(result){
-            // Display the returned data in browser
-           //alert(result);
-           if(result==0)
-            alert("error in loading your profile");
-          else
-           $("#text").append(result);
-           //window.open("http://127.0.0.1/clg_Grievance/student_menu.html","_self");
-
-        }); 
+              
+              $.ajax({
+                url: "https://data.bulimic45.hasura-app.io/v1/query",
+                contentType: "application/json",
+                data: JSON.stringify({
+                                "type": "select",
+                                "args": {
+                                      "table": "faculty",
+                                      "columns": [
+                                            "*"
+                                      ],
+                                      "where": {
+                                            "college_id": {
+                                                  "$eq": Id
+                                            }
+                                      }
+                                }
+                          }),
+                type: "POST",
+                dataType: "json"
+              }).done(function(json) {
+                  //alert(json[0][0]);
+                  if(json.length==1)
+                  {
+                    row=json[0];
+                    
+                    //alert(row["fname"]);
+                    result='<b>Name: &emsp;</b><span style="margin-left:90px;"></span>'+row['fname']+' '+row['mname']+' '+row['lname']+'<br><br><b>College Id:&emsp;<span style="margin-left:58px;"></span></b>'+row['clg_id']+'<br><br><b>University Roll no:</b>&emsp;'+row['university_reg_no']+'<br><br><b>Department:</b>&emsp;<span style="margin-left:45px;"></span>'+row['department']+'<br><br><b>Mobile no:&emsp;<span style="margin-left:55px;"></span>+91</b>'+row['mobile']+'<br><br><b>Email:&emsp;<span style="margin-left:85px;"></span></b>'+row['email']+"<br><br>";
+                    $("#text").append(result);
+                  }
+                  
+              }).fail(function(xhr, status, errorThrown) {
+                console.log("Error: " + errorThrown);
+                console.log("Status: " + status);
+                console.dir(xhr);
+              }); 
+     	   
            
 
            document.getElementById("text").value="profile";

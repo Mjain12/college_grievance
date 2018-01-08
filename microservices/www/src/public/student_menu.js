@@ -8,23 +8,62 @@ $(document).ready(function(){
         // Stop form from submitting normally
         //$("form").trigger('reset');
         event.preventDefault();
-        
-        // Get action URL
-    var actionFile = $(this).attr("action");
+            
+         alert(row["fname"]); 
+          /*  $.ajax({
+              url: "https://data.bulimic45.hasura-app.io/v1/query",
+              contentType: "application/json",
+              data: JSON.stringify({
+                  "type": "insert",
+                  "args": {
+                        "table": "grievance",
+                        "objects": [
+                              {
+                                    "commitee": "Department level Grievance Redressal Committee",
+                                    "discription": "abc",
+                                    "status": "Problem Posted",
+                                    "department": "cs",
+                                    "stage": "1",
+                                    "time": "12/12/12",
+                                    "proble_name": "abc",
+                                    "student_clg_id": "2015cse0102",
+                                    "student_university_id": "212715104129",
+                                    "student_email": "santhoshkumar.ssk3222@gmail.com",
+                                    "problem_id": "ProblemId1",
+                                    "date": "21/12/1998",
+                                    "category": "a",
+                                    "refernces": "null"
+                              }
+                        ]
+                  }
+              }),
+              type: "POST",
+              dataType: "json"
+            }).done(function(json) {
+              // Handle Response
+            }).fail(function(xhr, status, errorThrown) {
+              console.log("Error: " + errorThrown);
+              console.log("Status: " + status);
+              console.dir(xhr);
+            });   
+        */
 
-        /* Serialize the submitted form control values to be sent to the web server with the request */
-        var formValues = $(this).serialize();
-    //alert(actionFile,formValues);        
-        // Send the form data using post
-        //alert(formValues+"\n");
+
+
+
+
+
+        // Get action URL
         formValues=formValues+"&Id="+Id+"&time="+$('#Time').val()+"&griv_dept="+$("#griv_dept").val();
-        //alert(formValues);
-        $.post(actionFile, formValues, function(result){
+        //alert();
+        
+        /*$.post(actionFile, formValues, function(result){
             // Display the returned data in browser
            alert(result);
            window.open("http://127.0.0.1/clg_Grievance/student_menu.html","_self");
 
-        });
+        });*/
+
     });
     $("#clear").click(function(){
         //alert(document.getElementById("text").html());
@@ -81,10 +120,7 @@ function profile(){
                     result='<b>Name: &emsp;</b><span style="margin-left:90px;"></span>'+row['fname']+' '+row['mname']+' '+row['lname']+'<br><br><b>College Id:&emsp;<span style="margin-left:58px;"></span></b>'+row['clg_id']+'<br><br><b>University Roll no:</b>&emsp;'+row['university reg_no']+'<br><br><b>Department:</b>&emsp;<span style="margin-left:45px;"></span>'+row['department']+'<br><br><b>Mobile no:&emsp;<span style="margin-left:55px;"></span>+91</b>'+row['mobile']+'<br><br><b>Email:&emsp;<span style="margin-left:85px;"></span></b>'+row['email']+"<br><br>";
                     $("#text").append(result);
                   }
-                  else if(json[1].length==1){
-                    row=json[0][1];
-                    //result='<b>Name: &emsp;</b><span style="margin-left:90px;"></span>'+row['fname']+' '+row['mname']+' '+row['lname'].+'<br><br><b>College Id:&emsp;<span style="margin-left:58px;"></span></b>'+row['clg_id']+'<br><br><b>University Roll no:</b>&emsp;'+row['university reg_no']+'<br><br><b>Department:</b>&emsp;<span style="margin-left:45px;"></span>'+row['department']+'<br><br><b>Mobile no:&emsp;<span style="margin-left:55px;"></span>+</b>'+row['mobile']+'<br><br><b>Email:&emsp;<span style="margin-left:85px;"></span></b>'+email+"<br><br>";
-                  }
+                  
               }).fail(function(xhr, status, errorThrown) {
                 console.log("Error: " + errorThrown);
                 console.log("Status: " + status);
