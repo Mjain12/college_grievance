@@ -182,40 +182,56 @@ function status()
  {
    //alert(Name);
    hidden();
-   var prob=Name;
-   prob="&problem="+prob;
    //alert(prob);
-   $.post("http://127.0.0.1/clg_Grievance/problem.php",prob,function(result){
-        //alert(result);
-        //$("#datas").append(result);
-        result=result.split("&");
-        $('#problems').append("<b>Problem Id: &emsp;"+Name+"<br><br>Problem Name</b>&emsp;&emsp;"+result[0]+"<br><br><b>Date:&emsp;</b>"+result[1]+"&emsp;&emsp;&emsp;<b>Time:</b>&emsp;"+result[2]+"<br><b>References:</b>&emsp;"+result[3]+"<br><b>Category:</b>&emsp;"+result[4]+"&emsp;&emsp;<b>Commitee:</b>&emsp;"+result[5]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+result[6]+"<br><br><b>Solution</b><br><br>");
-        $('#problems').append('<form name="solution" id="solution" value ="'+prob+'" action="http://127.0.0.1/clg_Grievance/post_solution.php" method ="post" onsubmit = "return solution()"><textarea cols="10" rows="10" class="form-control" name="griv"></textarea><br><input type="submit" name="submit" value="submit">&emsp;<input type="reset" name="reset" value="reset"></form><br>');
-        $("form").submit(function(event){
-        // Stop form from submitting normally
-        //$("form").trigger('reset');
-        event.preventDefault();
-        
-        // Get action URL
-    var actionFile = $(this).attr("action");
+            $.ajax({
+            url: "https://data.bulimic45.hasura-app.io/v1/query",
+            contentType: "application/json",
+            data: JSON.stringify({
+                "type": "select",
+                "args": {
+                      "table": "Grievance",
+                      "columns": [
+                            "*"
+                      ],
+                      "where": {
+                            "problem_id": {
+                                  "$eq": Name
+                            }
+                      }
+                }
+            }),
+            type: "POST",
+            dataType: "json"
+          }).done(function(json) {
+            $('#problems').append("<b>Problem Name</b>&emsp;&emsp;"+json[0]["problem_name"]+"<br><br><b>Date:&emsp;</b>"+json[0]["date"]+"&emsp;&emsp;<b>Time:</b>&emsp;"+json[0]["time"]+"<br><b>References:</b>&emsp;"+json[0]["refernce"]+"<br><b>Category:</b>&emsp;"+json[0]["category"]+"&emsp;&emsp;<b>Commitee:</b>&emsp;"+json[0]["commitee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json[0]["problem_discription"]+"<br><br>");
+            $('#problems').append('<form name="solution" id="solution" value ="'+prob+'" action="http://127.0.0.1/clg_Grievance/post_solution.php" method ="post" onsubmit = "return solution()"><textarea cols="10" rows="10" class="form-control" name="griv"></textarea><br><input type="submit" name="submit" value="submit">&emsp;<input type="reset" name="reset" value="reset"></form><br>');
+                          $("form").submit(function(event){
+                      // Stop form from submitting normally
+                      //$("form").trigger('reset');
+                      event.preventDefault();
+                      
+                      // Get action URL
+                  var actionFile = $(this).attr("action");
 
-        /* Serialize the submitted form control values to be sent to the web server with the request */
-        var formValues = $(this).serialize();
-    //alert(actionFile,formValues);        
-        // Send the form data using post
-        //if(validate())
-        formValues+="&problem="+Name;
-        //alert(formValues);
-        $.post(actionFile, formValues+"&id="+Id, function(result){
-            // Display the returned data in browser
-           alert(result);
-           window.open("http://127.0.0.1/clg_Grievance/faculty_menu.html","_self");
+                      /* Serialize the submitted form control values to be sent to the web server with the request */
+                      var formValues = $(this).serialize();
+                  //alert(actionFile,formValues);        
+                      // Send the form data using post
+                      //if(validate())
+                      formValues+="&problem="+Name;
+                      //alert(formValues);
+                      $.post(actionFile, formValues+"&id="+Id, function(result){
+                          // Display the returned data in browser
+                         alert(result);
+                         window.open("http://127.0.0.1/clg_Grievance/faculty_menu.html","_self");
 
-        });
-    });
-         
-      });
-   
+                      });
+                  });
+          }).fail(function(xhr, status, errorThrown) {
+            console.log("Error: " + errorThrown);
+            console.log("Status: " + status);
+            console.dir(xhr);
+          });    
    document.getElementById("text").value="problems";
    return true;
  }
