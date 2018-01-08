@@ -19,7 +19,6 @@ function profile(){
     //alert(document.cookie);
     if(DB=="faculty"){
      select_id={"college_id" : {"$eq": Id} };
-
     }
     else if(DB=="institute_level_faculty"){
       PROBLEMS={"stage" : {"$eq": 2} };
@@ -204,24 +203,105 @@ function status()
             dataType: "json"
           }).done(function(json) {
             $('#problems').append("<b>Problem Name</b>&emsp;&emsp;"+json[0]["problem_name"]+"<br><br><b>Date:&emsp;</b>"+json[0]["date"]+"&emsp;&emsp;<b>Time:</b>&emsp;"+json[0]["time"]+"<br><b>References:</b>&emsp;"+json[0]["refernce"]+"<br><b>Category:</b>&emsp;"+json[0]["category"]+"&emsp;&emsp;<b>Commitee:</b>&emsp;"+json[0]["commitee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json[0]["problem_discription"]+"<br><br>");
-            $('#problems').append('<form name="solution" id="solution" value ="'+Name+'" action="http://127.0.0.1/clg_Grievance/post_solution.php" method ="post" onsubmit = "return solution()"><textarea cols="10" rows="10" class="form-control" name="griv"></textarea><br><input type="submit" name="submit" value="submit">&emsp;<input type="reset" name="reset" value="reset"></form><br>');
+            if(DB=="faculty")
+              $('#problems').append("<br><b>Solution</b><br>");
+            else if(DB=="institute_level_faculty")
+              $('#problems').append("<br><b>Department level Grievance Redressal Committee Solution</b><br>&emsp;&emsp;"+json[0]["hod_solution"]+"<br><b>Institute level Grievance Redressal Committee Solution</b><br>");
+            else if(DB=="central_grievance_redressal_faculty")
+              $('#problems').append("<br><b>Department level Grievance Redressal Committee Solution</b><br>&emsp;&emsp;"+json[0]["hod_solution"]+"<br><b>Institute level Grievance Redressal Committee Solution</b><br>&emsp;&emsp;"+json[0]["dean_solution"]+"<br><b>Central Grievance Redressal Committee</b><br>");
+            $('#problems').append('<form name="solution" id="solution" value ="'+Name+'" action="#" method ="post" onsubmit = "return solution()"><textarea cols="10" rows="10" class="form-control" id="Grievance_solution"></textarea><br><input type="submit" name="submit" value="submit">&emsp;<input type="reset" name="reset" value="reset"></form><br>');
                           $("form").submit(function(event){
                       // Stop form from submitting normally
                       //$("form").trigger('reset');
                       event.preventDefault();
-                      
-                      // Get action URL
-                  var actionFile = $(this).attr("action");
+                            if(DB=="faculty"){
+                                 SOLUTION={
+                                            "hod_solution": document.getElementById("Grievance_solution").value,
+                                            "stage": "2",
+                                            "favourable": "NULL",
+                                            "status": "Available"
+                                      };
+                                }
+                                else if(DB=="institute_level_faculty"){
+                                   SOLUTION={
+                                            "dean_solution": document.getElementById("Grievance_solution").value,
+                                            "stage": "2",
+                                            "favourable": "NULL",
+                                            "status": "Available"
+                                      };                                }
+                                else if(DB=="central_grievance_redressal_faculty"){
+                                     SOLUTION={
+                                            "principal_solution": document.getElementById("Grievance_solution").value,
+                                            "stage": "3",
+                                            "favourable": "NULL",
+                                            "status": "Available"
+                                      };
+                                }
 
-                      /* Serialize the submitted form control values to be sent to the web server with the request */
-                      var formValues = $(this).serialize();
-                  //alert(actionFile,formValues);        
-                      // Send the form data using post
-                      //if(validate())
-                      formValues+="&problem="+Name;
-                      //alert(formValues);
+                          $.ajax({
+                            url: "https://data.bulimic45.hasura-app.io/v1/query",
+                            contentType: "application/json",
+                            data: JSON.stringify({
+                                "type": "update",
+                                "args": {
+                                      "table": "Grievance",
+                                      "where": {
+                                            "problem_id": {
+                                                  "$eq": Name
+                                            }
+                                      },
+                                      "$set": SOLUTION
+                                }
+                            }),
+                            type: "POST",
+                            dataType: "json"
+                          }).done(function(json) {
+                                $.ajax({
+                                  url: "https://notify.bulimic45.hasura-app.io/v1/send/email",
+                                  contentType: "application/json",
+                                  headers: {
+                                      "Authorization": "Bearer 4af1623b3c51f78e03754e69c60d3490f5509de98a7cc57a"
+                                  },
+                                  data: JSON.stringify({
+                                      "to": profile_row["email"],
+                                      "from": "clggrievances@gmail.com",
+                                      "fromName": "SVCE Grievance Redressal Committee",
+                                      "sub": "You Have successfully  posted the solution for the "+json[0]["problem_name"],
+                                      "text": "Dear "+profile_row['fname']+' '+profile_row['mname']+' '+profile_row['lname']+",\nGreetings from SVCE Grievance Redressal System.!! You have successfully posted  the soltion for the Problem name:"+json[0]["problem_name"]+"<br>Regards,SVCE Grievance Team",
+                                      "html": "Dear "+profile_row['fname']+' '+profile_row['mname']+' '+profile_row['lname']+",<br><br>Greetings from SVCE Grievance Redressal System.!!<br>You have successfully posted the soltion for the Problem name:"+json[0]["problem_name"]+"<br>Regards,<br>SVCE Grievance Team<br>"
+                                  }),
+                                  type: "POST",
+                                  dataType: "json"
+                                });
+                                $.ajax({
+                                  url: "https://notify.bulimic45.hasura-app.io/v1/send/email",
+                                  contentType: "application/json",
+                                  headers: {
+                                      "Authorization": "Bearer 4af1623b3c51f78e03754e69c60d3490f5509de98a7cc57a"
+                                  },
+                                  data: JSON.stringify({
+                                      "to": json[0]["student_email"],
+                                      "from": "clggrievances@gmail.com",
+                                      "fromName": "SVCE Grievance Redressal Committee",
+                                      "sub": "Solution for your problem is Available!!!!",
+                                      "text": "Dear "+json[0]['student_name']+",\nGreetings from SVCE Grievance Redressal System.!!The soltion for the Problem name:"+json[0]["problem_name"]+"<br>is Available now, and you can view it our portal,Thank you,with Regards,SVCE Grievance Team",
+                                      "html": "Dear "+json[0]['student_name']+",<br><br>Greetings from SVCE Grievance Redressal System.!!<br>The soltion for the Problem name:"+json[0]["problem_name"]+"<br>is Available now, and you can view it our portal,Thank you,with Regards,<br>SVCE Grievance Team<br>"
+                                  }),
+                                  type: "POST",
+                                  dataType: "json"
+                                });
+                          alert("Congragulation you have succesfully posted the problem");
+                          }).fail(function(xhr, status, errorThrown) {
+                            console.log("Error: " + errorThrown);
+                            console.log("Status: " + status);
+                            console.dir(xhr);
+                          });
+
+
+
                       $.post(actionFile, formValues+"&id="+Id, function(result){
                           // Display the returned data in browser
+                        
                          alert(result);
                          window.open("http://127.0.0.1/clg_Grievance/faculty_menu.html","_self");
 
