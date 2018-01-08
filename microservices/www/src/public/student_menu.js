@@ -404,7 +404,7 @@ $.ajax({
 function Solutionnotfavourable(Name,STAGE){
                                 if(confirm("Do you want to post this problem to higher level") && STAGE!="3"){
                                     if(STAGE=="1") STAGE="2";
-                                    else STAGE="3";
+                                    else if(STAGE=="2") STAGE="3";
                                   $.ajax({
                                         url: "https://notify.bulimic45.hasura-app.io/v1/send/email",
                                         contentType: "application/json",
