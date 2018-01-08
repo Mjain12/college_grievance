@@ -13,10 +13,10 @@ $(document).ready(function(){
 });
 
 function profile(){
-    Id = (document.cookie).split(";");
-    DB=Id[1];
-    Id=Id[0];
-    alert([DB,Id]);
+    //Id = (document.cookie).split(";");
+    //DB=Id[1];
+    //Id=Id[0];
+    alert(document.cookie);
  	  hidden();
         if(document.getElementById("text").value!="profile" && profileflag==0){
 

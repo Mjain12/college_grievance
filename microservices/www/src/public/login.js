@@ -114,19 +114,19 @@ $(document).ready(function(){
 				if(json[0].length==0 && json[1].length==0&& json[2].length==0&& json[3].length==0)
 					alert("invalid username or password");
 				else if(json[0].length==1){
-					document.cookie=ID+";"+"student";
+					document.cookie=ID+"&"+"student";
 					window.open(stu,"_self","location=0");
 				}
 				else if(json[1].length==1){
-					document.cookie=ID+";"+"faculty";
+					document.cookie=ID+"&"+"faculty";
 					window.open(fac,"_self","location=0");
 				}
 				else if(json[2].length==1){
-					document.cookie=ID+";"+"institute_level_faculty";
+					document.cookie=ID+"&"+"institute_level_faculty";
 					window.open(fac,"_self","location=0");
 				}
 				else if(json[3].length==1){
-					document.cookie=ID+";"+"central_grievance_redressal_faculty";
+					document.cookie=ID+"&"+"central_grievance_redressal_faculty";
 					window.open(fac,"_self","location=0");
 				}
 				
