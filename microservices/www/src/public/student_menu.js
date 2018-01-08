@@ -8,9 +8,31 @@ $(document).ready(function(){
         // Stop form from submitting normally
         //$("form").trigger('reset');
         event.preventDefault();
-            
-         //alert([($('#Time').val()).split(" ")[0],($('#Time').val()).split(" ")[1]]); 
-            $.ajax({
+                    $.ajax({
+              url: "https://data.bulimic45.hasura-app.io/v1/query",
+              contentType: "application/json",
+              data: JSON.stringify({
+                  "type": "select",
+                  "args": {
+                        "table": "grievance_problem_id",
+                        "columns": [
+                              "id"
+                        ]
+                  }
+              }),
+              type: "POST",
+              dataType: "json"
+            }).done(function(json) {
+              var old_id=(json[0]["id"]).split("D")
+              var new_id=old_id[0]+(parseInt(old_id[1])+1).toString();
+              alert([new_id]);
+            }).fail(function(xhr, status, errorThrown) {
+              console.log("Error: " + errorThrown);
+              console.log("Status: " + status);
+              console.dir(xhr);
+            });
+
+            /*$.ajax({
                       url: "https://data.bulimic45.hasura-app.io/v1/query",
                       contentType: "application/json",
                       data: JSON.stringify({
@@ -43,25 +65,13 @@ $(document).ready(function(){
                       dataType: "json"
                     }).done(function(json) {
                       alert("Congragulation you have succesfully posted the problem");
-                      window.open("./","_self");
+                      window.open("./student_menu.html","_self");
                     }).fail(function(xhr, status, errorThrown) {
                       console.log("Error: " + errorThrown);
                       console.log("Status: " + status);
                       console.dir(xhr);
-                    });
+                    });*/
         
-
-        // Get action URL
-        formValues=formValues+"&Id="+Id+"&time="+$('#Time').val()+"&griv_dept="+$("#griv_dept").val();
-        //alert();
-        
-        /*$.post(actionFile, formValues, function(result){
-            // Display the returned data in browser
-           alert(result);
-           window.open("http://127.0.0.1/clg_Grievance/student_menu.html","_self");
-
-        });*/
-
     });
     $("#clear").click(function(){
         //alert(document.getElementById("text").html());
