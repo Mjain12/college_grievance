@@ -1,0 +1,18 @@
+- args:
+    permission:
+      columns:
+      - mname
+      - university_reg_no
+      - department
+      - fname
+      - lname
+      - college_id
+      - mobile
+      - email
+      - password
+      - question
+      - answer
+      filter: {}
+    role: anonymous
+    table: central_grievance_redressal_faculty
+  type: create_select_permission
