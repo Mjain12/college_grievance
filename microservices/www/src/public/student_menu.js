@@ -166,7 +166,7 @@ function profile(){
                                 "args": {
                                       "table": "student",
                                       "columns": [
-                                            "*"
+                                            "department","student_clg_id","stage","status","time","student_university_id","category","problem_name","problem_id","commitee","student_name","date","student_email","favourable","student_mobile","refernce"
                                       ],
                                       "where": {
                                             "clg_id": {
@@ -285,16 +285,7 @@ $.ajax({
   console.log("Status: " + status);
   console.dir(xhr);
 });
-
-      /*
-       $.post("http://127.0.0.1/clg_Grievance/grievance.php", "id="+Id, function(result){
-            // Display the returned data in browser
-           //alert(result);
-           
-           //window.open("http://127.0.0.1/clg_Grievance/student_menu.html","_self");
-
-        });*/
-     document.getElementById("text").value="datas";
+    document.getElementById("text").value="datas";
      statusflag=1;
   }
   else 
