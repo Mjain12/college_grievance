@@ -332,7 +332,7 @@ function status()
           if(json_solution[0]["favourable"]=="favourable")
             $('#problems').prepend("<span style='background-color:lightgreen;'><b>Solution favourable</b></sapan><br>");
           else if(json_solution[0]["favourable"]=="notfavourable")
-            $('#problems').prepend("<span style='background-color:lightred;'><b>Solution NOT favourable</b></sapan><br>");
+            $('#problems').prepend("<span style='background-color:red;'><b>Solution NOT favourable</b></sapan><br>");
           
 
         }).fail(function(xhr, status, errorThrown) {

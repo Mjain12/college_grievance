@@ -365,7 +365,7 @@ $.ajax({
           if(json_solution[0]["favourable"]=="favourable")
             $('#problems').prepend("<span style='background-color:lightgreen;'><b>Solution favourable</b></sapan><br>");
           else if(json_solution[0]["favourable"]=="notfavourable")
-            $('#problems').prepend("<span style='background-color:lightred;'><b>Solution NOT favourable</b></sapan><br>");
+            $('#problems').prepend("<span style='background-color:red;'><b>Solution NOT favourable</b></sapan><br>");
           else
             $('#problems').append("<br><input type=\"button\" onclick='return Solutionfavourable(\""+Name+"\")' value='favourable'>&emsp;&emsp;<input type=\"button\" onclick='return Solutionnotfavourable(\""+Name+"\")' value='Not Favourable'><br>");
             
