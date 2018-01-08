@@ -16,7 +16,6 @@ function profile(){
     Id = (document.cookie).split("&");
     DB=Id[1];
     Id=Id[0];
-    PROBLEMS;
     //alert(document.cookie);
     if(DB=="faculty"){
       PROBLEMS={"$and": [ {  "department": {  "$eq": profile_row["department"]}},{"stage": {"$eq": "1"}}]};
