@@ -363,9 +363,9 @@ $.ajax({
           else if(json_solution[0]["stage"]=="3")
                $('#problems').append("<b>Problem Name</b>&emsp;&emsp;"+json_solution[0]["problem_name"]+"<br><br><b>Date:&emsp;</b>"+json_solution[0]["date"]+"&emsp;&emsp;&emsp;<b>Time:</b>&emsp;"+json_solution[0]["time"]+"<br><b>References:</b>&emsp;"+json_solution[0]["refernce"]+"<br><b>Category:</b>&emsp;"+json_solution[0]["category"]+"&emsp;&emsp;<b>Commitee:</b>&emsp;"+json_solution[0]["commitee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json_solution[0]["problem_discription"]+"<br><br><b>Department level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["hod_solution"]+"<br><br>"+"<br><br><b>Institute level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["dean_solution"]+"<br><br>"+"<br><br><b>Central Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["principal_solution"]+"<br><br>");
           if(json_solution[0]["favourable"]=="favourable")
-            $('#problems').preappend("<span style='background-color:lightgreen;'><b>Solution favourable</b></sapan><br>");
+            $('#problems').prepend("<span style='background-color:lightgreen;'><b>Solution favourable</b></sapan><br>");
           else if(json_solution[0]["favourable"]=="notfavourable")
-            $('#problems').preappend("<span style='background-color:lightred;'><b>Solution NOT favourable</b></sapan><br>");
+            $('#problems').prepend("<span style='background-color:lightred;'><b>Solution NOT favourable</b></sapan><br>");
           else
             $('#problems').append("<br><input type=\"button\" onclick='return Solutionfavourable(\""+Name+"\")' value='favourable'>&emsp;&emsp;<input type=\"button\" onclick='return Solutionnotfavourable(\""+Name+"\")' value='Not Favourable'><br>");
             
