@@ -1,0 +1,12 @@
+- args:
+    sql: ALTER TABLE "central_grievance_redressal_faculty" ALTER COLUMN "department"
+      TYPE text;
+  type: run_sql
+- args:
+    sql: ALTER TABLE "central_grievance_redressal_faculty" ALTER COLUMN "department"
+      DROP DEFAULT;
+  type: run_sql
+- args:
+    sql: ALTER TABLE "central_grievance_redressal_faculty" ALTER COLUMN "department"
+      DROP NOT NULL;
+  type: run_sql
