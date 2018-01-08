@@ -166,7 +166,7 @@ function profile(){
                                 "args": {
                                       "table": "student",
                                       "columns": [
-                                            "department","student_clg_id","stage","status","time","student_university_id","category","problem_name","problem_id","commitee","student_name","date","student_email","favourable","student_mobile","refernce"
+                                            "*"
                                       ],
                                       "where": {
                                             "clg_id": {
@@ -258,7 +258,7 @@ $.ajax({
       "args": {
             "table": "Grievance",
             "columns": [
-                  "*"
+                  "department","student_clg_id","stage","status","time","student_university_id","category","problem_name","problem_id","commitee","student_name","date","student_email","favourable","student_mobile","refernce"
             ],
             "where": {
                   "student_clg_id": {
