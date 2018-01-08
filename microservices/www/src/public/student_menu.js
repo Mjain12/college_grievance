@@ -393,7 +393,7 @@ $.ajax({
             }
             function Solutionnotfavourable(){
                                 if(confirm("Do you want to post this problem to higher level")){
-                                    STAGE=parseInt(json_solution[0]["stage"];
+                                    STAGE=parseInt(json_solution[0]["stage"]);
                                   if(parseInt(json_solution[0]["stage"])<=2) 
                                     STAGE+=+1;
                                   STAGE=STAGE.toString();
