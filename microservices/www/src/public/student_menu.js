@@ -88,7 +88,7 @@ $(document).ready(function(){
                                                                               "Authorization": "Bearer 4af1623b3c51f78e03754e69c60d3490f5509de98a7cc57a"
                                                                           },
                                                                           data: JSON.stringify({
-                                                                              "to": row["email"],
+                                                                              "to": profile_row["email"],
                                                                               "from": "clggrievances@gmail.com",
                                                                               "fromName": "SVCE Grievance Redressal Committee",
                                                                               "sub": "successfully  post of your grievance",
