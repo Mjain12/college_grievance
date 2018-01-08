@@ -17,7 +17,7 @@ function profile(){
     DB=Id[1];
     Id=Id[0];
     //alert(document.cookie);
-    if(DB==faculty)
+    if(DB=="faculty")
      select_id="college_id";
     else 
       select_id="email";
