@@ -1,0 +1,10 @@
+- args:
+    sql: CREATE TABLE "central_grievance_redressal_faculty"("fname" text NOT NULL,
+      "mnane" text NOT NULL, "lname" text NOT NULL, "college_id" text , "university_reg_no"
+      text , "department" text NOT NULL, "mobile" text NOT NULL, "email" text NOT
+      NULL, "password" text NOT NULL, "question" text NOT NULL, "answer" text NOT
+      NULL, PRIMARY KEY ("email") )
+  type: run_sql
+- args:
+    name: central_grievance_redressal_faculty
+  type: add_existing_table_or_view
