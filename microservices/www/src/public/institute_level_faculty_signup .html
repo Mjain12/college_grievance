@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+       <title>Grievance</title>
+        <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap-social-gh-pages/bootstrap-social.css">
+</head>
+
+<body>
+<nav class="navbar navbar-inverse navbar-toggleable bg-primary fixed-top">
+  <div class="container" >
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+      <span class="fa fa-bars"></span>
+    </button>
+      <a class="navbar-brand" href='#'>SVCE</a>
+    <div class="collapse navbar-collapse" id="Navbar">
+     <ul class="navbar-nav">
+       <li class="nav-item "><a class="nav-link" href='index.html'><span class="fa fa-home "></span> Home</a></li>
+       <li class="nav-item active"><a class="nav-link" href='#'><span class="fa fa-file-text fa-lg"> Signup Form</a></li>
+       <li class="nav-item"><a class="nav-link" href='#'><span class="fa fa-list "> menu</a></li>
+       <li class="nav-item"><a class="nav-link" href='#'><span class="fa fa-address-card "> Contact</a></li>
+     </ul>
+   </div>
+  </div>
+</nav>
+<header style="margin-top:70px;">
+   <img src="./image/header.png" width="100%">
+
+</header>
+<br><br>
+    <form id="form" name="signup" method="post"  onsubmit="return false">
+    <!--onsubmit="return validate()"-->
+    <div class="container form">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-12 bkclr-blue">
+              <b><h3><center>Student/Complainant Registration for Submitting Grievance<center></h3></b>
+            </div>
+        </div>
+        <div class="row ">
+           <div class="col-12 offset-1" style="color:red;">
+             <p style="text-align:left;">Entries Prefixed with * are Mandatory </p>
+           </div>
+        </div>
+          <hr class="lightblue">
+        <br>
+	
+
+       <br>
+        <div class="row align-items-center justify-content-center">
+
+             <div class="col-3 col-sm-3" >
+             <p><span style="color:red;">*</span>First Name </p>
+             </div>
+
+             <div class="col-4  col-sm-4">
+             <input type="text" class="form-control" name="fname" size="30">
+             </div>
+
+
+             <div class="col-3  col-sm-3">
+             <span style="color:red; font-size:12px;">(Maximum 50 characters allowed)</span>
+             </div>
+         </div>
+        
+        <div class="row align-items-center justify-content-center">
+
+             <div class="col-3 col-sm-3" >
+             <p>Middle Name </p>
+             </div>
+
+             <div class="col-4  col-sm-4">
+             <input type="text" class="form-control" name="mname">
+             </div>
+
+
+             <div class="col-3  col-sm-3">
+             <span style="color:red; font-size:12px;">(Maximum 50 characters allowed)</span>
+             </div>
+        </div>
+        
+        <div class="row align-items-center justify-content-center">
+
+             <div class="col-3 col-sm-3" ">
+             <p><span style="color:red;">*</span>Last Name </p>
+             </div>
+
+             <div class="col-4  col-sm-4">
+             <input type="text" class="form-control" name="lname">
+             </div>
+
+
+             <div class="col-3  col-sm-3">
+             <span style="color:red; font-size:12px;">(Maximum 50 characters allowed)</span>
+             </div>
+        </div>
+
+
+        <div class="row align-items-center justify-content-center">
+
+             <div class="col-3 col-sm-3" >
+             <p><span style="color:red;">*</span>College Id</p>
+             </div>
+
+             <div class="col-4  col-sm-4">
+             <input type="text" class="form-control" name="clg_id">
+             </div>
+
+
+             <div class="col-3  col-sm-3">
+             <span style="color:red; font-size:12px;">(As per in college id card in <b style="font-size: 14px">lower case</b>)</span>
+             </div>
+        </div>
+        <div class="row align-items-center justify-content-center">
+
+             <div class="col-4 col-sm-4" >
+             <p><span style="color:red;">*</span>University Register No</p>
+             </div>
+
+             <div class="col-3  col-sm-3">
+             <input type="text" class="form-control" name="univ_no">
+             </div>
+
+
+             <div class="col-3  col-sm-3">
+             
+             </div>
+        </div>
+        
+        <div class="row align-item-center justify-content-center">
+             <div class="col-3 col-sm-3" >
+                 <p><span style="color:red;">*</span>Department</p>
+             </div>
+	     <div class="col-4  col-sm-4" >
+                 <select name="department" class="form-control">
+                 <option value="NA" selected>--SELECT</option>
+                 <option value="Department of Computer Science">Department of Computer Science</option>
+                 <option value="Department of  AutoMobile">Department of  AutoMobile</option>
+                 <option value="Department of Information and Technology">Department of Information and Technology</option>
+                 <option value="Department of Civil Engineering">Department of Civil Engineering</option>
+                 <option value="Department of Biotech">Department of Biotech</option>
+                 <option value="EEE">EEE</option>
+                 <option value="EC">EC</option>
+                 <option value="Department of Mechanical Engineering">Department of Mechanical Engineering</option>
+                 </select>
+             </div>
+             <div class="col-3  col-sm-3">
+             <span style="color:red; font-size:12px;">(As per in college id card)</span>
+             </div>
+      </div>
+     <br>
+	         <div class="row align-items-center justify-content-center">
+
+             <div class="col-10 offset-1 col-sm-110" >
+             <span style="color:red; font-size:12px;">(Provide Mobile number/e-mail address in order to Receive SMS/e-mail alerts related to this grievance
+)</span>
+             </div>
+
+         </div>
+
+ 	   <div class="row align-items-center justify-content-center">
+
+             <div class="col-3 col-sm-3" >
+             <p>Mobile No</p>
+             </div>
+
+             <div class="col-4  col-sm-4">
+
+             <input type="number" class="form-control" name="mobile_no">
+             </div>
+             <div class="col-3  col-sm-3">
+             <span style="color:red; font-size:12px;">(Mobile Number)eg : 9999999999 </span>
+             </div>
+
+
+         </div>
+	       <div class="row align-items-center justify-content-center">
+
+             <div class="col-3 col-sm-3">
+             <p><span style="color:red;">*</span>Email</p>
+             </div>
+
+             <div class="col-4  col-sm-4">
+
+             <input type="Email" class="form-control" name="email">
+             </div>
+
+             <div class="col-3  col-sm-3">
+
+             </div>
+
+
+         </div>
+         <div class="row align-items-center justify-content-center">
+
+             <div class="col-3 col-sm-3">
+             <p><span style="color:red;">*</span>Password</p>
+             </div>
+
+             <div class="col-4  col-sm-4">
+
+             <input type="password" class="form-control" name="password">
+             </div>
+
+             <div class="col-3  col-sm-3">
+
+             </div>
+
+
+         </div>
+         <div class="row align-items-center justify-content-center">
+
+             <div class="col-3 col-sm-3">
+             <p><span style="color:red;">*</span>Confirmation Password</p>
+             </div>
+
+             <div class="col-4  col-sm-4">
+
+             <input type="password" class="form-control" name="confirm_password">
+             </div>
+
+             <div class="col-3  col-sm-3">
+
+             </div>
+
+
+         </div>
+	       <div class="row align-item-center justify-content-center">
+             <div class="col-3 col-sm-3" >
+                 <p><span style="color:red;">*</span>Security Question</p>
+             </div>
+            <div class="col-4  col-sm-4" >
+                 <select name="Security_question" class="form-control">
+                    <option selected="selected" value="NA">Select Question</option>
+                    <option value="What town was your father born in?">What town was your father born in?</option>
+                    <option value="Who is your favourite author?">Who is your favourite author?</option>
+                    <option value="What was your first pet`s name?">What was your first pet`s name?</option>
+                    <option value="What is the name of your favourite book?">What is the name of your favourite book?</option>
+                    <option value="What town was your mother born in?">What town was your mother born in?</option>
+                    <option value="What is the name of your favourite sports team?">What is the name of your favourite sports team?</option>
+                    <option value="What is the name of the street on which you grew up?">What is the name of the street on which you grew up?</option>
+
+                 </select>
+             </div>
+              <div class="col-3 col-sm-3" >
+                
+             </div>
+        </div>
+         <div class="row align-items-center justify-content-center">
+
+             <div class="col-3 col-sm-3">
+             <p><span style="color:red;">*</span>Answer</p>
+             </div>
+
+             <div class="col-4  col-sm-4">
+
+             <input type="text" class="form-control" name="answer">
+             </div>
+
+             <div class="col-3  col-sm-3">
+
+             </div>
+
+
+         </div>
+  <div class="row align-items-center justify-content-center">
+
+             <div class="col-11 offset-1 col-sm-11" >
+             <p>I hereby state that the facts mentioned above are true to the best of my knowledge and belief.</p>
+             </div>
+       </div>
+<div class="row align-items-center justify-content-center">
+
+             <div class="col-3 col-sm-3" style="margin:0px 20px 0px 0px;">
+             <input type="submit" value="Submit" style="background-color:skyblue" onclick="return validate()">
+             </div>
+
+             <div class="col-3 col-sm-3" style="margin:0px 20px 0px 0px;">
+             <input type="reset" name="reset" value="Reset" style="background-color:skyblue">
+             </div>
+       </div>
+
+     </div>
+    </form>
+<footer style="margin-top:70px;">
+<img src="./image/footer.png" width="100%">
+
+</footer>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="css/jquery.min.js"></script>
+    <script src="css/tether.min.js"></script>
+    <script src="css/bootstrap.min.js"></script>
+    <script src="institute_level_faculty_signup.js"></script>
+</body>
+
+</html>
