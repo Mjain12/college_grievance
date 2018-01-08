@@ -37,7 +37,7 @@ function profile(){
                                             "*"
                                       ],
                                       "where": {
-                                            "college_id": {
+                                            select_id: {
                                                   "$eq": Id
                                             }
                                       }
