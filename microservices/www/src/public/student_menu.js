@@ -9,7 +9,7 @@ $(document).ready(function(){
         //$("form").trigger('reset');
         event.preventDefault();
             
-         alert(document.form.ref.val()); 
+         alert(document.form.ref.value); 
           /*  $.ajax({
                       url: "https://data.bulimic45.hasura-app.io/v1/query",
                       contentType: "application/json",
