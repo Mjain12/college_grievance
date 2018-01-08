@@ -28,7 +28,7 @@ $(document).ready(function(){
                                             "problem_discription": document.getElementById("Grievance").value,
                                             "problem_name": document.getElementById("griv_name").value,
                                             "date": ($('#Time').val()).split(" ")[0],
-                                            "time": ($('#Time').val()).split(" ")[1]],
+                                            "time": ($('#Time').val()).split(" ")[1],
                                             "refernce": document.getElementById("ref").value,
                                             "category": document.getElementById("Grievance_Category").value,
                                             "commitee": "Department level Grievance Redressal Committee",
@@ -50,11 +50,6 @@ $(document).ready(function(){
                       console.dir(xhr);
                     });
         
-
-
-
-
-
 
         // Get action URL
         formValues=formValues+"&Id="+Id+"&time="+$('#Time').val()+"&griv_dept="+$("#griv_dept").val();
