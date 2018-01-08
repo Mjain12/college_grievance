@@ -367,7 +367,7 @@ $.ajax({
           else if(json_solution[0]["favourable"]=="notfavourable")
             $('#problems').prepend("<span style='background-color:red;'><b>Solution NOT favourable</b></sapan><br>");
           else
-            $('#problems').append("<br><input type=\"button\" onclick='return Solutionfavourable(\""+Name+"\")' value='favourable'>&emsp;&emsp;<input type=\"button\" onclick='return Solutionnotfavourable(\""+Name+"\")' value='Not Favourable'><br>");
+            $('#problems').append("<br><input type=\"button\" onclick='return Solutionfavourable(\""+Name+"\",\""+json_solution[0]["stage"]+"\")' value='favourable'>&emsp;&emsp;<input type=\"button\" onclick='return Solutionnotfavourable(\""+Name+"\")' value='Not Favourable'><br>");
             
         }).fail(function(xhr, status, errorThrown) {
           console.log("Error: " + errorThrown);
@@ -401,10 +401,10 @@ $.ajax({
                                 alert("Thankyou for using our portal");
                                 window.open("./student_menu","_self");
             }
-function Solutionnotfavourable(Name){
+function Solutionnotfavourable(Name,STAGE){
                                 if(confirm("Do you want to post this problem to higher level")){
-                                    STAGE=parseInt(json_solution[0]["stage"]);
-                                  if(parseInt(json_solution[0]["stage"])<=2) 
+                                    STAGE=parseInt(STAGE);
+                                  if(STAGE<=2) 
                                     STAGE+=+1;
                                   STAGE=STAGE.toString();
                                 $.ajax({
