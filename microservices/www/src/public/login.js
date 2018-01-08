@@ -4,7 +4,6 @@ $(document).ready(function(){
         ID=login.loginid.value;
 	    psw=login.loginpassword.value;
 	    //alert(ID);
-	    document.cookie=ID;
 	    //alert(document.cookie);
 	    		var stu="./student_menu.html";	
                 var par="./parent_menu.html";
@@ -60,18 +59,77 @@ $(document).ready(function(){
 			                              ]
 			                        }
 			                  }
+			            },
+			            {
+			                  "type": "select",
+			                  "args": {
+			                        "table": "faculty",
+			                        "columns": [
+			                              "email"
+			                        ],
+			                        "where": {
+			                              "$and": [
+			                                    {
+			                                          "email": {
+			                                                "$eq":ID
+			                                          }
+			                                    },
+			                                    {
+			                                          "password": {
+			                                                "$eq": psw
+			                                          }
+			                                    }
+			                              ]
+			                        }
+			                  }
+			            },
+			            {
+			                  "type": "select",
+			                  "args": {
+			                        "table": "faculty",
+			                        "columns": [
+			                              "email"
+			                        ],
+			                        "where": {
+			                              "$and": [
+			                                    {
+			                                          "email": {
+			                                                "$eq":ID
+			                                          }
+			                                    },
+			                                    {
+			                                          "password": {
+			                                                "$eq": psw
+			                                          }
+			                                    }
+			                              ]
+			                        }
+			                  }
 			            }
 			      ]
 				}),
 				type: "POST",
 				dataType: "json"
 			}).done(function(json) {
-				if(json[0].length==0 && json[1].length==0)
+				if(json[0].length==0 && json[1].length==0&& json[2].length==0&& json[3].length==0)
 					alert("invalid username or password");
-				else if(json[0].length==1)
-					 window.open(stu,"_self","location=0");
-				else if(json[1].length==1)
+				else if(json[0].length==1){
+					document.cookie=ID+";"+"student";
+					window.open(stu,"_self","location=0");
+				}
+				else if(json[1].length==1){
+					document.cookie=ID+";"+"faculty";
 					window.open(fac,"_self","location=0");
+				}
+				else if(json[2].length==1){
+					document.cookie=ID+";"+"institute_level_faculty";
+					window.open(fac,"_self","location=0");
+				}
+				else if(json[3].length==1){
+					document.cookie=ID+";"+"central_grievance_redressal_faculty";
+					window.open(fac,"_self","location=0");
+				}
+				
 			}).fail(function(xhr, status, errorThrown) {
 				console.log("Error: " + errorThrown);
 				console.log("Status: " + status);

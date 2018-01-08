@@ -13,7 +13,8 @@ $(document).ready(function(){
 });
 
 function profile(){
-    Id = document.cookie;
+    Id = (document.cookie).split(";")[0];
+    DB=Id = (document.cookie).split(";")[1];
     //alert(Id);
  	  hidden();
         if(document.getElementById("text").value!="profile" && profileflag==0){
@@ -26,7 +27,7 @@ function profile(){
                 data: JSON.stringify({
                                 "type": "select",
                                "args": {
-                                      "table": "faculty",
+                                      "table": DB,
                                       "columns": [
                                             "*"
                                       ],
@@ -120,6 +121,7 @@ function status()
     hidden();
     if(document.getElementById("text").value!="datas" && statusflag==0){
     $("#griv_status").show();
+        
             $.ajax({
               url: "https://data.bulimic45.hasura-app.io/v1/query",
               contentType: "application/json",

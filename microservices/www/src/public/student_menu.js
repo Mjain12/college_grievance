@@ -152,7 +152,7 @@ $(document).ready(function(){
 
 function profile(){
     hidden();
-    Id = document.cookie;
+    Id = document.cookie.split(";")[0];
     //alert(Id);
         if(document.getElementById("text").value!="profile" && profileflag==0){
 
