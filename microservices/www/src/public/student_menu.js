@@ -356,6 +356,7 @@ $.ajax({
           type: "POST",
           dataType: "json"
         }).done(function(json_solution) {
+          STAGE=json_solution[0]["stage"];
           if(json_solution[0]["stage"]=="1")
               $('#problems').append("<b>Problem Name</b>&emsp;&emsp;"+json_solution[0]["problem_name"]+"<br><br><b>Date:&emsp;</b>"+json_solution[0]["date"]+"&emsp;&emsp;&emsp;<b>Time:</b>&emsp;"+json_solution[0]["time"]+"<br><b>References:</b>&emsp;"+json_solution[0]["refernce"]+"<br><b>Category:</b>&emsp;"+json_solution[0]["category"]+"&emsp;&emsp;<b>Commitee:</b>&emsp;"+json_solution[0]["commitee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json_solution[0]["problem_discription"]+"<br><br><b>Department level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["hod_solution"]+"<br><br>");
           else if(json_solution[0]["stage"]=="2")
@@ -367,7 +368,7 @@ $.ajax({
           else if(json_solution[0]["favourable"]=="notfavourable")
             $('#problems').prepend("<span style='background-color:red;'><b>Solution NOT favourable</b></sapan><br>");
           else
-            $('#problems').append("<br><input type=\"button\" onclick='return Solutionfavourable(\""+Name+"\",\""+(json_solution[0]["stage"])+"\")' value='favourable'>&emsp;&emsp;<input type=\"button\" onclick='return Solutionnotfavourable(\""+Name+"\")' value='Not Favourable'><br>");
+            $('#problems').append("<br><input type=\"button\" onclick='return Solutionfavourable(\""+Name+"\")' value='favourable'>&emsp;&emsp;<input type=\"button\" onclick='return Solutionnotfavourable(\""+Name+"\")' value='Not Favourable'><br>");
             
         }).fail(function(xhr, status, errorThrown) {
           console.log("Error: " + errorThrown);
@@ -401,7 +402,7 @@ $.ajax({
                                 alert("Thankyou for using our portal");
                                 window.open("./student_menu.html","_self");
             }
-function Solutionnotfavourable(Name,STAGE){
+function Solutionnotfavourable(Name){
                                 alert(STAGE);
                                 if(confirm("Do you want to post this problem to higher level") && STAGE!="3"){
                                     if(STAGE=="1") STAGE="2";
