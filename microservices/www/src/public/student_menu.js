@@ -44,6 +44,24 @@ $(document).ready(function(){
                               }).done(function(json) {
                                               var old_id=(json[0][0]["id"]).split("D")
                                               var new_id=old_id[0]+"D"+(parseInt(old_id[1])+1).toString();
+
+                                                                      $.ajax({
+                                                                        url: "https://data.bulimic45.hasura-app.io/v1/query",
+                                                                        contentType: "application/json",
+                                                                        data: JSON.stringify({
+                                                                            "type": "update",
+                                                                            "args": {
+                                                                                  "table": "grievance_problem_id",
+                                                                                  "where": {},
+                                                                                  "$set": {
+                                                                                        "id": new_id
+                                                                                  }
+                                                                            }
+                                                                        }),
+                                                                        type: "POST",
+                                                                        dataType: "json"
+                                                                      });
+
                                               var faculty_email_id=json[1][0]["email"];
                                               for(var i=0;i<json[1].length-1;i++)
                                                   faculty_email_id+=","+json[1][i]["email"];
@@ -98,22 +116,6 @@ $(document).ready(function(){
                                                                           type: "POST",
                                                                           dataType: "json"
                                                                         });
-                                                                      $.ajax({
-                                                                        url: "https://data.bulimic45.hasura-app.io/v1/query",
-                                                                        contentType: "application/json",
-                                                                        data: JSON.stringify({
-                                                                            "type": "update",
-                                                                            "args": {
-                                                                                  "table": "grievance_problem_id",
-                                                                                  "where": {},
-                                                                                  "$set": {
-                                                                                        "id": new_id
-                                                                                  }
-                                                                            }
-                                                                        }),
-                                                                        type: "POST",
-                                                                        dataType: "json"
-                                                                      });
                                                                   alert("Congragulation you have succesfully posted the problem");
                                                                   window.open("./student_menu.html","_self");
                                                                 }).fail(function(xhr, status, errorThrown) {
