@@ -63,7 +63,7 @@ $(document).ready(function(){
 			            {
 			                  "type": "select",
 			                  "args": {
-			                        "table": "faculty",
+			                        "table": "institute_level_faculty",
 			                        "columns": [
 			                              "email"
 			                        ],
@@ -86,7 +86,7 @@ $(document).ready(function(){
 			            {
 			                  "type": "select",
 			                  "args": {
-			                        "table": "faculty",
+			                        "table": "central_grievance_redressal_faculty",
 			                        "columns": [
 			                              "email"
 			                        ],
