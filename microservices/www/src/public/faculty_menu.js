@@ -217,7 +217,6 @@ function status()
                             if(DB=="faculty"){
                                  SOLUTION={
                                             "hod_solution": document.getElementById("Grievance_solution").value,
-                                            "stage": "2",
                                             "favourable": "NULL",
                                             "status": "Available"
                                       };
@@ -225,14 +224,12 @@ function status()
                                 else if(DB=="institute_level_faculty"){
                                    SOLUTION={
                                             "dean_solution": document.getElementById("Grievance_solution").value,
-                                            "stage": "2",
                                             "favourable": "NULL",
                                             "status": "Available"
                                       };                                }
                                 else if(DB=="central_grievance_redressal_faculty"){
                                      SOLUTION={
                                             "principal_solution": document.getElementById("Grievance_solution").value,
-                                            "stage": "3",
                                             "favourable": "NULL",
                                             "status": "Available"
                                       };
