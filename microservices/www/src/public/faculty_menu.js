@@ -43,10 +43,10 @@ function profile(){
                   //alert(json[0][0]);
                   if(json.length==1)
                   {
-                    row=json[0];
+                    profile_row=json[0];
                     
                     //alert(row["fname"]);
-                    result='<b>Name: &emsp;</b><span style="margin-left:90px;"></span>'+row['fname']+' '+row['mname']+' '+row['lname']+'<br><br><b>College Id:&emsp;<span style="margin-left:58px;"></span></b>'+row['clg_id']+'<br><br><b>University Roll no:</b>&emsp;'+row['university_reg_no']+'<br><br><b>Department:</b>&emsp;<span style="margin-left:45px;"></span>'+row['department']+'<br><br><b>Mobile no:&emsp;<span style="margin-left:55px;"></span>+91</b>'+row['mobile']+'<br><br><b>Email:&emsp;<span style="margin-left:85px;"></span></b>'+row['email']+"<br><br>";
+                    result='<b>Name: &emsp;</b><span style="margin-left:90px;"></span>'+profile_row['fname']+' '+profile_row['mname']+' '+profile_row['lname']+'<br><br><b>College Id:&emsp;<span style="margin-left:58px;"></span></b>'+profile_row['clg_id']+'<br><br><b>University Roll no:</b>&emsp;'+profile_row['university_reg_no']+'<br><br><b>Department:</b>&emsp;<span style="margin-left:45px;"></span>'+profile_row['department']+'<br><br><b>Mobile no:&emsp;<span style="margin-left:55px;"></span>+91</b>'+profile_row['mobile']+'<br><br><b>Email:&emsp;<span style="margin-left:85px;"></span></b>'+profile_row['email']+"<br><br>";
                     $("#text").append(result);
                   }
                   
@@ -120,13 +120,55 @@ function status()
     hidden();
     if(document.getElementById("text").value!="datas" && statusflag==0){
     $("#griv_status").show();
-    
-       $.post("http://127.0.0.1/clg_Grievance/grievance.php", "id="+Id,function(result){
-       // alert(result+Id);
-        $("#datas").append(result);
-      });
-
-
+            $.ajax({
+              url: "https://data.bulimic45.hasura-app.io/v1/query",
+              contentType: "application/json",
+              data: JSON.stringify({
+                  "type": "select",
+                  "args": {
+                        "table": "Grievance",
+                        "columns": [
+                              "department","student_clg_id","stage","status","time","student_university_id","category","problem_name","problem_id","commitee","student_name","date","student_email","favourable","student_mobile","refernce"
+                        ],
+                        "where": {
+                              "$and": [
+                                  {
+                                      "department": {
+                                          "$eq": profile_row["department"]
+                                      }
+                                  },
+                                  {
+                                      "stage": {
+                                          "$eq": "1"
+                                      }
+                                  }
+                              ]
+                          },"order_by": [
+                              {
+                                  "column": "status",
+                                  "order": "desc"
+                              }
+                          ]
+                  }
+              }),
+              type: "POST",
+              dataType: "json"
+            }).done(function(json) {
+                  result="";
+                  for(var i=0;i<json.length;i++){
+                       var row=json[i];
+                      if(row['status']=='Available')
+                        result+='<tr><td>'+row['problem_id']+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['problem_name']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+$row['refernce']+'</td><td><a href="#" onclick=\'solution("'+row['problem_id']+'")\'>'+row['status']+'</a></td></tr>';
+                      else         
+                         result+='<tr><td>'+row['problem_id']+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['problem_name']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['refernce']+'</td><td>'+row['status']+'</td></tr>';
+                  }
+                  result+="</table>";
+                  $("#datas").append(result);
+            }).fail(function(xhr, status, errorThrown) {
+              console.log("Error: " + errorThrown);
+              console.log("Status: " + status);
+              console.dir(xhr);
+            });
      document.getElementById("text").value="datas";
      statusflag=1;
   }

@@ -11,8 +11,8 @@ var myobject={
 		      "from": "clggrievances@gmail.com",
 		      "fromName": "SVCE Grievance Redressal Committee",
 		      "sub": "SVCE College Grievance Account Registration",
-		      "text": "Dear "+email_fname+" "+email_mname+" "+email_lname+",Greetings from SVCE Grievance Redressal System.!!Thanks for Registration, Your Login Id: "+email_clg_id+"Password: "+email_password+"Regards,SVCE Grievance Team",
-		      "html": "Dear "+email_fname+" "+email_mname+" "+email_lname+",<br><br>Greetings from SVCE Grievance Redressal System.!!<br>Thanks for Registration, <br><br> Your Login Id: "+email_clg_id+"<br>Password: "+email_password+"<br><br>Regards,<br>SVCE Grievance Team<br>"
+		      "text": "Dear "+email_fname+" "+email_mname+" "+email_lname+",Greetings from SVCE Grievance Redressal System.!!Thanks for Registration, Your Login Id: "+email_id+"Password: "+email_password+"Regards,SVCE Grievance Team",
+		      "html": "Dear "+email_fname+" "+email_mname+" "+email_lname+",<br><br>Greetings from SVCE Grievance Redressal System.!!<br>Thanks for Registration, <br><br> Your Login Id: "+email_id+"<br>Password: "+email_password+"<br><br>Regards,<br>SVCE Grievance Team<br>"
 			}),
 			type: "POST",
 			dataType: "json"
