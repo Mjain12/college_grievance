@@ -399,7 +399,7 @@ $.ajax({
                                   dataType: "json"
                                 });
                                 alert("Thankyou for using our portal");
-                                window.open("./student_menu","_self");
+                                window.open("./student_menu.html","_self");
             }
 function Solutionnotfavourable(Name,STAGE){
                                 if(confirm("Do you want to post this problem to higher level")){
@@ -447,7 +447,7 @@ function Solutionnotfavourable(Name,STAGE){
                                         dataType: "json"
                                       });
                                 alert("Thankyou for using our portal your problem as been poster to higher level");
-                                window.open("./student_menu","_self");
+                                window.open("./student_menu.html","_self");
                               }
                               else {
                                 $.ajax({
@@ -471,6 +471,6 @@ function Solutionnotfavourable(Name,STAGE){
                                   dataType: "json"
                                 });
                                 alert("Thankyou for using our portal");
-                                window.open("./student_menu","_self");
+                                window.open("./student_menu.html","_self");
                               } 
                             }
