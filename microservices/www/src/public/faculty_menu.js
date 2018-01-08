@@ -288,21 +288,12 @@ function status()
                                   dataType: "json"
                                 });
                           alert("Congragulation you have succesfully posted the problem");
+                          window.open("http://127.0.0.1/clg_Grievance/faculty_menu.html","_self");
                           }).fail(function(xhr, status, errorThrown) {
                             console.log("Error: " + errorThrown);
                             console.log("Status: " + status);
                             console.dir(xhr);
                           });
-
-
-
-                      $.post(actionFile, formValues+"&id="+Id, function(result){
-                          // Display the returned data in browser
-                        
-                         alert(result);
-                         window.open("http://127.0.0.1/clg_Grievance/faculty_menu.html","_self");
-
-                      });
                   });
           }).fail(function(xhr, status, errorThrown) {
             console.log("Error: " + errorThrown);
