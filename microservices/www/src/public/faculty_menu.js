@@ -15,7 +15,7 @@ $(document).ready(function(){
 function profile(){
     Id = (document.cookie).split(";")[0];
     DB= (document.cookie).split(";")[1];
-    //alert(DB);
+    alert([Id,DB]);
  	  hidden();
         if(document.getElementById("text").value!="profile" && profileflag==0){
 
