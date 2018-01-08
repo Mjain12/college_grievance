@@ -85,7 +85,7 @@ $(document).ready(function(){
                                                                                   "table": "grievance_problem_id",
                                                                                   "where": {},
                                                                                   "$set": {
-                                                                                        "id": new_id;
+                                                                                        "id": new_id
                                                                                   }
                                                                             }
                                                                         }),
