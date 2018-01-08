@@ -44,6 +44,11 @@ $(document).ready(function(){
                               }).done(function(json) {
                                               var old_id=(json[0][0]["id"]).split("D")
                                               var new_id=old_id[0]+"D"+(parseInt(old_id[1])+1).toString();
+                                              var faculty_email_id=json[1][0]["email"];
+                                              for(i=0;i<json[1].length-1;i++)
+                                                  faculty_email_id+=","+json[1][i]["email"];
+                                              var problem_discription_value=(document.getElementById("Grievance").value).split("\n");
+                                              var problem_discription_data=problem_discription_value.join("<br>");
                                                         $.ajax({
                                                                   url: "https://data.bulimic45.hasura-app.io/v1/query",
                                                                   contentType: "application/json",
@@ -59,7 +64,7 @@ $(document).ready(function(){
                                                                                         "stage": "1",
                                                                                         "status": "Problem Posted",
                                                                                         "problem_id": new_id,
-                                                                                        "problem_discription": document.getElementById("Grievance").value,
+                                                                                        "problem_discription": problem_discription_data,
                                                                                         "problem_name": document.getElementById("griv_name").value,
                                                                                         "date": ($('#Time').val()).split(" ")[0],
                                                                                         "time": ($('#Time').val()).split(" ")[1],
@@ -76,6 +81,23 @@ $(document).ready(function(){
                                                                   type: "POST",
                                                                   dataType: "json"
                                                                 }).done(function(json) {
+                                                                      $.ajax({
+                                                                          url: "https://notify.bulimic45.hasura-app.io/v1/send/email",
+                                                                          contentType: "application/json",
+                                                                          headers: {
+                                                                              "Authorization": "Bearer 4af1623b3c51f78e03754e69c60d3490f5509de98a7cc57a"
+                                                                          },
+                                                                          data: JSON.stringify({
+                                                                              "to": row["email"],
+                                                                              "from": "clggrievances@gmail.com",
+                                                                              "fromName": "SVCE Grievance Redressal Committee",
+                                                                              "sub": "successfully  post of your grievance",
+                                                                              "text": "Dear "+row['fname']+' '+row['mname']+' '+row['lname']+",\nGreetings from SVCE Grievance Redressal System.!! You have successfully posted your Problem to Department level Grievance Redressal Committee and \nYou will soon recieve the solution for your problem from our commitee Regards,SVCE Grievance Team",
+                                                                              "html": "Dear "+row['fname']+' '+row['mname']+' '+row['lname']+",<br><br>Greetings from SVCE Grievance Redressal System.!!<br>You have successfully posted your Problem to Department level Grievance Redressal Committee and <br>You will soon recieve the solution for your problem from our commitee<br><br>Regards,<br>SVCE Grievance Team<br>"
+                                                                          }),
+                                                                          type: "POST",
+                                                                          dataType: "json"
+                                                                        });
                                                                       $.ajax({
                                                                         url: "https://data.bulimic45.hasura-app.io/v1/query",
                                                                         contentType: "application/json",
