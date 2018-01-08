@@ -277,21 +277,21 @@ $.ajax({
              result+='<tr><td>'+row['problem_id']+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['problem_name']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['refernce']+'</td><td>'+row['status']+'</td></tr>';
       }
       result+="</table>";
-      alert(result);
+      $("#datas").append(result);
 }).fail(function(xhr, status, errorThrown) {
   console.log("Error: " + errorThrown);
   console.log("Status: " + status);
   console.dir(xhr);
 });
 
-
+      /*
        $.post("http://127.0.0.1/clg_Grievance/grievance.php", "id="+Id, function(result){
             // Display the returned data in browser
            //alert(result);
-           $("#datas").append(result);
+           
            //window.open("http://127.0.0.1/clg_Grievance/student_menu.html","_self");
 
-        });
+        });*/
      document.getElementById("text").value="datas";
      statusflag=1;
   }
