@@ -368,7 +368,7 @@ $.ajax({
             $('#problems').preappend("<span style='background-color:lightred;'><b>Solution NOT favourable</b></sapan><br>");
           else
             $('#problems').append("<br><input type=\"button\" onclick='return Solutionfavourable(\""+Name+"\")' value='favourable'>&emsp;&emsp;<input type=\"button\" onclick='return Solutionnotfavourable(\""+Name+"\")' value='Not Favourable'><br>");
-            }
+            
         }).fail(function(xhr, status, errorThrown) {
           console.log("Error: " + errorThrown);
           console.log("Status: " + status);
@@ -453,3 +453,4 @@ function Solutionnotfavourable(Name){
                                 });
                                 alert("Thankyou for using our portal");
                               } 
+                            }
