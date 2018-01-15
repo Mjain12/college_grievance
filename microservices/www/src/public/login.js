@@ -115,25 +115,20 @@ $(document).ready(function(){
 					alert("invalid username or password");
 				else if(json[0].length==1){
 					$.ajax({
-							url: "https://data.bulimic45.hasura-app.io/v1/query",
-							contentType: "application/json",
-							data: JSON.stringify({
-						      "type": "update",
-						      "args": {
-						            "table": "student",
-						            "where": {
-						                  "email": {
-						                        "$eq": ID
-						                  }
-						            },
-						            "$set": {
-						                  "count": "count+1"
-						            }
-						      }
-							}),
-							type: "POST",
-							dataType: "json"
-						});
+						url: "https://data.bulimic45.hasura-app.io/v1/query",
+						contentType: "application/json",
+						headers: {
+					      "Authorization": "Bearer 6307f5780d0f3f77e45a2d36c18add112b161e4773aacf78"
+						},
+						data: JSON.stringify({
+					      "type": "run_sql",
+					      "args": {
+					            "sql": "update student set count=count+1 where clg_id='"+ID+"';"
+					      }
+						}),
+						type: "POST",
+						dataType: "json"
+					});
 					document.cookie=ID+"&"+"student";
 					window.open(stu,"_self","location=0");
 				}
