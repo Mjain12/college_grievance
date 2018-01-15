@@ -67,6 +67,8 @@ $(document).ready(function(){
                                                   faculty_email_id+=","+json[1][i]["email"];
                                               var problem_discription_value=(document.getElementById("Grievance").value).split("\n");
                                               var problem_discription_data=problem_discription_value.join("<br>");
+                                              problem_discription_data=(problem_discription_data.split("\"")).join("'");
+                                              problem_discription_data=(problem_discription_data.split("\t)).join("&emsp;&emsp;");
                                                         $.ajax({
                                                                   url: "https://data.bulimic45.hasura-app.io/v1/query",
                                                                   contentType: "application/json",
