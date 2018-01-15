@@ -211,7 +211,7 @@ function status()
                       event.preventDefault();
                       var problem_solution_value=(document.getElementById("Grievance_solution").value).split("\n");
                       var problem_solution_data=problem_solution_value.join("<br>");
-                      problem_solution_data=(problem_solution_data.split(""")).join("\"");                        
+                      problem_solution_data=(problem_solution_data.split("\"")).join("'");                        
                             if(DB=="faculty"){
                                  SOLUTION={
                                             "hod_solution": problem_solution_data,
