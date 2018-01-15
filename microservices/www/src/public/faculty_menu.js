@@ -140,7 +140,7 @@ function status()
                   "args": {
                         "table": "Grievance",
                         "columns": [
-                              "department","student_clg_id","stage","status","time","student_university_id","category","problem_name","problem_id","commitee","student_name","date","student_email","favourable","student_mobile","refernce"
+                              "department","student_clg_id","stage","status","time","student_university_id","category","problem_name","problem_id","commitee","student_name","date","student_email","favourable","student_mobile","refernce","seen"
                         ],
                         "where": PROBLEMS
                   }
@@ -152,9 +152,9 @@ function status()
                   for(var i=0;i<json.length;i++){
                        var row=json[i];
                       if(row['status']=='Available')
-                        result+='<tr><td>'+(i+1)+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['problem_name']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['refernce']+'</td><td><a href="#" onclick=\'solution("'+row['problem_id']+'")\'>'+row['status']+'</a></td></tr>';
+                        result+='<tr><td>'+(i+1)+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['problem_name']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['refernce']+'</td><td><a href="#" onclick=\'solution("'+row['problem_id']+'")\'>'+row['status']+'</a></td><td>'+row['seen']+'</td></tr>';
                       else         
-                         result+='<tr><td>'+(i+1)+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['problem_name']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['refernce']+'</td><td>'+row['status']+'</td></tr>';
+                         result+='<tr><td>'+(i+1)+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['problem_name']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['refernce']+'</td><td>'+row['status']+'</td><td>'+row['seen']+'</td></tr>';
                   }
                   result+="</table>";
                   $("#datas").append(result);
@@ -197,7 +197,7 @@ function status()
             type: "POST",
             dataType: "json"
           }).done(function(json) {
-            $('#problems').append("<b>Subject</b>&emsp;&emsp;"+json[0]["problem_name"]+"<br><b><br>Posted byName:&emsp;</b>"+json[0]["student_name"]+"&emsp;&emsp;<b>University Register No:&emsp;</b>"+json[0]["student_university_id"]+"<br><b>Date:&emsp;</b>"+json[0]["date"]+"&emsp;&emsp;<b>Time:</b>&emsp;"+json[0]["time"]+"<br><b>References:</b>&emsp;"+json[0]["refernce"]+"<br><b>Category:</b>&emsp;"+json[0]["category"]+"&emsp;&emsp;<b>Commitee:</b>&emsp;"+json[0]["commitee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json[0]["problem_discription"]+"<br><br>");
+            $('#problems').append("<b>Subject</b>&emsp;&emsp;"+json[0]["problem_name"]+"<br><b><br>Posted by, Name:&emsp;</b>"+json[0]["student_name"]+"&emsp;&emsp;<b>University Register No:&emsp;</b>"+json[0]["student_university_id"]+"<br><b>Date:&emsp;</b>"+json[0]["date"]+"&emsp;&emsp;<b>Time:</b>&emsp;"+json[0]["time"]+"<br><b>References:</b>&emsp;"+json[0]["refernce"]+"<br><b>Category:</b>&emsp;"+json[0]["category"]+"&emsp;&emsp;<b>Commitee:</b>&emsp;"+json[0]["commitee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json[0]["problem_discription"]+"<br><br>");
             if(DB=="faculty")
               $('#problems').append("<br><b>Solution</b><br>");
             else if(DB=="institute_level_faculty")
