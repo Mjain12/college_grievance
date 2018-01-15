@@ -114,6 +114,26 @@ $(document).ready(function(){
 				if(json[0].length==0 && json[1].length==0&& json[2].length==0&& json[3].length==0)
 					alert("invalid username or password");
 				else if(json[0].length==1){
+					$.ajax({
+							url: "https://data.bulimic45.hasura-app.io/v1/query",
+							contentType: "application/json",
+							data: JSON.stringify({
+						      "type": "update",
+						      "args": {
+						            "table": "student",
+						            "where": {
+						                  "email": {
+						                        "$eq": ID
+						                  }
+						            },
+						            "$set": {
+						                  "count": "count+1"
+						            }
+						      }
+							}),
+							type: "POST",
+							dataType: "json"
+						});
 					document.cookie=ID+"&"+"student";
 					window.open(stu,"_self","location=0");
 				}

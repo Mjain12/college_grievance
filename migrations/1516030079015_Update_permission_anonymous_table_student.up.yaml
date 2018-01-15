@@ -1,0 +1,8 @@
+- args:
+    permission:
+      columns:
+      - count
+      filter: {}
+    role: anonymous
+    table: student
+  type: create_update_permission
