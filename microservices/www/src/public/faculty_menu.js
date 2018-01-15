@@ -197,7 +197,7 @@ function status()
             type: "POST",
             dataType: "json"
           }).done(function(json) {
-            $('#problems').append("<b>Problem Name</b>&emsp;&emsp;"+json[0]["problem_name"]+"<br><br><b>Date:&emsp;</b>"+json[0]["date"]+"&emsp;&emsp;<b>Time:</b>&emsp;"+json[0]["time"]+"<br><b>References:</b>&emsp;"+json[0]["refernce"]+"<br><b>Category:</b>&emsp;"+json[0]["category"]+"&emsp;&emsp;<b>Commitee:</b>&emsp;"+json[0]["commitee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json[0]["problem_discription"]+"<br><br>");
+            $('#problems').append("<b>Problem Name</b>&emsp;&emsp;"+json[0]["problem_name"]+"<br>Posted by<b>Name:&emsp;</b>"+json[0]["student_name"]+"&emsp;&emsp;<b>University Register No:&emsp;</b>"+json[0]["student_university_id"]+"<br><b>Date:&emsp;</b>"+json[0]["date"]+"&emsp;&emsp;<b>Time:</b>&emsp;"+json[0]["time"]+"<br><b>References:</b>&emsp;"+json[0]["refernce"]+"<br><b>Category:</b>&emsp;"+json[0]["category"]+"&emsp;&emsp;<b>Commitee:</b>&emsp;"+json[0]["commitee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json[0]["problem_discription"]+"<br><br>");
             if(DB=="faculty")
               $('#problems').append("<br><b>Solution</b><br>");
             else if(DB=="institute_level_faculty")
