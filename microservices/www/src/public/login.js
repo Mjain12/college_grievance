@@ -128,7 +128,13 @@ $(document).ready(function(){
 						}),
 						type: "POST",
 						dataType: "json"
-					});
+					}).done(function(json){
+							alert("done");		
+					}).fail(function(xhr, status, errorThrown) {
+							console.log("Error: " + errorThrown);
+							console.log("Status: " + status);
+							console.dir(xhr);
+						});
 					document.cookie=ID+"&"+"student";
 					window.open(stu,"_self","location=0");
 				}
