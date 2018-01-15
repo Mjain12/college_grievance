@@ -279,9 +279,9 @@ $.ajax({
       for(var i=0;i<json.length;i++){
            var row=json[i];
           if(row['status']=='Available')
-            result+='<tr><td>'+(i+1)+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['problem_name']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['refernce']+'</td><td><a href="#" onclick=\'solution("'+row['problem_id']+'")\'>'+row['status']+'</a></td></tr>';
+            result+='<tr><td>'+i+1+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['problem_name']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['refernce']+'</td><td><a href="#" onclick=\'solution("'+row['problem_id']+'")\'>'+row['status']+'</a></td></tr>';
           else         
-             result+='<tr><td>'+(i+1)+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['problem_name']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['refernce']+'</td><td>'+row['status']+'</td></tr>';
+             result+='<tr><td>'+i+1+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['problem_name']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['refernce']+'</td><td>'+row['status']+'</td></tr>';
       }
       result+="</table>";
       $("#datas").append(result);
