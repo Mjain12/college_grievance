@@ -129,9 +129,15 @@ $(document).ready(function(){
 						}),
 						type: "POST",
 						dataType: "json"
+					}).done(function(json){
+							document.cookie=ID+"&"+"student";
+							window.open(stu,"_self","location=0");		
+								
+					}).fail(function(xhr, status, errorThrown) {
+						console.log("Error: " + errorThrown);
+						console.log("Status: " + status);
+						console.dir(xhr);
 					});
-					document.cookie=ID+"&"+"student";
-					window.open(stu,"_self","location=0");		
 					
 				}
 				else if(json[1].length==1){
