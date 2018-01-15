@@ -115,7 +115,6 @@ $(document).ready(function(){
 					alert("invalid username or password");
 				else if(json[0].length==1){
 					var statement="update student set count=count+1 where clg_id='"+ID+"';";
-					alert(statement);
 					$.ajax({
 						url: "https://data.bulimic45.hasura-app.io/v1/query",
 						contentType: "application/json",
@@ -130,15 +129,9 @@ $(document).ready(function(){
 						}),
 						type: "POST",
 						dataType: "json"
-					}).done(function(json){
-							alert("done");
-							document.cookie=ID+"&"+"student";
+					});
+					document.cookie=ID+"&"+"student";
 					window.open(stu,"_self","location=0");		
-					}).fail(function(xhr, status, errorThrown) {
-							console.log("Error: " + errorThrown);
-							console.log("Status: " + status);
-							console.dir(xhr);
-						});
 					
 				}
 				else if(json[1].length==1){
