@@ -209,22 +209,25 @@ function status()
                       // Stop form from submitting normally
                       //$("form").trigger('reset');
                       event.preventDefault();
+                      var problem_solution_value=(document.getElementById("Grievance_solution").value).split("\n");
+                      var problem_solution_data=problem_solution_value.join("<br>");
+                      problem_solution_data=(problem_solution_data.split(""")).join("\"");                        
                             if(DB=="faculty"){
                                  SOLUTION={
-                                            "hod_solution": document.getElementById("Grievance_solution").value,
+                                            "hod_solution": problem_solution_data,
                                             "favourable": "NULL",
                                             "status": "Available"
                                       };
                                 }
                                 else if(DB=="institute_level_faculty"){
                                    SOLUTION={
-                                            "dean_solution": document.getElementById("Grievance_solution").value,
+                                            "dean_solution": problem_solution_data,
                                             "favourable": "NULL",
                                             "status": "Available"
                                       };                                }
                                 else if(DB=="central_grievance_redressal_faculty"){
                                      SOLUTION={
-                                            "principal_solution": document.getElementById("Grievance_solution").value,
+                                            "principal_solution": problem_solution_data,
                                             "favourable": "NULL",
                                             "status": "Available"
                                       };
