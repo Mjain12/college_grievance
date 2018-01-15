@@ -1,0 +1,11 @@
+- args:
+    role: anonymous
+    table: Grievance
+  type: drop_select_permission
+- args:
+    permission:
+      columns: []
+      filter: {}
+    role: anonymous
+    table: Grievance
+  type: create_select_permission

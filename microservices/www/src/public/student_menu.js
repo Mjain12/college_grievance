@@ -212,7 +212,7 @@ function profile(){
  function dat()
  {
     var date=new Date();
-    var val=date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();
+    var val=date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
     var time=date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
     if($("#Date").val()!="date")
     {
@@ -279,9 +279,9 @@ $.ajax({
       for(var i=0;i<json.length;i++){
            var row=json[i];
           if(row['status']=='Available')
-            result+='<tr><td>'+row['problem_id']+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['problem_name']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['refernce']+'</td><td><a href="#" onclick=\'solution("'+row['problem_id']+'")\'>'+row['status']+'</a></td></tr>';
+            result+='<tr><td>'+(i+1)+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['problem_name']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['refernce']+'</td><td><a href="#" onclick=\'solution("'+row['problem_id']+'")\'>'+row['status']+'</a></td></tr>';
           else         
-             result+='<tr><td>'+row['problem_id']+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['problem_name']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['refernce']+'</td><td>'+row['status']+'</td></tr>';
+             result+='<tr><td>'+(i+1)+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['problem_name']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['refernce']+'</td><td>'+row['status']+'</td></tr>';
       }
       result+="</table>";
       $("#datas").append(result);
@@ -364,11 +364,11 @@ $.ajax({
           else if(json_solution[0]["stage"]=="3")
                $('#problems').append("<b>Problem Name</b>&emsp;&emsp;"+json_solution[0]["problem_name"]+"<br><br><b>Date:&emsp;</b>"+json_solution[0]["date"]+"&emsp;&emsp;&emsp;<b>Time:</b>&emsp;"+json_solution[0]["time"]+"<br><b>References:</b>&emsp;"+json_solution[0]["refernce"]+"<br><b>Category:</b>&emsp;"+json_solution[0]["category"]+"&emsp;&emsp;<b>Commitee:</b>&emsp;"+json_solution[0]["commitee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json_solution[0]["problem_discription"]+"<br><br><b>Department level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["hod_solution"]+"<br><br>"+"<br><br><b>Institute level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["dean_solution"]+"<br><br>"+"<br><br><b>Central Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["principal_solution"]+"<br><br>");
           if(json_solution[0]["favourable"]=="favourable")
-            $('#problems').prepend("<span style='background-color:lightgreen;'><b>Solution favourable</b></sapan><br>");
+            $('#problems').prepend("<span style='background-color:lightgreen;'><b>Solution Satisfied</b></sapan><br>");
           else if(json_solution[0]["favourable"]=="notfavourable")
-            $('#problems').prepend("<span style='background-color:red;'><b>Solution NOT favourable</b></sapan><br>");
+            $('#problems').prepend("<span style='background-color:red;'><b>Solution NOT Satisfied</b></sapan><br>");
           else
-            $('#problems').append("<br><input type=\"button\" onclick='return Solutionfavourable(\""+Name+"\")' value='favourable'>&emsp;&emsp;<input type=\"button\" onclick='return Solutionnotfavourable(\""+Name+"\")' value='Not Favourable'><br>");
+            $('#problems').append("<br><input type=\"button\" onclick='return Solutionfavourable(\""+Name+"\")' value='Satisfied'>&emsp;&emsp;<input type=\"button\" onclick='return Solutionnotfavourable(\""+Name+"\")' value='Not Satisfied'><br>");
             
         }).fail(function(xhr, status, errorThrown) {
           console.log("Error: " + errorThrown);
