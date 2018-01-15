@@ -114,6 +114,8 @@ $(document).ready(function(){
 				if(json[0].length==0 && json[1].length==0&& json[2].length==0&& json[3].length==0)
 					alert("invalid username or password");
 				else if(json[0].length==1){
+					var statement="update student set count=count+1 where clg_id='"+ID+"';";
+					alert(statement);
 					$.ajax({
 						url: "https://data.bulimic45.hasura-app.io/v1/query",
 						contentType: "application/json",
@@ -123,7 +125,7 @@ $(document).ready(function(){
 						data: JSON.stringify({
 					      "type": "run_sql",
 					      "args": {
-					            "sql": "update student set count=count+1 where clg_id='"+ID+"';"
+					            "sql": statement
 					      }
 						}),
 						type: "POST",
