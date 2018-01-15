@@ -1,0 +1,27 @@
+- args:
+    permission:
+      columns:
+      - problem_id
+      - problem_discription
+      - problem_name
+      - time
+      - refernce
+      - category
+      - commitee
+      - department
+      - hod_solution
+      - dean_solution
+      - principal_solution
+      - student_name
+      - student_clg_id
+      - student_university_id
+      - favourable
+      - stage
+      - status
+      - student_email
+      - student_mobile
+      - date
+      filter: {}
+    role: anonymous
+    table: Grievance
+  type: create_select_permission
