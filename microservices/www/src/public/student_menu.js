@@ -92,7 +92,7 @@ $(document).ready(function(){
                                                                                         "department": profile_row['department'],
                                                                                         "student_email":profile_row['email'],
                                                                                         "student_mobile":profile_row['mobile'],
-                                                                                        "seen"="Not Seen"
+                                                                                        "seen":"Not Seen"
                                                                                   }
                                                                             ]
                                                                       }
