@@ -91,7 +91,8 @@ $(document).ready(function(){
                                                                                         "commitee": "Department level Grievance Redressal Committee",
                                                                                         "department": profile_row['department'],
                                                                                         "student_email":profile_row['email'],
-                                                                                        "student_mobile":profile_row['mobile']
+                                                                                        "student_mobile":profile_row['mobile'],
+                                                                                        "seen"="Not Seen"
                                                                                   }
                                                                             ]
                                                                       }
@@ -392,7 +393,8 @@ $.ajax({
                                                   }
                                             },
                                             "$set": {
-                                                  "favourable": "favourable"
+                                                  "favourable": "favourable",
+                                                  "seen":"seen"
                                             }
                                       }
                                   }),
@@ -440,6 +442,7 @@ function Solutionnotfavourable(Name){
                                             "$set": {
                                                   "stage": STAGE,
                                                   "favourable":"NULL",
+                                                  "seen":"Not Seen",
                                                   "status":"Problem Posted to Level "+STAGE
                                             }
                                       }
@@ -471,7 +474,8 @@ function Solutionnotfavourable(Name){
                                                   }
                                             },
                                             "$set": {
-                                                  "favourable": "notfavourable"
+                                                  "favourable": "notfavourable",
+                                                  "seen":"Seen"
                                             }
                                       }
                                   }),
