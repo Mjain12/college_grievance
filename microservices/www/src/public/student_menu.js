@@ -574,7 +574,10 @@ function report(){
 
 		}
 	}
-	$("#datareport").append("<br><b>Total no of problems solved:</b> "+(dept_fav_prob_count+dept_unfav_prob_count+dept_unsolved_prob+ins_fav_prob_count+ins_unfav_prob_count+ins_unsolved_prob+cen_fav_prob_count+cen_unfav_prob_count+cen_unsolved_prob));	
+	var dept_count=dept_fav_prob_count+dept_unfav_prob_count+dept_unsolved_prob_count,ins_count=ins_fav_prob_count+ins_unfav_prob_count+ins_unsolved_prob_count;
+	var cen_count=cen_fav_prob_count+cen_unfav_prob_count+cen_unsolved_prob_count;
+	var total_count=dept_count+ins_count+cen_count;
+	$("#datareport").append("<br><b>Total no of problems solved:</b> "+total_count);	
 	//$("#problemscount").append(json.length);
 }).fail(function(xhr, status, errorThrown) {
 	alert("error");
