@@ -74,7 +74,8 @@ $(document).ready(function(){
     });
     $("#clear").click(function(){
         //alert(document.getElementById("text").html());
-        hidden();
+        //hidden();
+        $("#report").show();
 
     }); 
 
@@ -87,6 +88,7 @@ $(document).ready(function(){
     $("#text").hide();
     $("#griv_status").hide();
     $('#problems').empty();
+    $("#report").hide();
 
  }
 
