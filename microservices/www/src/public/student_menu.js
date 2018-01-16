@@ -459,7 +459,7 @@ function report(){
                   "favourable",
                   "hod_solution",
                   "dean_solution",
-                  "principal_solution",,"date","month","time","year"
+                  "principal_solution","date","month","time","year"
             ],
             "where": {
                   "$and": [
