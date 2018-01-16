@@ -1,7 +1,0 @@
-- args:
-    permission:
-      columns: []
-      filter: {}
-    role: user
-    table: student
-  type: create_select_permission

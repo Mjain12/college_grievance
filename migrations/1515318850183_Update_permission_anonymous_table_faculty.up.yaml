@@ -1,6 +1,0 @@
-- args:
-    permission:
-      check: {}
-    role: anonymous
-    table: faculty
-  type: create_insert_permission

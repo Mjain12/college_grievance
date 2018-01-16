@@ -1,4 +1,0 @@
-- args:
-    role: anonymous
-    table: Grievance
-  type: drop_update_permission

@@ -1,4 +1,0 @@
-- args:
-    role: anonymous
-    table: central_grievance_redressal_faculty
-  type: drop_insert_permission

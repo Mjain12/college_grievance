@@ -1,9 +1,0 @@
-- args:
-    sql: ALTER TABLE "Grievance" ALTER COLUMN "date" TYPE text;
-  type: run_sql
-- args:
-    sql: ALTER TABLE "Grievance" ALTER COLUMN "date" DROP DEFAULT;
-  type: run_sql
-- args:
-    sql: ALTER TABLE "Grievance" ALTER COLUMN "date" DROP NOT NULL;
-  type: run_sql

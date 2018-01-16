@@ -1,3 +1,0 @@
-- args:
-    sql: ALTER TABLE "student" DROP COLUMN "email_domain"
-  type: run_sql

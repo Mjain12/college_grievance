@@ -1,3 +1,0 @@
-- args:
-    sql: ALTER TABLE "Grievance" ADD COLUMN "student_mobile" text NUll
-  type: run_sql

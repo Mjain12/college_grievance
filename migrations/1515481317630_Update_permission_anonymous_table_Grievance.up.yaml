@@ -1,6 +1,0 @@
-- args:
-    permission:
-      filter: {}
-    role: anonymous
-    table: Grievance
-  type: create_delete_permission

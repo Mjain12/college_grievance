@@ -1,8 +1,0 @@
-- args:
-    permission:
-      columns:
-      - id
-      filter: {}
-    role: anonymous
-    table: grievance_problem_id
-  type: create_select_permission

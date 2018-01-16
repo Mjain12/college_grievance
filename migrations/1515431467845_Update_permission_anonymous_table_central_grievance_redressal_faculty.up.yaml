@@ -1,6 +1,0 @@
-- args:
-    permission:
-      check: {}
-    role: anonymous
-    table: central_grievance_redressal_faculty
-  type: create_insert_permission

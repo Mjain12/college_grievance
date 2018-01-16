@@ -1,21 +1,18 @@
 - args:
-    role: anonymous
-    table: student
-  type: drop_select_permission
-- args:
     permission:
       columns:
       - fname
       - mname
       - lname
+      - clg_id
       - university reg_no
       - department
       - mobile
       - email
       - password
       - question
-      - clg_id
       - answer
+      - count
       filter: {}
     role: anonymous
     table: student

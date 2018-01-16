@@ -1,9 +1,0 @@
-- args:
-    sql: ALTER TABLE "student" ALTER COLUMN "count" TYPE integer;
-  type: run_sql
-- args:
-    sql: ALTER TABLE ONLY "student" ALTER COLUMN "count" SET DEFAULT 0;
-  type: run_sql
-- args:
-    sql: ALTER TABLE "student" ALTER COLUMN "count" DROP NOT NULL;
-  type: run_sql

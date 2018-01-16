@@ -1,9 +1,0 @@
-- args:
-    sql: ALTER TABLE "grievance" ALTER COLUMN "favouable" TYPE boolean;
-  type: run_sql
-- args:
-    sql: ALTER TABLE "grievance" ALTER COLUMN "favouable" DROP DEFAULT;
-  type: run_sql
-- args:
-    sql: ALTER TABLE "grievance" ALTER COLUMN "favouable" DROP NOT NULL;
-  type: run_sql

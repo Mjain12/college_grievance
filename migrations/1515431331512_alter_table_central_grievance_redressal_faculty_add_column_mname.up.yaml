@@ -1,4 +1,0 @@
-- args:
-    sql: ALTER TABLE "central_grievance_redressal_faculty" ADD COLUMN "mname" text
-      NUll
-  type: run_sql

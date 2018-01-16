@@ -1,3 +1,0 @@
-- args:
-    sql: ALTER TABLE "central_grievance_redressal_faculty" DROP COLUMN "mnane"
-  type: run_sql

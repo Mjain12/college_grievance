@@ -1,3 +1,0 @@
-- args:
-    sql: ALTER TABLE "Grievance" DROP COLUMN "date"
-  type: run_sql
