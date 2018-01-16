@@ -583,7 +583,7 @@ function report(){
 	table_content+="<tr><td>Institute level</td><td>"+(ins_count+ins_unsolved_prob_count)+"</td><td>"+ins_count+"</td><td>"+ins_fav_prob_count+"</td><td>"+ins_unfav_prob_count+"</td><td>"+ins_unsolved_prob_count+"</td></tr>";
 	table_content+="<tr><td>Central level</td><td>"+(cen_count+cen_unsolved_prob_count)+"</td><td>"+cen_count+"</td><td>"+cen_fav_prob_count+"</td><td>"+cen_unfav_prob_count+"</td><td>"+cen_unsolved_prob_count+"</td></tr></tbody></table>";
 	$("#datareport").append("<br><b>Total no of problems solved:</b> "+total_count+table_content);
-	$("#datareport").append("<br><h4>Department Level Problems</h4><br><h5>favourable Problems</h5>"+dept_fav_prob+"<br><h5>Unfavourable Problems</h5>"+dept_unfav_prob+"<br><h5>Unsolved Problems</h5>"+dept_unsolved_prob);
+	$("#datareport").append("<br><h4>Department Level Problems</h4><br><h5>favourable Problems</h5>"+dept_fav_prob+"<h5>Unfavourable Problems</h5>"+dept_unfav_prob+"<h5>Unsolved Problems</h5>"+dept_unsolved_prob);
 	//$("#problemscount").append(json.length);
 }).fail(function(xhr, status, errorThrown) {
 	alert("error");
