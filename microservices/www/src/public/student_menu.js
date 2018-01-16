@@ -537,7 +537,6 @@ function report(){
 			}
 	}
 	$("#datareport").append("<br><b>Total no of problems solved:</b> "+(dept_fav_prob_count+dept_unfav_prob_count)+dept_fav_prob+dept_unfav_prob);	
-	}
 	//$("#problemscount").append(json.length);
 }).fail(function(xhr, status, errorThrown) {
 	alert("error");
