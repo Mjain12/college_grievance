@@ -204,7 +204,9 @@ function profile(){
         $("#text").show();
  }
 
-
+function close_agreement(){
+		document.getElementById('Agreement').style.display = "block";
+}
  function Form()
  {
  	hidden();
