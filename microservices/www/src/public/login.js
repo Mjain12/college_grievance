@@ -47,7 +47,7 @@ $(document).ready(function(){
 			                        "where": {
 			                              "$and": [
 			                                    {
-			                                          "college_id": {
+			                                          "faculty_id": {
 			                                                "$eq":ID
 			                                          }
 			                                    },
@@ -70,7 +70,7 @@ $(document).ready(function(){
 			                        "where": {
 			                              "$and": [
 			                                    {
-			                                          "email": {
+			                                          "faculty_id": {
 			                                                "$eq":ID
 			                                          }
 			                                    },
@@ -93,7 +93,7 @@ $(document).ready(function(){
 			                        "where": {
 			                              "$and": [
 			                                    {
-			                                          "email": {
+			                                          "faculty_id": {
 			                                                "$eq":ID
 			                                          }
 			                                    },
