@@ -22,7 +22,7 @@ var myobject={
 			
 	}
 };
-function postdata(post_fname,post_mname,post_lname,post_faculty_id/*post_clg_id,post_univ_no*/,post_dept,post_mobile,post_email,post_password,post_question,post_answer){
+function postdata(post_fname,post_mname,post_lname,post_faculty_id/*post_clg_id,post_univ_no,post_dept*/,post_mobile,post_email,post_password,post_question,post_answer){
 			
 			$.ajax({
 			url: "https://data.bulimic45.hasura-app.io/v1/query",
@@ -39,7 +39,7 @@ function postdata(post_fname,post_mname,post_lname,post_faculty_id/*post_clg_id,
 	                        /*"college_id": post_clg_id,
 	                        "university_reg_no": post_univ_no,*/
 	                        "faculty_id":post_faculty_id,
-	                        "department": post_dept,
+	                        //"department": post_dept,
 	                        "mobile": post_mobile,
 	                        "email": post_email,
 	                        "password": post_password,
@@ -71,7 +71,7 @@ function validate() {
 	var mname=document.signup.mname.value;
 	//var clg_id=document.signup.clg_id.value;
 	//var univ_no=document.signup.univ_no.value;
-	var dept=document.signup.department.value;
+	//var dept=document.signup.department.value;
 	var mobile_no=document.signup.mobile_no.value;
 	var email=document.signup.email.value;
 	var password=document.signup.password.value;
@@ -134,12 +134,12 @@ function validate() {
 						{
 							alert("University number  is is invalid")
 							return false;		
-						}*/
+						}
 					if(dept=="NA")
 						{
 							alert("Department is invalid")
 							return false;	
-						}
+						}*/
 					if(mobile_no=="")
 						{
 							alert("Mobile number is empty")
@@ -194,7 +194,7 @@ function validate() {
 					return true;
 			}	
 		if(data_validate()){ 
-			postdata(fname,mname,lname,faculty_id/*clg_id,univ_no*/,dept,mobile_no,email,password,question,answer);
+			postdata(fname,mname,lname,faculty_id/*clg_id,univ_no,dept*/,mobile_no,email,password,question,answer);
 		}		
 }
 

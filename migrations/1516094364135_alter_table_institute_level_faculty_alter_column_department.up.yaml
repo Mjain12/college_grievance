@@ -1,0 +1,10 @@
+- args:
+    sql: ALTER TABLE "institute_level_faculty" ALTER COLUMN "department" TYPE text;
+  type: run_sql
+- args:
+    sql: ALTER TABLE ONLY "institute_level_faculty" ALTER COLUMN "department" SET
+      DEFAULT 'Dean';
+  type: run_sql
+- args:
+    sql: ALTER TABLE "institute_level_faculty" ALTER COLUMN "department" SET NOT NULL;
+  type: run_sql
