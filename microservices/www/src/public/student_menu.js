@@ -210,6 +210,9 @@ function profile(){
     hidden();
     dat();
     $("#griv_form").show();
+    if(profile_row["count"]==1){
+    	window.open("./agreement.html","_top","location=0")
+    }
  }
 
  function dat()
