@@ -425,8 +425,8 @@ function report(){
                               ]
                         },
                         {
-                        "student_clg_id": {
-                            "$eq": Id
+                        "department": {
+                            "$eq": profile_row["department"]
                         }
                     }
                   ]
