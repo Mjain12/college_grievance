@@ -582,5 +582,15 @@ function report(){
   
 }
 function filedownload(){
-  alert("hi");
+        var doc = new jsPDF();
+        var specialElementHandlers = {
+      '#editor': function (element, renderer) {
+      return true;
+      }
+      };
+      doc.fromHTML($('#datareport').html(), 15, 15, {
+      'width': 170,
+      'elementHandlers': specialElementHandlers
+      });
+      doc.save('sample-content.pdf');
 }
