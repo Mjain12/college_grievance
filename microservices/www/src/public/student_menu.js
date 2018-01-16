@@ -512,7 +512,7 @@ function report(){
 	type: "POST",
 	dataType: "json"
 }).done(function(json) {
-	if(json.length==0);
+	if(json.length==0)
 	$("#datareport").append("no records found");
 	else{
 		$("#datareport").append("<b>Total no of problems Posted:</b>"+json.length);
