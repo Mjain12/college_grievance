@@ -631,7 +631,7 @@ function report(){
 								
 						}*/
 
-				  //}
+				  }
 				/*  else if(json[i]["stage"]==2){
 					  	if(json[i]["status"]=="Available"){
 						}
