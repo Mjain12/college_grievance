@@ -536,21 +536,21 @@ function report(){
 				if(json[i]["status"]=="Available"){
 					if(json[i]["favourable"]=="favourable"){
 						dept_fav_prob_count++;
-						dept_fav_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'>";
+						dept_fav_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'></div>";
 					}
 					else if(json[i]["favourable"]=="notfavourable"){
 						dept_unfav_prob_count++;
-						dept_unfav_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'>";
+						dept_unfav_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'></div>";
 					}
 					else{
 						dept_unseen_prob_count++;
-						dept_unseen_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'>";
+						dept_unseen_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'></div>";
 					}
 					
 				}
 				else{
 					dept_unsolved_prob_count++;
-					dept_unsolved_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'>";
+					dept_unsolved_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'></div>";
 						
 				}
 
@@ -559,21 +559,21 @@ function report(){
 			  	if(json[i]["status"]=="Available"){
 					if(json[i]["favourable"]=="favourable"){
 						ins_fav_prob_count++;
-						ins_fav_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'>";
+						ins_fav_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'></div>";
 					}
 					else if(json[i]["favourable"]=="notfavourable"){
 						ins_unfav_prob_count++;
-						ins_unfav_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'>";
+						ins_unfav_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'></div>";
 					}
 					else{
 						ins_unseen_prob_count++;
-						ins_unseen_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'>";
+						ins_unseen_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'></div>";
 					
 					}		  	
 				}
 				else{
 						ins_unsolved_prob_count++;
-						ins_unsolved_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'>";
+						ins_unsolved_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'></div>";
 					
 				}
 		  }
@@ -581,20 +581,20 @@ function report(){
 				  	if(json[i]["status"]=="Available"){
 					  	if(json[i]["favourable"]=="favourable"){
 							cen_fav_prob_count++;
-							cen_fav_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'>";
+							cen_fav_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'></div>";
 						}
 						else if(json[i]["favourable"]=="notfavourable"){
 							cen_unfav_prob_count++;
-							cen_unfav_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'>";
+							cen_unfav_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'></div>";
 						}
 						else{
 							cen_unsolved_prob_count++;
-							cen_unsolved_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'>";
+							cen_unsolved_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'></div>";
 						}
 					}
 					else{
 							cen_unseen_prob_count++;
-							cen_unseen_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'>";
+							cen_unseen_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'></div>";
 							
 					}
 		  }
@@ -614,7 +614,7 @@ function report(){
 	$("#datareport").append("<br><b>Total no of problems solved:</b> "+total_count+table_content);
 	$("#datareport").append("<br><h4><b>Department Level Problems<b></h4><br><h5>&emsp;<b>favourable Problems</b></h5>"+dept_fav_prob+"<h5>&emsp;<b>Unfavourable Problems</b></h5>"+dept_unfav_prob+"<h5>&emsp;<b>Unsolved Problems</b></h5>"+dept_unsolved_prob);
 	
-		for(var i=0;i<json.length;i++){
+	for(var i=0;i<json.length;i++){
 				var divid=("#problem"+json[i]["problem_id"]);
 
 				if(json[i]["stage"]==1){
@@ -645,7 +645,7 @@ function report(){
 				
 
 
-		}
+		}*/
 	}
 	//$("#problemscount").append(json.length);
 }).fail(function(xhr, status, errorThrown) {
