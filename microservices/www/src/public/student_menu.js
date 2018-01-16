@@ -439,7 +439,7 @@ function report(){
 	var todate=$("#todate").val();
 	fromdate=fromdate.split("-");
 	todate=todate.split("-");
-	alert([fromdate,todate]);
+	$("#report").empty();
 	$.ajax({
 	url: "https://data.bulimic45.hasura-app.io/v1/query",
 	contentType: "application/json",
@@ -459,7 +459,7 @@ function report(){
                   "favourable",
                   "hod_solution",
                   "dean_solution",
-                  "principal_solution"
+                  "principal_solution",,"date","month","time","year"
             ],
             "where": {
                   "$and": [
@@ -512,7 +512,8 @@ function report(){
 	type: "POST",
 	dataType: "json"
 }).done(function(json) {
-	alert(json.length);
+	//alert(json.length);
+	$("#problemscount").append(json.length);
 }).fail(function(xhr, status, errorThrown) {
 	alert("error");
 	console.log("Error: " + errorThrown);
