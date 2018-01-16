@@ -617,6 +617,8 @@ function report(){
 	table_content+="<tr><td>Central level</td><td>"+(cen_count+cen_unsolved_prob_count)+"</td><td>"+cen_count+"</td><td>"+cen_unsolved_prob_count+"</td><td>"+cen_fav_prob_count+"</td><td>"+cen_unfav_prob_count+"</td><td>"+cen_unseen_prob_count+"</td></tr></tbody></table>";
 	$("#datareport").append("<br><b>Total no of problems solved:</b> "+total_count+table_content);
 	$("#datareport").append("<br><h4><b>Department Level Problems<b></h4><br><h5>&emsp;<b>favourable Problems</b></h5>"+dept_fav_prob+"<h5>&emsp;<b>Unfavourable Problems</b></h5>"+dept_unfav_prob+"<h5>&emsp;<b>Unsolved Problems</b></h5>"+dept_unsolved_prob);
+	$("#datareport").append("<br><h4><b>Institute Problems<b></h4><br><h5>&emsp;<b>favourable Problems</b></h5>"+ins_fav_prob+"<h5>&emsp;<b>Unfavourable Problems</b></h5>"+ins_unfav_prob+"<h5>&emsp;<b>Unsolved Problems</b></h5>"+ins_unsolved_prob);
+	$("#datareport").append("<br><h4><b>Central Level Problems<b></h4><br><h5>&emsp;<b>favourable Problems</b></h5>"+cen_fav_prob+"<h5>&emsp;<b>Unfavourable Problems</b></h5>"+cen_unfav_prob+"<h5>&emsp;<b>Unsolved Problems</b></h5>"+cen_unsolved_prob);
 	
 	for(var i=0;i<json.length;i++){
 				var divid=("#Problem"+json[i]["problem_id"]);
