@@ -584,7 +584,10 @@ function report(){
 function filedownload(){
         var doc = new jsPDF();
         var specialElementHandlers = {
-      '#editor': function (element, renderer) {
+      '#[id^=Problem]': function (element, renderer) {
+      return true;
+      }
+      'table': function (element, renderer) {
       return true;
       }
       };
@@ -592,5 +595,5 @@ function filedownload(){
       'width': 170,
       'elementHandlers': specialElementHandlers
       });
-      doc.save('sample-content.pdf');
+      doc.save('report.pdf');
 }
