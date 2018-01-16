@@ -584,11 +584,11 @@ function report(){
 function filedownload(){
         var doc = new jsPDF();
         var specialElementHandlers = {
-      '#[id^=Problem]': function (element, renderer) {
+      '#[id^=Problem]','table': function (element, renderer) {
       return true;
       }
       };
-      doc.fromHTML($('#datareport').html(), 15, 15, {
+      doc.fromHTML($('#datareport')[0], 15, 15, {
       'width': 170,
       'elementHandlers': specialElementHandlers
       });
