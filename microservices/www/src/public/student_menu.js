@@ -30,6 +30,8 @@ $(document).ready(function(){
                                                 "problem_description": problem_description_data,
                                                 "subject": document.getElementById("griv_name").value,
                                                 "date": (($('#Time').val()).split(" ")[0]).split("-")[2],
+                                                "month": (($('#Time').val()).split(" ")[0]).split("-")[1],
+                                                "year": (($('#Time').val()).split(" ")[0]).split("-")[0],
                                                 "time": ($('#Time').val()).split(" ")[1],
                                                 "reference": document.getElementById("ref").value,
                                                 "category": document.getElementById("Grievance_Category").value,
@@ -204,7 +206,7 @@ $.ajax({
       "args": {
             "table": "Grievance",
             "columns": [
-                  "department","student_clg_id","stage","status","time","student_university_id","category","subject","problem_id","committee","student_name","date","student_email","favourable","student_mobile","reference","seen"
+                  "department","student_clg_id","stage","status","time","student_university_id","category","subject","problem_id","committee","student_name","date","month","year","student_email","favourable","student_mobile","reference","seen"
             ],
             "where": {
                   "student_clg_id": {
@@ -225,9 +227,9 @@ $.ajax({
       for(var i=0;i<json.length;i++){
            var row=json[i];
           if(row['status']=='Available')
-            result+='<tr><td>'+(i+1)+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['subject']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['reference']+'</td><td><a href="#" onclick=\'solution("'+row['problem_id']+'")\'>'+row['status']+'</a></td><td>'+row['seen']+'</td></tr>';
+            result+='<tr><td>'+(i+1)+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['subject']+'</a></td><td>'+row['date']+"-"+row['month']+"-"+row['year']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['reference']+'</td><td><a href="#" onclick=\'solution("'+row['problem_id']+'")\'>'+row['status']+'</a></td><td>'+row['seen']+'</td></tr>';
           else         
-             result+='<tr><td>'+(i+1)+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['subject']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['reference']+'</td><td>'+row['status']+'</td><td>'+row['seen']+'</td></tr>';
+             result+='<tr><td>'+(i+1)+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['subject']+'</a></td><td>'+row['date']+"-"+row['month']+"-"+row['year']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['reference']+'</td><td>'+row['status']+'</td><td>'+row['seen']+'</td></tr>';
       }
       result+="</table>";
       $("#datas").append(result);
@@ -269,7 +271,7 @@ $.ajax({
             type: "POST",
             dataType: "json"
           }).done(function(json) {
-            $('#problems').append("<b>Subject</b>&emsp;&emsp;"+json[0]["subject"]+"<br><br><b>Date:&emsp;</b>"+json[0]["date"]+"&emsp;&emsp;<b>Time:</b>&emsp;"+json[0]["time"]+"<br><b>References:</b>&emsp;"+json[0]["reference"]+"<br><b>Category:</b>&emsp;"+json[0]["category"]+"&emsp;&emsp;<b>committee:</b>&emsp;"+json[0]["committee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json[0]["problem_description"]+"<br><br>");
+            $('#problems').append("<b>Subject</b>&emsp;&emsp;"+json[0]["subject"]+"<br><br><b>Date:&emsp;</b>"+json[0]["date"]+"-"+json[0]['month']+"-"+join[0]['year']+"&emsp;&emsp;<b>Time:</b>&emsp;"+json[0]["time"]+"<br><b>References:</b>&emsp;"+json[0]["reference"]+"<br><b>Category:</b>&emsp;"+json[0]["category"]+"&emsp;&emsp;<b>committee:</b>&emsp;"+json[0]["committee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json[0]["problem_description"]+"<br><br>");
           }).fail(function(xhr, status, errorThrown) {
             console.log("Error: " + errorThrown);
             console.log("Status: " + status);
@@ -304,11 +306,11 @@ $.ajax({
         }).done(function(json_solution) {
           STAGE=json_solution[0]["stage"];
           if(json_solution[0]["stage"]=="1")
-              $('#problems').append("<b>Subject</b>&emsp;&emsp;"+json_solution[0]["subject"]+"<br><br><b>Date:&emsp;</b>"+json_solution[0]["date"]+"&emsp;&emsp;&emsp;<b>Time:</b>&emsp;"+json_solution[0]["time"]+"<br><b>References:</b>&emsp;"+json_solution[0]["reference"]+"<br><b>Category:</b>&emsp;"+json_solution[0]["category"]+"&emsp;&emsp;<b>committee:</b>&emsp;"+json_solution[0]["committee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json_solution[0]["problem_description"]+"<br><br><b>Department level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["hod_solution"]+"<br><br>");
+              $('#problems').append("<b>Subject</b>&emsp;&emsp;"+json_solution[0]["subject"]+"<br><br><b>Date:&emsp;</b>"+json_solution[0]["date"]+"-"+json_solution[0]['month']+"-"+json_solution[0]['year']+"&emsp;&emsp;&emsp;<b>Time:</b>&emsp;"+json_solution[0]["time"]+"<br><b>References:</b>&emsp;"+json_solution[0]["reference"]+"<br><b>Category:</b>&emsp;"+json_solution[0]["category"]+"&emsp;&emsp;<b>committee:</b>&emsp;"+json_solution[0]["committee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json_solution[0]["problem_description"]+"<br><br><b>Department level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["hod_solution"]+"<br><br>");
           else if(json_solution[0]["stage"]=="2")
-               $('#problems').append("<b>Subject</b>&emsp;&emsp;"+json_solution[0]["subject"]+"<br><br><b>Date:&emsp;</b>"+json_solution[0]["date"]+"&emsp;&emsp;&emsp;<b>Time:</b>&emsp;"+json_solution[0]["time"]+"<br><b>References:</b>&emsp;"+json_solution[0]["reference"]+"<br><b>Category:</b>&emsp;"+json_solution[0]["category"]+"&emsp;&emsp;<b>committee:</b>&emsp;"+json_solution[0]["committee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json_solution[0]["problem_description"]+"<br><br><b>Department level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["hod_solution"]+"<br><br>"+"<br><br><b>Institute level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["dean_solution"]+"<br><br>");
+               $('#problems').append("<b>Subject</b>&emsp;&emsp;"+json_solution[0]["subject"]+"<br><br><b>Date:&emsp;</b>"+json_solution[0]["date"]+"-"+json_solution[0]['month']+"-"+json_solution[0]['year']+"&emsp;&emsp;&emsp;<b>Time:</b>&emsp;"+json_solution[0]["time"]+"<br><b>References:</b>&emsp;"+json_solution[0]["reference"]+"<br><b>Category:</b>&emsp;"+json_solution[0]["category"]+"&emsp;&emsp;<b>committee:</b>&emsp;"+json_solution[0]["committee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json_solution[0]["problem_description"]+"<br><br><b>Department level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["hod_solution"]+"<br><br>"+"<br><br><b>Institute level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["dean_solution"]+"<br><br>");
           else if(json_solution[0]["stage"]=="3")
-               $('#problems').append("<b>Subject</b>&emsp;&emsp;"+json_solution[0]["subject"]+"<br><br><b>Date:&emsp;</b>"+json_solution[0]["date"]+"&emsp;&emsp;&emsp;<b>Time:</b>&emsp;"+json_solution[0]["time"]+"<br><b>References:</b>&emsp;"+json_solution[0]["reference"]+"<br><b>Category:</b>&emsp;"+json_solution[0]["category"]+"&emsp;&emsp;<b>committee:</b>&emsp;"+json_solution[0]["committee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json_solution[0]["problem_description"]+"<br><br><b>Department level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["hod_solution"]+"<br><br>"+"<br><br><b>Institute level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["dean_solution"]+"<br><br>"+"<br><br><b>Central Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["principal_solution"]+"<br><br>");
+               $('#problems').append("<b>Subject</b>&emsp;&emsp;"+json_solution[0]["subject"]+"<br><br><b>Date:&emsp;</b>"+json_solution[0]["date"]+"-"+json_solution[0]['month']+"-"+json_solution[0]['year']+"&emsp;&emsp;&emsp;<b>Time:</b>&emsp;"+json_solution[0]["time"]+"<br><b>References:</b>&emsp;"+json_solution[0]["reference"]+"<br><b>Category:</b>&emsp;"+json_solution[0]["category"]+"&emsp;&emsp;<b>committee:</b>&emsp;"+json_solution[0]["committee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json_solution[0]["problem_description"]+"<br><br><b>Department level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["hod_solution"]+"<br><br>"+"<br><br><b>Institute level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["dean_solution"]+"<br><br>"+"<br><br><b>Central Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["principal_solution"]+"<br><br>");
           if(json_solution[0]["favourable"]=="favourable")
             $('#problems').prepend("<span style='background-color:lightgreen;'><b>Solution Satisfied</b></sapan><br>");
           else if(json_solution[0]["favourable"]=="notfavourable")
