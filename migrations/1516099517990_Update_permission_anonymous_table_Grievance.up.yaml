@@ -1,0 +1,15 @@
+- args:
+    permission:
+      columns:
+      - committee
+      - dean_solution
+      - favourable
+      - hod_solution
+      - principal_solution
+      - seen
+      - stage
+      - status
+      filter: {}
+    role: anonymous
+    table: Grievance
+  type: create_update_permission
