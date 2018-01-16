@@ -516,7 +516,7 @@ function report(){
 	$("#datareport").append("no records found");
 	else{
 		$("#datareport").append("<b>Total no of problems Posted:</b> "+json.length);
-	var dept_fav_prob,dept_unfav_prob,dept_unsolved_prob;
+	var dept_fav_prob="",dept_unfav_prob,dept_unsolved_prob;
 	var dept_fav_prob_count=0,dept_unfav_prob_count=0,dept_unsolved_prob_count=0;
 	for(var i=0;i<json.length;i++){
 		if(json[i]["stage"]==1){
