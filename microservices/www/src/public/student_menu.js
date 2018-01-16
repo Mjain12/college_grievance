@@ -645,7 +645,7 @@ function report(){
 				
 
 
-		}*/
+		}
 	}
 	//$("#problemscount").append(json.length);
 }).fail(function(xhr, status, errorThrown) {
