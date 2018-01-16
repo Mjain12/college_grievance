@@ -5,9 +5,7 @@ $(document).ready(function(){
     profileflag=0;
     statusflag=0;
     $("#clear").click(function(){
-        //alert(document.getElementById("text").html());
-        hidden();
-
+      $("#report").show();
     });
     profile();
 });
@@ -89,6 +87,7 @@ function profile(){
     $("#text").hide();
     $("#griv_status").hide();
     $('#problems').empty();
+    $("#report").hide();
  }
  function dat()
  {
