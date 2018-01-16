@@ -1,0 +1,17 @@
+- args:
+    permission:
+      columns:
+      - lname
+      - fname
+      - department
+      - answer
+      - question
+      - password
+      - email
+      - mobile
+      - faculty_id
+      - mname
+      filter: {}
+    role: anonymous
+    table: central_grievance_redressal_faculty
+  type: create_select_permission

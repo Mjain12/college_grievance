@@ -1,0 +1,17 @@
+- args:
+    permission:
+      columns:
+      - email
+      - fname
+      - mname
+      - lname
+      - mobile
+      - password
+      - question
+      - answer
+      - faculty_id
+      - department
+      filter: {}
+    role: anonymous
+    table: institute_level_faculty
+  type: create_select_permission
