@@ -439,7 +439,7 @@ function report(){
 	var todate=$("#todate").val();
 	fromdate=fromdate.split("-");
 	todate=todate.split("-");
-	$("#report").empty();
+	$("#datareport").empty();
 	$.ajax({
 	url: "https://data.bulimic45.hasura-app.io/v1/query",
 	contentType: "application/json",
