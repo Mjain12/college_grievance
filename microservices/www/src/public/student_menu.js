@@ -519,16 +519,19 @@ function report(){
 	var dept_fav_prob="",dept_unfav_prob,dept_unsolved_prob;
 	var dept_fav_prob_count=0,dept_unfav_prob_count=0,dept_unsolved_prob_count=0;
 	for(var i=0;i<json.length;i++){
-		if(json[i]["stage"]=="1"){
-		alert([typeof(json[i]["stage"]),json[i]["stage"]]);
+		if(json[i]["stage"]==1){
 			if(json[i]["favourable"]=="favourable"){
 				dept_fav_prob_count++;
 				dept_fav_prob="<br><div id='Problem"+json[i]["problem_id"]+"'><b>"+json[i]["subject"]+"</b><span onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span></div>";
 			}
+			else if(json[i]["favourable"]=="notfavourable"){
+				dept_unfav_prob_count++;
+				dept_unfav_prob="<br><div id='Problem"+json[i]["problem_id"]+"'><b>"+json[i]["subject"]+"</b><span onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span></div>";
+			}
 
 		}
 	}
-	$("#datareport").append("<br><b>Total no of problems solved:</b> "+dept_fav_prob_count+dept_fav_prob);	
+	$("#datareport").append("<br><b>Total no of problems solved:</b> "+(dept_fav_prob_count+dept_unfav_prob_count)+dept_fav_prob+dept_unfav_prob);	
 	}
 	//$("#problemscount").append(json.length);
 }).fail(function(xhr, status, errorThrown) {
