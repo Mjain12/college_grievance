@@ -432,5 +432,8 @@ function Solutionnotfavourable(Name){
                               } 
                             }
 function report(){
-	alert($("#fromdate").val());
+	var fromdate=$("#fromdate").val()
+	if((fromdate.split("-")).length==3)
+		alert(fromdate);
+	else alert("invalid formate");
 }
