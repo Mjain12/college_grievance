@@ -587,9 +587,6 @@ function filedownload(){
       '#[id^=Problem]': function (element, renderer) {
       return true;
       }
-      'table': function (element, renderer) {
-      return true;
-      }
       };
       doc.fromHTML($('#datareport').html(), 15, 15, {
       'width': 170,
