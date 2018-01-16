@@ -207,7 +207,7 @@ function profile(){
 
  function Form()
  {
- 	alert("hi");
+ 	alert(profile_row["count"]);
     hidden();
     dat();
     $("#griv_form").show();
