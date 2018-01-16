@@ -5,6 +5,7 @@ $(document).ready(function(){
     profileflag=0;
     statusflag=0;
     $("#clear").click(function(){
+      hidden();
       $("#report").show();
     });
     profile();

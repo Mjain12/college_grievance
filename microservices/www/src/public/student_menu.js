@@ -74,7 +74,7 @@ $(document).ready(function(){
     });
     $("#clear").click(function(){
         //alert(document.getElementById("text").html());
-        //hidden();
+        hidden();
         $("#report").show();
 
     }); 
