@@ -507,7 +507,7 @@ function report(){
                         },
                         {
 		                    "student_clg_id": {
-		                        "$eq": Id;
+		                        "$eq": Id
 		                    }
 	                	}
                   ]
