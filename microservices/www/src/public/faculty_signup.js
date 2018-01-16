@@ -22,7 +22,7 @@ var myobject={
 			
 	}
 };
-function postdata(post_fname,post_mname,post_lname,post_clg_id,post_univ_no,post_dept,post_mobile,post_email,post_password,post_question,post_answer){
+function postdata(post_fname,post_mname,post_lname,post_faculty_id/*post_clg_id,post_univ_no*/,post_dept,post_mobile,post_email,post_password,post_question,post_answer){
 			
 			$.ajax({
 			url: "https://data.bulimic45.hasura-app.io/v1/query",
@@ -36,8 +36,9 @@ function postdata(post_fname,post_mname,post_lname,post_clg_id,post_univ_no,post
 			                "fname": post_fname,
 	                        "mname": post_mname,
 	                        "lname": post_lname,
-	                        "college_id": post_clg_id,
-	                        "university_reg_no": post_univ_no,
+	                        /*"college_id": post_clg_id,
+	                        "university_reg_no": post_univ_no,*/
+	                        "faculty_id":post_faculty_id,
 	                        "department": post_dept,
 	                        "mobile": post_mobile,
 	                        "email": post_email,
@@ -52,7 +53,7 @@ function postdata(post_fname,post_mname,post_lname,post_clg_id,post_univ_no,post
 			dataType: "json"
 		}).done(function(json) {
 			
-			myobject.post_Email(post_email,post_fname,post_mname,post_lname,post_clg_id,post_password);
+			myobject.post_Email(post_email,post_fname,post_mname,post_lname,post_faculty_id,post_password);
 
 		}).fail(function(xhr, status, errorThrown) {
 			alert("you have already registered");
@@ -68,16 +69,16 @@ function validate() {
 	var fname=document.signup.fname.value;
 	var lname=document.signup.lname.value;
 	var mname=document.signup.mname.value;
-	var clg_id=document.signup.clg_id.value;
-	var univ_no=document.signup.univ_no.value;
+	//var clg_id=document.signup.clg_id.value;
+	//var univ_no=document.signup.univ_no.value;
 	var dept=document.signup.department.value;
 	var mobile_no=document.signup.mobile_no.value;
 	var email=document.signup.email.value;
 	var password=document.signup.password.value;
 	var confirmation_password=document.signup.confirm_password.value;
-	var question=document.signup.Security_question.value
-	var answer=document.signup.answer.value
-	
+	var question=document.signup.Security_question.value;
+	var answer=document.signup.answer.value;
+	var faculty_id=document.signup.faculty_id.value;
 
 	var Name=/^[A-za-z]+$/,id=/^[0-9]{4,4}[a-z]+[0-9]{4,4}$/;
 	var uno=/^2127[0-9]{8,8}$/,mobile=/^[0-9]{10,10}$/;
@@ -113,7 +114,7 @@ function validate() {
 							return false;		
 						}
 
-					if(clg_id=="")
+					/*if(clg_id=="")
 						{
 							alert("college id is empty")
 							return false;	
@@ -133,7 +134,7 @@ function validate() {
 						{
 							alert("University number  is is invalid")
 							return false;		
-						}
+						}*/
 					if(dept=="NA")
 						{
 							alert("Department is invalid")
@@ -193,7 +194,7 @@ function validate() {
 					return true;
 			}	
 		if(data_validate()){ 
-			postdata(fname,mname,lname,clg_id,univ_no,dept,mobile_no,email,password,question,answer);
+			postdata(fname,mname,lname,faculty_id/*clg_id,univ_no*/,dept,mobile_no,email,password,question,answer);
 		}		
 }
 
