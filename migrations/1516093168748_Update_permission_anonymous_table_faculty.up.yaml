@@ -1,0 +1,21 @@
+- args:
+    role: anonymous
+    table: faculty
+  type: drop_select_permission
+- args:
+    permission:
+      columns:
+      - fname
+      - mname
+      - lname
+      - department
+      - mobile
+      - email
+      - password
+      - question
+      - answer
+      - faculty_id
+      filter: {}
+    role: anonymous
+    table: faculty
+  type: create_select_permission
