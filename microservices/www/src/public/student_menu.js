@@ -186,10 +186,7 @@ function profile(){
                   {
                     profile_row=json[0];
                     key=[];
-                    for( i in profile_row)
-                    	key.push(i);
-                    alert(key);
-                    
+
                     var result='<b>Name: &emsp;</b><span style="margin-left:90px;"></span>'+profile_row['fname']+' '+profile_row['mname']+' '+profile_row['lname']+'<br><br><b>College Id:&emsp;<span style="margin-left:58px;"></span></b>'+profile_row['clg_id']+'<br><br><b>University Roll no:</b>&emsp;'+profile_row['university reg_no']+'<br><br><b>Department:</b>&emsp;<span style="margin-left:45px;"></span>'+profile_row['department']+'<br><br><b>Mobile no:&emsp;<span style="margin-left:55px;"></span>+91</b>'+profile_row['mobile']+'<br><br><b>Email:&emsp;<span style="margin-left:85px;"></span></b>'+profile_row['email']+"<br><br>";
                     $("#text").append(result);
                   }
@@ -210,13 +207,12 @@ function profile(){
 
  function Form()
  {
- 	alert([profile_row['count'],profile_row['fname']]);
-    hidden();
+ 	hidden();
     dat();
     $("#griv_form").show();
     if(profile_row["count"]==1){
-    	alert("hi");
-    	//window.open("./agreement.html","_top","location=0")
+    	//alert("hi");
+    	window.open("./agreement.html","_top","location=0")
     }
  }
 
