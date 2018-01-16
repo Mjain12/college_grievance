@@ -18,15 +18,15 @@ function profile(){
     Id=Id[0];
     //alert(document.cookie);
     if(DB=="faculty"){
-     select_id={"college_id" : {"$eq": Id} };
+     select_id={"faculty_id" : {"$eq": Id} };
     }
     else if(DB=="institute_level_faculty"){
       PROBLEMS={"stage" : {"$eq": 2} };
-      select_id={"email" : {"$eq": Id} };;
+      select_id={"faculty_id" : {"$eq": Id} };;
     }
     else if(DB=="central_grievance_redressal_faculty"){
       PROBLEMS={"stage" : {"$eq": 3} };
-      select_id={"email" : {"$eq": Id} };;
+      select_id={"faculty_id" : {"$eq": Id} };;
     }
 
  	  hidden();
