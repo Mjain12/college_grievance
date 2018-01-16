@@ -23,3 +23,17 @@ background-color:lightblue;
 body{
   font-family:Palatino;
 }
+/* The Close Button */
+.addbtn {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.addbtn:hover,
+.addbtn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
