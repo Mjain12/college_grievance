@@ -1,0 +1,4 @@
+- args:
+    role: anonymous
+    table: Grievance
+  type: drop_delete_permission
