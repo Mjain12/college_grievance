@@ -29,7 +29,7 @@ $(document).ready(function(){
                                                 //"problem_id": new_id,
                                                 "problem_description": problem_description_data,
                                                 "subject": document.getElementById("griv_name").value,
-                                                "date": ($('#Time').val()).split(" ")[0],
+                                                "date": (($('#Time').val()).split(" ")[0]).split("-")[2],
                                                 "time": ($('#Time').val()).split(" ")[1],
                                                 "reference": document.getElementById("ref").value,
                                                 "category": document.getElementById("Grievance_Category").value,
