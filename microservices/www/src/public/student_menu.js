@@ -516,27 +516,65 @@ function report(){
 	$("#datareport").append("no records found");
 	else{
 		$("#datareport").append("<b>Total no of problems Posted:</b> "+json.length);
-	var dept_fav_prob="",dept_unfav_prob,dept_unsolved_prob;
+	var dept_fav_prob="",dept_unfav_prob="",dept_unsolved_prob="";
 	var dept_fav_prob_count=0,dept_unfav_prob_count=0,dept_unsolved_prob_count=0;
+
+	var ins_fav_prob="",ins_unfav_prob="",ins_unsolved_prob="";
+	var ins_fav_prob_count=0,ins_unfav_prob_count=0,ins_unsolved_prob_count=0;
+
+	var cen_fav_prob="",cen_unfav_prob="",cen_unsolved_prob="";
+	var cen_fav_prob_count=0,cen_unfav_prob_count=0,cen_unsolved_prob_count=0;
+	
 	for(var i=0;i<json.length;i++){
 		if(json[i]["stage"]==1){
 			if(json[i]["favourable"]=="favourable"){
 				dept_fav_prob_count++;
-				dept_fav_prob="<br><div id='Problem"+json[i]["problem_id"]+"'><b>"+json[i]["subject"]+"</b><span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span></div>";
+				dept_fav_prob="<br><div id='Problem"+json[i]["problem_id"]+"'>&emsp;&emsp;&emsp;<b>"+json[i]["subject"]+"</b><span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span></div>";
 			}
 			else if(json[i]["favourable"]=="notfavourable"){
 				dept_unfav_prob_count++;
-				dept_unfav_prob="<br><div id='Problem"+json[i]["problem_id"]+"'><b>"+json[i]["subject"]+"</b><span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span></div>";
+				dept_unfav_prob="<br><div id='Problem"+json[i]["problem_id"]+"'>&emsp;&emsp;&emsp;<b>"+json[i]["subject"]+"</b><span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span></div>";
 			}
 			else{
 				dept_unsolved_prob_count++;
-				dept_unsolved_prob="<br><div id='Problem"+json[i]["problem_id"]+"'><b>"+json[i]["subject"]+"</b><span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span></div>";
+				dept_unsolved_prob="<br><div id='Problem"+json[i]["problem_id"]+"'>&emsp;&emsp;&emsp;<b>"+json[i]["subject"]+"</b><span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span></div>";
 			}
 
-		}
+		  }
+		  else if(json[i]["stage"]==2){
+			if(json[i]["favourable"]=="favourable"){
+				ins_fav_prob_count++;
+				ins_fav_prob="<br><div id='Problem"+json[i]["problem_id"]+"'>&emsp;&emsp;&emsp;<b>"+json[i]["subject"]+"</b><span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span></div>";
 			}
+			else if(json[i]["favourable"]=="notfavourable"){
+				ins_unfav_prob_count++;
+				ins_unfav_prob="<br><div id='Problem"+json[i]["problem_id"]+"'>&emsp;&emsp;&emsp;<b>"+json[i]["subject"]+"</b><span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span></div>";
+			}
+			else{
+				ins_unsolved_prob_count++;
+				ins_unsolved_prob="<br><div id='Problem"+json[i]["problem_id"]+"'>&emsp;&emsp;&emsp;<b>"+json[i]["subject"]+"</b><span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span></div>";
+			}		  	
+		  }
+		  else{
+		  	if(json[i]["favourable"]=="favourable"){
+				cen_fav_prob_count++;
+				cen_fav_prob="<br><div id='Problem"+json[i]["problem_id"]+"'>&emsp;&emsp;&emsp;<b>"+json[i]["subject"]+"</b><span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span></div>";
+			}
+			else if(json[i]["favourable"]=="notfavourable"){
+				cen_unfav_prob_count++;
+				cen_unfav_prob="<br><div id='Problem"+json[i]["problem_id"]+"'>&emsp;&emsp;&emsp;<b>"+json[i]["subject"]+"</b><span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span></div>";
+			}
+			else{
+				cen_unsolved_prob_count++;
+				cen_unsolved_prob="<br><div id='Problem"+json[i]["problem_id"]+"'>&emsp;&emsp;&emsp;<b>"+json[i]["subject"]+"</b><span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span></div>";
+			}
+		  }
+		
+
+
+		}
 	}
-	$("#datareport").append("<br><b>Total no of problems solved:</b> "+(dept_fav_prob_count+dept_unfav_prob_count)+dept_fav_prob+dept_unfav_prob);	
+	$("#datareport").append("<br><b>Total no of problems solved:</b> "+(dept_fav_prob_count+dept_unfav_prob_count+dept_unsolved_prob+ins_fav_prob_count+ins_unfav_prob_count+ins_unsolved_prob+cen_fav_prob_count+cen_unfav_prob_count+cen_unsolved_prob));	
 	//$("#problemscount").append(json.length);
 }).fail(function(xhr, status, errorThrown) {
 	alert("error");
