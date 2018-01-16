@@ -594,7 +594,7 @@ function filedownload(){
             left: 40,
             width: 1000
         };
-      doc.fromHTML($('#datareport')[0]+$('#datareport')[1]+$('#datareport')[2],margins.left, // x coord
+      doc.fromHTML($('#datareport')[0],margins.left, // x coord
             margins.top, { // y coord
                 'width': margins.width, // max width of content on PDF
                 'elementHandlers': specialElementHandlers
@@ -603,9 +603,7 @@ function filedownload(){
             function (dispose) {
                 // dispose: object with X, Y of the last line add to the PDF 
                 //          this allow the insertion of new lines after html
-                doc.save('Test.pdf');
+                doc.save('report.pdf');
             }, margins
         );
-      
-      doc.save('report.pdf');
 }
