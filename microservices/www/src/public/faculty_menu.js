@@ -349,3 +349,235 @@ function status()
    return true;
    
  }
+function showproblem(problem_name){
+  problem_name="#Problem"+problem_name;
+  $(problem_name).slideToggle();
+}                            
+function report(){
+  var fromdate=$("#fromdate").val();
+  var todate=$("#todate").val();
+  fromdate=fromdate.split("-");
+  todate=todate.split("-");
+  $("#datareport").empty();
+  $.ajax({
+  url: "https://data.bulimic45.hasura-app.io/v1/query",
+  contentType: "application/json",
+  data: JSON.stringify({
+      "type": "select",
+      "args": {
+            "table": "Grievance",
+            "columns": [
+                  "stage",
+                  "status",
+                  "problem_id",
+                  "problem_description",
+                  "subject",
+                  "reference",
+                  "category",
+                  "committee",
+                  "favourable",
+                  "hod_solution",
+                  "dean_solution",
+                  "principal_solution","date","month","time","year"
+            ],
+            "where": {
+                  "$and": [
+                        {
+                              "$and": [
+                                    {
+                                          "date": {
+                                                "$gte": fromdate[0]
+                                          }
+                                    },
+                                    {
+                                          "date": {
+                                                "$lte": todate[0]
+                                          }
+                                    }
+                              ]
+                        },
+                        {
+                              "$and": [
+                                    {
+                                          "month": {
+                                                "$gte": fromdate[1]
+                                          }
+                                    },
+                                    {
+                                          "month": {
+                                                "$lte": todate[1]
+                                          }
+                                    }
+                              ]
+                        },
+                        {
+                              "$and": [
+                                    {
+                                          "year": {
+                                                "$gte": fromdate[2]
+                                          }
+                                    },
+                                    {
+                                          "year": {
+                                                "$lte": todate[2]
+                                          }
+                                    }
+                              ]
+                        },
+                        {
+                        "student_clg_id": {
+                            "$eq": Id
+                        }
+                    }
+                  ]
+            }
+      }
+  }),
+  type: "POST",
+  dataType: "json"
+}).done(function(json) {
+  if(json.length==0)
+  $("#datareport").append("no records found");
+  else{
+    $("#datareport").append("<b>Total no of problems Posted:</b> "+json.length);
+  var dept_fav_prob="",dept_unfav_prob="",dept_unsolved_prob="",dept_unseen_prob="";
+  var dept_fav_prob_count=0,dept_unfav_prob_count=0,dept_unsolved_prob_count=0,dept_unseen_prob_count=0;
+
+  var ins_fav_prob="",ins_unfav_prob="",ins_unsolved_prob="",ins_unseen_prob="";
+  var ins_fav_prob_count=0,ins_unfav_prob_count=0,ins_unsolved_prob_count=0,ins_unseen_prob_count=0;
+
+  var cen_fav_prob="",cen_unfav_prob="",cen_unsolved_prob="",cen_unseen_prob="";
+  var cen_fav_prob_count=0,cen_unfav_prob_count=0,cen_unsolved_prob_count=0,cen_unseen_prob_count=0;
+  
+  for(var i=0;i<json.length;i++){
+    if(json[i]["stage"]==1){
+        
+        if(json[i]["status"]=="Available"){
+          if(json[i]["favourable"]=="favourable"){
+            dept_fav_prob_count++;
+            dept_fav_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><div id='Problem"+json[i]["problem_id"]+"' style='margin-left:70px;display:none;'></div>";
+          }
+          else if(json[i]["favourable"]=="notfavourable"){
+            dept_unfav_prob_count++;
+            dept_unfav_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><div id='Problem"+json[i]["problem_id"]+"' style='margin-left:70px;display:none;'></div>";
+          }
+          else{
+            dept_unseen_prob_count++;
+            dept_unseen_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><div id='Problem"+json[i]["problem_id"]+"' style='margin-left:70px;display:none;'></div>";
+          }
+          
+        }
+        else{
+          dept_unsolved_prob_count++;
+          dept_unsolved_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><div id='Problem"+json[i]["problem_id"]+"' style='margin-left:70px;display:none;'></div>";
+            
+        }
+
+      }
+      else if(json[i]["stage"]==2){
+          if(json[i]["status"]=="Available"){
+          if(json[i]["favourable"]=="favourable"){
+            ins_fav_prob_count++;
+            ins_fav_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><div id='Problem"+json[i]["problem_id"]+"' style='margin-left:70px;display:none;'></div>";
+          }
+          else if(json[i]["favourable"]=="notfavourable"){
+            ins_unfav_prob_count++;
+            ins_unfav_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><div id='Problem"+json[i]["problem_id"]+"' style='margin-left:70px;display:none;'></div>";
+          }
+          else{
+            ins_unseen_prob_count++;
+            ins_unseen_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><div id='Problem"+json[i]["problem_id"]+"'style='margin-left:70px;display:none;'></div>";
+          
+          }       
+        }
+        else{
+            ins_unsolved_prob_count++;
+            ins_unsolved_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><div id='Problem"+json[i]["problem_id"]+"' style='margin-left:70px;display:none;'></div>";
+          
+        }
+      }
+      else{
+            if(json[i]["status"]=="Available"){
+              if(json[i]["favourable"]=="favourable"){
+              cen_fav_prob_count++;
+              cen_fav_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><div id='Problem"+json[i]["problem_id"]+"' style='margin-left:70px;display:none;'></div>";
+            }
+            else if(json[i]["favourable"]=="notfavourable"){
+              cen_unfav_prob_count++;
+              cen_unfav_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><div id='Problem"+json[i]["problem_id"]+"' style='margin-left:70px;display:none;'></div>";
+            }
+            else{
+              cen_unsolved_prob_count++;
+              cen_unsolved_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><div id='Problem"+json[i]["problem_id"]+"' style='margin-left:70px;display:none;'></div>";
+            }
+          }
+          else{
+              cen_unseen_prob_count++;
+              cen_unseen_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><div id='Problem"+json[i]["problem_id"]+"' style='margin-left:70px;display:none;'></div>";
+              
+          }
+      }
+    
+
+
+    }
+  var dept_count=dept_fav_prob_count+dept_unfav_prob_count+dept_unseen_prob_count;
+  var ins_count=ins_fav_prob_count+ins_unfav_prob_count+ins_unseen_prob_count;
+  var cen_count=cen_fav_prob_count+cen_unfav_prob_count+cen_unseen_prob_count;
+  var total_count=dept_count+ins_count+cen_count;
+  var table_content="";
+  table_content+="<br><table class=\"table table-striped\"><thead class=\"table-inverse\"><tr><th>Committee</th><th>Total posted</th><th>Solved</th><th>UnSolved</th><th>favourable</th><th>UnFaourable</th><th>Not Seen</th></tr></thead>";
+  table_content+="<tbody><tr><td>Department level</td><td>"+(dept_count+dept_unsolved_prob_count)+"</td><td>"+dept_count+"</td><td>"+dept_unsolved_prob_count+"</td><td>"+dept_fav_prob_count+"</td><td>"+dept_unfav_prob_count+"</td><td>"+dept_unseen_prob_count+"</td></tr>";
+  table_content+="<tr><td>Institute level</td><td>"+(ins_count+ins_unsolved_prob_count)+"</td><td>"+ins_count+"</td><td>"+ins_unsolved_prob_count+"</td><td>"+ins_fav_prob_count+"</td><td>"+ins_unfav_prob_count+"</td><td>"+ins_unseen_prob_count+"</td></tr>";
+  table_content+="<tr><td>Central level</td><td>"+(cen_count+cen_unsolved_prob_count)+"</td><td>"+cen_count+"</td><td>"+cen_unsolved_prob_count+"</td><td>"+cen_fav_prob_count+"</td><td>"+cen_unfav_prob_count+"</td><td>"+cen_unseen_prob_count+"</td></tr></tbody></table>";
+  $("#datareport").append("<br><b>Total no of problems solved:</b> "+total_count+table_content);
+  $("#datareport").append("<br><h4><b>Department Level Problems<b></h4><br><h5>&emsp;<b>favourable Problems</b></h5>"+dept_fav_prob+"<h5>&emsp;<b>Unfavourable Problems</b></h5>"+dept_unfav_prob+"<h5>&emsp;<b>UnSeen Problems</b></h5>"+dept_unseen_prob+"<h5>&emsp;<b>Unsolved Problems</b></h5>"+dept_unsolved_prob);
+  $("#datareport").append("<br><h4><b>Institute Problems<b></h4><br><h5>&emsp;<b>favourable Problems</b></h5>"+ins_fav_prob+"<h5>&emsp;<b>Unfavourable Problems</b></h5>"+ins_unfav_prob+"<h5>&emsp;<b>UnSeen Problems</b></h5>"+ins_unseen_prob+"<h5>&emsp;<b>Unsolved Problems</b></h5>"+ins_unsolved_prob);
+  $("#datareport").append("<br><h4><b>Central Level Problems<b></h4><br><h5>&emsp;<b>favourable Problems</b></h5>"+cen_fav_prob+"<h5>&emsp;<b>Unfavourable Problems</b></h5>"+cen_unfav_prob+"<h5>&emsp;<b>UnSeen Problems</b></h5>"+cen_unseen_prob+"<h5>&emsp;<b>Unsolved Problems</b></h5>"+cen_unsolved_prob);
+  
+  for(var i=0;i<json.length;i++){
+        var divid=("#Problem"+json[i]["problem_id"]);
+
+        if(json[i]["stage"]==1){
+            
+            //alert(divid)
+            if(json[i]["status"]=="Available"){
+              $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br>");
+            }
+            else{
+              $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br>");
+                
+            }
+
+          }
+         else if(json[i]["stage"]==2){
+              if(json[i]["status"]=="Available"){
+                  $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br><b>Institute Level Committee Solution:</b><br>"+json[i]["dean_solution"]+"<br>");
+            
+            }
+            else{
+                $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br>");   
+            }
+          }
+          else{
+                if(json[i]["status"]=="Available"){
+                                    $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br><b>Institute Level Committee Solution:</b><br>"+json[i]["dean_solution"]+"<br><b>Central Level Committee Solution:</b><br>"+json[i]["principal_solution"]+"<br>");
+              }
+              else{
+                                  $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br><b>Institute Level Committee Solution:</b><br>"+json[i]["dean_solution"]+"<br>"); 
+              }
+          }
+        
+
+
+    }
+  }
+  //$("#problemscount").append(json.length);
+}).fail(function(xhr, status, errorThrown) {
+  alert("error");
+  console.log("Error: " + errorThrown);
+  console.log("Status: " + status);
+  console.dir(xhr);
+});
+  
+}
