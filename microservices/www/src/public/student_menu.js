@@ -433,7 +433,8 @@ function Solutionnotfavourable(Name){
                             }
 function report(){
 	var fromdate=$("#fromdate").val()
-	if((fromdate.split("-")).length==3)
-		alert(fromdate);
-	else alert("invalid formate");
+	var todate=$("#todate").val()
+	fromdate=((fromdate.split("-")).reverse()).join("-")
+	alert(fromdate);
+	
 }
