@@ -577,12 +577,12 @@ function report(){
 	var dept_count=dept_fav_prob_count+dept_unfav_prob_count,ins_count=ins_fav_prob_count+ins_unfav_prob_count;
 	var cen_count=cen_fav_prob_count+cen_unfav_prob_count;
 	var total_count=dept_count+ins_count+cen_count;
-	$("#datareport").append("<br><b>Total no of problems solved:</b> "+total_count);
-	$("#datareport").append("<br><table class=\"table table-striped\"><thead class=\"table-inverse\"><tr><th>Committee</th><th>Total posted</th><th>Solved</th><th>favourable</th><th>UnFaourable</th><th>Unsolved</th></tr></thead>")
-	$("#datareport").append("<tbody><tr><td>Department level</td><td>"+(dept_count+dept_unsolved_prob_count)+"</td><td>"+dept_count+"</td><td>"+dept_fav_prob_count+"</td><td>"+dept_unfav_prob_count+"</td><td>"+dept_unsolved_prob_count+"</td></tr>");
-	$("#datareport").append("<tr><td>Institute level</td><td>"+(ins_count+ins_unsolved_prob_count)+"</td><td>"+ins_count+"</td><td>"+ins_fav_prob_count+"</td><td>"+ins_unfav_prob_count+"</td><td>"+ins_unsolved_prob_count+"</td></tr>");
-	$("#datareport").append("<tr><td>Central level</td><td>"+(cen_count+cen_unsolved_prob_count)+"</td><td>"+cen_count+"</td><td>"+cen_fav_prob_count+"</td><td>"+cen_unfav_prob_count+"</td><td>"+cen_unsolved_prob_count+"</td></tr></tbody>");
-		
+	var table_content="";
+	table_content+="<br><table class=\"table table-striped\"><thead class=\"table-inverse\"><tr><th>Committee</th><th>Total posted</th><th>Solved</th><th>favourable</th><th>UnFaourable</th><th>Unsolved</th></tr></thead>";
+	table_content+="<tbody><tr><td>Department level</td><td>"+(dept_count+dept_unsolved_prob_count)+"</td><td>"+dept_count+"</td><td>"+dept_fav_prob_count+"</td><td>"+dept_unfav_prob_count+"</td><td>"+dept_unsolved_prob_count+"</td></tr>";
+	table_content+="<tr><td>Institute level</td><td>"+(ins_count+ins_unsolved_prob_count)+"</td><td>"+ins_count+"</td><td>"+ins_fav_prob_count+"</td><td>"+ins_unfav_prob_count+"</td><td>"+ins_unsolved_prob_count+"</td></tr>";
+	table_content+="<tr><td>Central level</td><td>"+(cen_count+cen_unsolved_prob_count)+"</td><td>"+cen_count+"</td><td>"+cen_fav_prob_count+"</td><td>"+cen_unfav_prob_count+"</td><td>"+cen_unsolved_prob_count+"</td></tr></tbody></table>";
+	$("#datareport").append("<br><b>Total no of problems solved:</b> "+total_count+table_content);
 	//$("#problemscount").append(json.length);
 }).fail(function(xhr, status, errorThrown) {
 	alert("error");
