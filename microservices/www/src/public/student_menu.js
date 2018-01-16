@@ -205,6 +205,7 @@ function profile(){
  }
 
 function close_agreement(){
+		alert("hi")
 		document.getElementById('Agreement').style.display = "block";
 }
  function Form()
