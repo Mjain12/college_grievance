@@ -436,7 +436,7 @@ function Solutionnotfavourable(Name){
                             }
 function showproblem(problem_name){
 	problem_name="#problem"+problem_name;
-	$(problem_name)..slideToggle();
+	$(problem_name).slideToggle();
 }                            
 function report(){
 	var fromdate=$("#fromdate").val();
