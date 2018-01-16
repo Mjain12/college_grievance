@@ -522,14 +522,19 @@ function report(){
 		if(json[i]["stage"]==1){
 			if(json[i]["favourable"]=="favourable"){
 				dept_fav_prob_count++;
-				dept_fav_prob="<br><div id='Problem"+json[i]["problem_id"]+"'><b>"+json[i]["subject"]+"</b><span onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span></div>";
+				dept_fav_prob="<br><div id='Problem"+json[i]["problem_id"]+"'><b>"+json[i]["subject"]+"</b><span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span></div>";
 			}
 			else if(json[i]["favourable"]=="notfavourable"){
 				dept_unfav_prob_count++;
-				dept_unfav_prob="<br><div id='Problem"+json[i]["problem_id"]+"'><b>"+json[i]["subject"]+"</b><span onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span></div>";
+				dept_unfav_prob="<br><div id='Problem"+json[i]["problem_id"]+"'><b>"+json[i]["subject"]+"</b><span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span></div>";
+			}
+			else{
+				dept_unsolved_prob_count++;
+				dept_unsolved_prob="<br><div id='Problem"+json[i]["problem_id"]+"'><b>"+json[i]["subject"]+"</b><span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span></div>";
 			}
 
 		}
+			}
 	}
 	$("#datareport").append("<br><b>Total no of problems solved:</b> "+(dept_fav_prob_count+dept_unfav_prob_count)+dept_fav_prob+dept_unfav_prob);	
 	}
