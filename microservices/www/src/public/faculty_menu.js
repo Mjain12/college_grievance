@@ -603,7 +603,7 @@ function filedownload(){
             function (dispose) {
                 // dispose: object with X, Y of the last line add to the PDF 
                 //          this allow the insertion of new lines after html
-                pdf.save('Test.pdf');
+                doc.save('Test.pdf');
             }, margins
         );
       
