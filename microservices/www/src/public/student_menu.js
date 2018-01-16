@@ -615,10 +615,13 @@ function report(){
 	$("#datareport").append("<br><h4><b>Department Level Problems<b></h4><br><h5>&emsp;<b>favourable Problems</b></h5>"+dept_fav_prob+"<h5>&emsp;<b>Unfavourable Problems</b></h5>"+dept_unfav_prob+"<h5>&emsp;<b>Unsolved Problems</b></h5>"+dept_unsolved_prob);
 	
 		for(var i=0;i<json.length;i++){
+				var divid=("#problem"+json[i]["problem_id"]);
+
 				if(json[i]["stage"]==1){
 						
+						alert(divid)
 						if(json[i]["status"]=="Available"){
-							$(("#problem"+json[i]["problem_id"])).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br>");
+							$(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br>");
 						}
 						/*else{
 								
