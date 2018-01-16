@@ -88,7 +88,7 @@
         </div> 
         <div class="col-9 col-sm-9" style="border:1px solid lightblue; "  >
           <br>
-           <div id="text" value="" style="margin-left: 50px;">
+           <div id="text" value="" style="margin-left: 50px;">  
             </div>
             <div id="griv_form">
             <form action="http://127.0.0.1/clg_Grievance/stu_grivence.php" method="post" onreset="clear_dept()" >  
@@ -155,8 +155,8 @@
             <div id="problems"></div>
             <div id="report">
             <center><h2><b><span style="color: blue;">Annual Report</span></b></h2></center><br>
-              <span>From:</span><input type="date" id="fromdate">&emsp;&emsp;
-              <span>To:</span><input type="date" id="todate">&emsp;
+              <span>From:</span><input type="text" placeholder="dd-mm-yyyy" id="fromdate">&emsp;&emsp;
+              <span>To:</span><input type="text" placeholder="dd-mm-yyyy" id="todate">&emsp;
               <input type="button" value="Go"onclick="report()">
               <br>
               <div id="datareport" style="max-height: 300px;overflow-y: auto;">
