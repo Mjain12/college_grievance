@@ -211,8 +211,8 @@ function profile(){
     dat();
     $("#griv_form").show();
     if(profile_row["count"]==1){
-    	//alert("hi");
-    	window.open("./agreement.html","_top","height=400")
+    	document.getElementById('Agreement').style.display = "block";
+    	//window.open("./agreement.html","_top","height=400")
     }
  }
 
