@@ -1,0 +1,13 @@
+- args:
+    sql: CREATE TABLE "Grievance"("student_name" text NOT NULL, "student_clg_id" text
+      NOT NULL, "student_university_id" text NOT NULL, "stage" integer NOT NULL, "status"
+      text NOT NULL, "problem_id" bigserial NOT NULL, "problem_description" text NOT
+      NULL, "subject" text NOT NULL, "date" date NOT NULL, "time" text NOT NULL, "reference"
+      text NOT NULL, "category" text NOT NULL, "committee" text NOT NULL, "department"
+      text NOT NULL, "student_email" text NOT NULL, "student_mobile" text NOT NULL,
+      "seen" text , "favourable" text , "hod_solution" text , "dean_solution" text
+      , "principal_solution" text , PRIMARY KEY ("problem_id") )
+  type: run_sql
+- args:
+    name: Grievance
+  type: add_existing_table_or_view
