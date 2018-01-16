@@ -140,7 +140,7 @@ function status()
                   "args": {
                         "table": "Grievance",
                         "columns": [
-                              "department","student_clg_id","stage","status","time","student_university_id","category","problem_name","problem_id","commitee","student_name","date","student_email","favourable","student_mobile","refernce","seen"
+                              "department","student_clg_id","stage","status","time","student_university_id","category","subject","problem_id","committee","student_name","date","student_email","favourable","student_mobile","refernce","seen"
                         ],
                         "where": PROBLEMS
                   }
@@ -152,9 +152,9 @@ function status()
                   for(var i=0;i<json.length;i++){
                        var row=json[i];
                       if(row['status']=='Available')
-                        result+='<tr><td>'+(i+1)+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['problem_name']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['refernce']+'</td><td><a href="#" onclick=\'solution("'+row['problem_id']+'")\'>'+row['status']+'</a></td><td>'+row['seen']+'</td></tr>';
+                        result+='<tr><td>'+(i+1)+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['subject']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['refernce']+'</td><td><a href="#" onclick=\'solution("'+row['problem_id']+'")\'>'+row['status']+'</a></td><td>'+row['seen']+'</td></tr>';
                       else         
-                         result+='<tr><td>'+(i+1)+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['problem_name']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['refernce']+'</td><td>'+row['status']+'</td><td>'+row['seen']+'</td></tr>';
+                         result+='<tr><td>'+(i+1)+'</td><td><a href="#" onclick=\'problem("'+row['problem_id']+'")\'>'+row['subject']+'</a></td><td>'+row['date']+'</td><td>'+row['time']+'</td><td>'+row['category']+'</td><td>'+row['refernce']+'</td><td>'+row['status']+'</td><td>'+row['seen']+'</td></tr>';
                   }
                   result+="</table>";
                   $("#datas").append(result);
@@ -197,7 +197,7 @@ function status()
             type: "POST",
             dataType: "json"
           }).done(function(json) {
-            $('#problems').append("<b>Subject</b>&emsp;&emsp;"+json[0]["problem_name"]+"<br><b><br>Posted by, Name:&emsp;</b>"+json[0]["student_name"]+"&emsp;&emsp;<b>University Register No:&emsp;</b>"+json[0]["student_university_id"]+"<br><b>Date:&emsp;</b>"+json[0]["date"]+"&emsp;&emsp;<b>Time:</b>&emsp;"+json[0]["time"]+"<br><b>References:</b>&emsp;"+json[0]["refernce"]+"<br><b>Category:</b>&emsp;"+json[0]["category"]+"&emsp;&emsp;<b>Commitee:</b>&emsp;"+json[0]["commitee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json[0]["problem_discription"]+"<br><br>");
+            $('#problems').append("<b>Subject</b>&emsp;&emsp;"+json[0]["subject"]+"<br><b><br>Posted by, Name:&emsp;</b>"+json[0]["student_name"]+"&emsp;&emsp;<b>University Register No:&emsp;</b>"+json[0]["student_university_id"]+"<br><b>Date:&emsp;</b>"+json[0]["date"]+"&emsp;&emsp;<b>Time:</b>&emsp;"+json[0]["time"]+"<br><b>References:</b>&emsp;"+json[0]["refernce"]+"<br><b>Category:</b>&emsp;"+json[0]["category"]+"&emsp;&emsp;<b>committee:</b>&emsp;"+json[0]["committee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json[0]["problem_description"]+"<br><br>");
             if(DB=="faculty")
               $('#problems').append("<br><b>Solution</b><br>");
             else if(DB=="institute_level_faculty")
@@ -263,9 +263,9 @@ function status()
                                       "to": profile_row["email"],
                                       "from": "clggrievances@gmail.com",
                                       "fromName": "SVCE Grievance Redressal Committee",
-                                      "sub": "You Have successfully  posted the solution for the "+json[0]["problem_name"],
-                                      "text": "Dear "+profile_row['fname']+' '+profile_row['mname']+' '+profile_row['lname']+",\nGreetings from SVCE Grievance Redressal System.!! You have successfully posted  the soltion for the Problem name:"+json[0]["problem_name"]+"<br>Regards,SVCE Grievance Team",
-                                      "html": "Dear "+profile_row['fname']+' '+profile_row['mname']+' '+profile_row['lname']+",<br><br>Greetings from SVCE Grievance Redressal System.!!<br>You have successfully posted the soltion for the Problem name:"+json[0]["problem_name"]+"<br>Regards,<br>SVCE Grievance Team<br>"
+                                      "sub": "You Have successfully  posted the solution for the "+json[0]["subject"],
+                                      "text": "Dear "+profile_row['fname']+' '+profile_row['mname']+' '+profile_row['lname']+",\nGreetings from SVCE Grievance Redressal System.!! You have successfully posted  the soltion for the subject:"+json[0]["subject"]+"<br>Regards,SVCE Grievance Team",
+                                      "html": "Dear "+profile_row['fname']+' '+profile_row['mname']+' '+profile_row['lname']+",<br><br>Greetings from SVCE Grievance Redressal System.!!<br>You have successfully posted the soltion for the subject:"+json[0]["subject"]+"<br>Regards,<br>SVCE Grievance Team<br>"
                                   }),
                                   type: "POST",
                                   dataType: "json"
@@ -281,8 +281,8 @@ function status()
                                       "from": "clggrievances@gmail.com",
                                       "fromName": "SVCE Grievance Redressal Committee",
                                       "sub": "Solution for your problem is Available!!!!",
-                                      "text": "Dear "+json[0]['student_name']+",\nGreetings from SVCE Grievance Redressal System.!!The soltion for the Problem name:"+json[0]["problem_name"]+"<br>is Available now, and you can view it our portal,Thank you,with Regards,SVCE Grievance Team",
-                                      "html": "Dear "+json[0]['student_name']+",<br><br>Greetings from SVCE Grievance Redressal System.!!<br>The soltion for the Problem name:"+json[0]["problem_name"]+"<br>is Available now, and you can view it our portal,Thank you,with Regards,<br>SVCE Grievance Team<br>"
+                                      "text": "Dear "+json[0]['student_name']+",\nGreetings from SVCE Grievance Redressal System.!!The soltion for the subject:"+json[0]["subject"]+"<br>is Available now, and you can view it our portal,Thank you,with Regards,SVCE Grievance Team",
+                                      "html": "Dear "+json[0]['student_name']+",<br><br>Greetings from SVCE Grievance Redressal System.!!<br>The soltion for the subject:"+json[0]["subject"]+"<br>is Available now, and you can view it our portal,Thank you,with Regards,<br>SVCE Grievance Team<br>"
                                   }),
                                   type: "POST",
                                   dataType: "json"
@@ -328,11 +328,11 @@ function status()
           dataType: "json"
         }).done(function(json_solution) {
           if(DB=="faculty")
-              $('#problems').append("<b>Problem Name</b>&emsp;&emsp;"+json_solution[0]["problem_name"]+"<br><br><b>Date:&emsp;</b>"+json_solution[0]["date"]+"&emsp;&emsp;&emsp;<b>Time:</b>&emsp;"+json_solution[0]["time"]+"<br><b>References:</b>&emsp;"+json_solution[0]["refernce"]+"<br><b>Category:</b>&emsp;"+json_solution[0]["category"]+"&emsp;&emsp;<b>Commitee:</b>&emsp;"+json_solution[0]["commitee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json_solution[0]["problem_discription"]+"<br><br><b>Department level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["hod_solution"]+"<br><br>");
+              $('#problems').append("<b>subject</b>&emsp;&emsp;"+json_solution[0]["subject"]+"<br><br><b>Date:&emsp;</b>"+json_solution[0]["date"]+"&emsp;&emsp;&emsp;<b>Time:</b>&emsp;"+json_solution[0]["time"]+"<br><b>References:</b>&emsp;"+json_solution[0]["refernce"]+"<br><b>Category:</b>&emsp;"+json_solution[0]["category"]+"&emsp;&emsp;<b>committee:</b>&emsp;"+json_solution[0]["committee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json_solution[0]["problem_description"]+"<br><br><b>Department level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["hod_solution"]+"<br><br>");
           else if(DB=="institute_level_faculty")
-               $('#problems').append("<b>Problem Name</b>&emsp;&emsp;"+json_solution[0]["problem_name"]+"<br><br><b>Date:&emsp;</b>"+json_solution[0]["date"]+"&emsp;&emsp;&emsp;<b>Time:</b>&emsp;"+json_solution[0]["time"]+"<br><b>References:</b>&emsp;"+json_solution[0]["refernce"]+"<br><b>Category:</b>&emsp;"+json_solution[0]["category"]+"&emsp;&emsp;<b>Commitee:</b>&emsp;"+json_solution[0]["commitee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json_solution[0]["problem_discription"]+"<br><br><b>Department level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["hod_solution"]+"<br><br>"+"<br><br><b>Institute level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["dean_solution"]+"<br><br>");
+               $('#problems').append("<b>subject</b>&emsp;&emsp;"+json_solution[0]["subject"]+"<br><br><b>Date:&emsp;</b>"+json_solution[0]["date"]+"&emsp;&emsp;&emsp;<b>Time:</b>&emsp;"+json_solution[0]["time"]+"<br><b>References:</b>&emsp;"+json_solution[0]["refernce"]+"<br><b>Category:</b>&emsp;"+json_solution[0]["category"]+"&emsp;&emsp;<b>committee:</b>&emsp;"+json_solution[0]["committee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json_solution[0]["problem_description"]+"<br><br><b>Department level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["hod_solution"]+"<br><br>"+"<br><br><b>Institute level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["dean_solution"]+"<br><br>");
           else if(DB =="central_grievance_redressal_faculty")
-               $('#problems').append("<b>Problem Name</b>&emsp;&emsp;"+json_solution[0]["problem_name"]+"<br><br><b>Date:&emsp;</b>"+json_solution[0]["date"]+"&emsp;&emsp;&emsp;<b>Time:</b>&emsp;"+json_solution[0]["time"]+"<br><b>References:</b>&emsp;"+json_solution[0]["refernce"]+"<br><b>Category:</b>&emsp;"+json_solution[0]["category"]+"&emsp;&emsp;<b>Commitee:</b>&emsp;"+json_solution[0]["commitee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json_solution[0]["problem_discription"]+"<br><br><b>Department level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["hod_solution"]+"<br><br>"+"<br><br><b>Institute level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["dean_solution"]+"<br><br>"+"<br><br><b>Central Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["principal_solution"]+"<br><br>");
+               $('#problems').append("<b>subject</b>&emsp;&emsp;"+json_solution[0]["subject"]+"<br><br><b>Date:&emsp;</b>"+json_solution[0]["date"]+"&emsp;&emsp;&emsp;<b>Time:</b>&emsp;"+json_solution[0]["time"]+"<br><b>References:</b>&emsp;"+json_solution[0]["refernce"]+"<br><b>Category:</b>&emsp;"+json_solution[0]["category"]+"&emsp;&emsp;<b>committee:</b>&emsp;"+json_solution[0]["committee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json_solution[0]["problem_description"]+"<br><br><b>Department level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["hod_solution"]+"<br><br>"+"<br><br><b>Institute level Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["dean_solution"]+"<br><br>"+"<br><br><b>Central Grievance Redressal Committee Solution:</b><br>&emsp;"+json_solution[0]["principal_solution"]+"<br><br>");
           
           if(json_solution[0]["favourable"]=="favourable")
             $('#problems').prepend("<span style='background-color:lightgreen;'><b>Solution Satisfied</b></sapan><br>");
