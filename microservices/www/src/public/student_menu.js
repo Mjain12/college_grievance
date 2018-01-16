@@ -546,6 +546,7 @@ function report(){
 						dept_unseen_prob_count++;
 						dept_unseen_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><br><div id='Problem"+json[i]["problem_id"]+"'>";
 					}
+					
 				}
 				else{
 					dept_unsolved_prob_count++;
@@ -601,7 +602,6 @@ function report(){
 
 
 		}
-	}
 	var dept_count=dept_fav_prob_count+dept_unfav_prob_count+dept_unseen_prob_count;
 	var ins_count=ins_fav_prob_count+ins_unfav_prob_count+ins_unseen_prob_count;
 	var cen_count=cen_fav_prob_count+cen_unfav_prob_count+cen_unseen_prob_count;
@@ -613,6 +613,37 @@ function report(){
 	table_content+="<tr><td>Central level</td><td>"+(cen_count+cen_unsolved_prob_count)+"</td><td>"+cen_count+"</td><td>"+cen_unsolved_prob_count+"</td><td>"+cen_fav_prob_count+"</td><td>"+cen_unfav_prob_count+"</td><td>"+cen_unseen_prob_count+"</td></tr></tbody></table>";
 	$("#datareport").append("<br><b>Total no of problems solved:</b> "+total_count+table_content);
 	$("#datareport").append("<br><h4><b>Department Level Problems<b></h4><br><h5>&emsp;<b>favourable Problems</b></h5>"+dept_fav_prob+"<h5>&emsp;<b>Unfavourable Problems</b></h5>"+dept_unfav_prob+"<h5>&emsp;<b>Unsolved Problems</b></h5>"+dept_unsolved_prob);
+	
+		for(var i=0;i<json.length;i++){
+				if(json[i]["stage"]==1){
+						
+						if(json[i]["status"]=="Available"){
+							$(("#problem"+json[i]["problem_id"])).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br>");
+						}
+						/*else{
+								
+						}*/
+
+				  }
+				/*  else if(json[i]["stage"]==2){
+					  	if(json[i]["status"]=="Available"){
+						}
+						else{
+							
+						}
+				  }
+				  else{
+						  	if(json[i]["status"]=="Available"){
+							}
+							else{
+									
+							}
+				  }*/
+				
+
+
+		}
+	}
 	//$("#problemscount").append(json.length);
 }).fail(function(xhr, status, errorThrown) {
 	alert("error");
