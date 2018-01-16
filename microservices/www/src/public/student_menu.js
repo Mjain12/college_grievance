@@ -12,7 +12,7 @@ $(document).ready(function(){
       var problem_description_data=problem_description_value.join("<br>");
       problem_description_data=(problem_description_data.split("\"")).join("'");
       problem_description_data=(problem_description_data.split("\t")).join("&emsp;&emsp;");
-                /*$.ajax({
+                $.ajax({
                           url: "https://data.bulimic45.hasura-app.io/v1/query",
                           contentType: "application/json",
                           data: JSON.stringify({
@@ -68,7 +68,7 @@ $(document).ready(function(){
                           console.log("Error: " + errorThrown);
                           console.log("Status: " + status);
                           console.dir(xhr);
-                        }); */
+                        }); 
                               
 
     });
