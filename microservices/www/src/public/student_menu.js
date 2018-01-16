@@ -352,8 +352,8 @@ $.ajax({
 function Solutionnotfavourable(Name){
                                 //alert(STAGE);
                                 if(confirm("Do you want to post this problem to higher level") && STAGE!="3"){
-                                    if(STAGE=="1") STAGE="2";
-                                    else if(STAGE=="2") STAGE="3";
+                                    if(STAGE=="1") STAGE="2",post_commitee="Institute level Grievance Redressal Committee";
+                                    else if(STAGE=="2") STAGE="3",post_commitee="Central Grievance Redressal Committee";
                                   $.ajax({
                                         url: "https://notify.bulimic45.hasura-app.io/v1/send/email",
                                         contentType: "application/json",
@@ -388,7 +388,8 @@ function Solutionnotfavourable(Name){
                                                   "stage": STAGE,
                                                   "favourable":"NULL",
                                                   "seen":"Not Seen",
-                                                  "status":"Problem Posted to Level "+STAGE
+                                                  "status":"Problem Posted to Level "+STAGE,
+                                                  "committee":post_commitee
                                             }
                                       }
                                   }),
@@ -435,6 +436,7 @@ function report(){
 	var fromdate=$("#fromdate").val()
 	var todate=$("#todate").val()
 	fromdate=((fromdate.split("-")).reverse()).join("-")
-	alert(fromdate);
+	todate=((todate.split("-")).reverse()).join("-")
+	
 	
 }
