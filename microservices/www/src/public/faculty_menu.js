@@ -588,9 +588,24 @@ function filedownload(){
       return true;
       }
       };
-      doc.fromHTML($('#datareport')[0], 15, 15, {
-      'width': 170,
-      'elementHandlers': specialElementHandlers
-      });
+      margins = {
+            top: 80,
+            bottom: 60,
+            left: 40,
+            width: 522
+        };
+      doc.fromHTML($('#datareport')[0],margins.left, // x coord
+            margins.top, { // y coord
+                'width': margins.width, // max width of content on PDF
+                'elementHandlers': specialElementHandlers
+            },
+
+            function (dispose) {
+                // dispose: object with X, Y of the last line add to the PDF 
+                //          this allow the insertion of new lines after html
+                pdf.save('Test.pdf');
+            }, margins
+        );
+      
       doc.save('report.pdf');
 }
