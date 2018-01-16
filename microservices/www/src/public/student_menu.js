@@ -212,7 +212,7 @@ function profile(){
     $("#griv_form").show();
     if(profile_row["count"]==1){
     	//alert("hi");
-    	window.open("./agreement.html","_top","location=0")
+    	window.open("./agreement.html","_top","height=400")
     }
  }
 
