@@ -431,3 +431,6 @@ function Solutionnotfavourable(Name){
                                 window.open("./student_menu.html","_self");
                               } 
                             }
+function report(){
+	alert("hi");
+}
