@@ -432,5 +432,5 @@ function Solutionnotfavourable(Name){
                               } 
                             }
 function report(){
-	alert($("#fromdate").value);
+	alert($("#fromdate").val());
 }
