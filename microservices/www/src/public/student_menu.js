@@ -512,8 +512,9 @@ function report(){
 	type: "POST",
 	dataType: "json"
 }).done(function(json) {
-	//alert(json.length);
-	$("#problemscount").append(json.length);
+	alert(json.length);
+	$("#datareport").append(json.length);
+	//$("#problemscount").append(json.length);
 }).fail(function(xhr, status, errorThrown) {
 	alert("error");
 	console.log("Error: " + errorThrown);
