@@ -271,7 +271,7 @@ $.ajax({
             type: "POST",
             dataType: "json"
           }).done(function(json) {
-            $('#problems').append("<b>Subject</b>&emsp;&emsp;"+json[0]["subject"]+"<br><br><b>Date:&emsp;</b>"+json[0]["date"]+"-"+json[0]['month']+"-"+join[0]['year']+"&emsp;&emsp;<b>Time:</b>&emsp;"+json[0]["time"]+"<br><b>References:</b>&emsp;"+json[0]["reference"]+"<br><b>Category:</b>&emsp;"+json[0]["category"]+"&emsp;&emsp;<b>committee:</b>&emsp;"+json[0]["committee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json[0]["problem_description"]+"<br><br>");
+            $('#problems').append("<b>Subject</b>&emsp;&emsp;"+json[0]["subject"]+"<br><br><b>Date:&emsp;</b>"+json[0]["date"]+"-"+json[0]['month']+"-"+json[0]['year']+"&emsp;&emsp;<b>Time:</b>&emsp;"+json[0]["time"]+"<br><b>References:</b>&emsp;"+json[0]["reference"]+"<br><b>Category:</b>&emsp;"+json[0]["category"]+"&emsp;&emsp;<b>committee:</b>&emsp;"+json[0]["committee"]+"<br><br><b>Problem Statement:</b><br>&emsp;&emsp;"+json[0]["problem_description"]+"<br><br>");
           }).fail(function(xhr, status, errorThrown) {
             console.log("Error: " + errorThrown);
             console.log("Status: " + status);
