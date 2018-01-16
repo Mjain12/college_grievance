@@ -435,10 +435,88 @@ function Solutionnotfavourable(Name){
                               } 
                             }
 function report(){
-	var fromdate=$("#fromdate").val()
-	var todate=$("#todate").val()
-	fromdate=((fromdate.split("-")).reverse()).join("-")
-	todate=((todate.split("-")).reverse()).join("-")
-	
+	var fromdate=$("#fromdate").val();
+	var todate=$("#todate").val();
+	fromdate=fromdate.split("-");
+	todate=todate.split("-");
+	$.ajax({
+	url: "https://data.bulimic45.hasura-app.io/v1/query",
+	contentType: "application/json",
+	data: JSON.stringify({
+      "type": "select",
+      "args": {
+            "table": "Grievance",
+            "columns": [
+                  "stage",
+                  "status",
+                  "problem_id",
+                  "problem_description",
+                  "subject",
+                  "reference",
+                  "category",
+                  "committee",
+                  "favourable",
+                  "hod_solution",
+                  "dean_solution",
+                  "principal_solution"
+            ],
+            "where": {
+                  "$and": [
+                        {
+                              "$and": [
+                                    {
+                                          "date": {
+                                                "$gte": fromdate[0]
+                                          }
+                                    },
+                                    {
+                                          "date": {
+                                                "$lte": todate[0]
+                                          }
+                                    }
+                              ]
+                        },
+                        {
+                              "$and": [
+                                    {
+                                          "month": {
+                                                "$gte": fromdate[1]
+                                          }
+                                    },
+                                    {
+                                          "month": {
+                                                "$lte": todate[1]
+                                          }
+                                    }
+                              ]
+                        },
+                        {
+                              "$and": [
+                                    {
+                                          "year": {
+                                                "$gte": fromdate[2]
+                                          }
+                                    },
+                                    {
+                                          "year": {
+                                                "$lte": todate[2]
+                                          }
+                                    }
+                              ]
+                        }
+                  ]
+            }
+      }
+	}),
+	type: "POST",
+	dataType: "json"
+}).done(function(json) {
+	alert(json.length);
+}).fail(function(xhr, status, errorThrown) {
+	alert("error");
+	console.log("Error: " + errorThrown);
+	console.log("Status: " + status);
+	console.dir(xhr);
+});
 	
 }
