@@ -594,7 +594,7 @@ function filedownload(){
             left: 40,
             width: 100
         };
-      doc.fromHTML($('#datareport'),margins.left, // x coord
+      doc.fromHTML($('#datareport')[0],margins.left, // x coord
             margins.top, { // y coord
                 'width': margins.width, // max width of content on PDF
                 'elementHandlers': specialElementHandlers
