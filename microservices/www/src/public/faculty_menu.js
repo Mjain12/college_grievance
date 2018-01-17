@@ -542,29 +542,29 @@ function report(){
             
             //alert(divid)
             if(json[i]["status"]=="Available"){
-              $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br>");
+              $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br><br>");
             }
             else{
-              $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br>");
+              $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><br>");
                 
             }
 
           }
          else if(json[i]["stage"]==2){
               if(json[i]["status"]=="Available"){
-                  $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br><b>Institute Level Committee Solution:</b><br>"+json[i]["dean_solution"]+"<br>");
+                  $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br><b>Institute Level Committee Solution:</b><br>"+json[i]["dean_solution"]+"<br><br>");
             
             }
             else{
-                $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br>");   
+                $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br><br>");   
             }
           }
           else{
                 if(json[i]["status"]=="Available"){
-                                    $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br><b>Institute Level Committee Solution:</b><br>"+json[i]["dean_solution"]+"<br><b>Central Level Committee Solution:</b><br>"+json[i]["principal_solution"]+"<br>");
+                                    $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br><b>Institute Level Committee Solution:</b><br>"+json[i]["dean_solution"]+"<br><b>Central Level Committee Solution:</b><br>"+json[i]["principal_solution"]+"<br><br>");
               }
               else{
-                                  $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br><b>Institute Level Committee Solution:</b><br>"+json[i]["dean_solution"]+"<br>"); 
+                                  $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br><b>Institute Level Committee Solution:</b><br>"+json[i]["dean_solution"]+"<br><br>"); 
               }
           }
         
