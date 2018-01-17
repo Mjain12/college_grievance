@@ -583,6 +583,7 @@ function report(){
 }
 function filedownload(){
         var pdf = new jsPDF('p', 'pt', 'a4');
+        var options = {};
         pdf.addHTML($("#datareport"), 15, 15, options, function() {
         pdf.save('pageContent.pdf');
   });
