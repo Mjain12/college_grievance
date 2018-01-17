@@ -455,11 +455,11 @@ function report(){
         if(json[i]["status"]=="Available"){
           if(json[i]["favourable"]=="favourable"){
             dept_fav_prob_count++;
-            dept_fav_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><div id='Problem"+json[i]["problem_id"]+"' style='margin-left:70px;display:none;'></div>";
+            dept_fav_prob="<div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><div id='Problem"+json[i]["problem_id"]+"' style='margin-left:70px;display:none;'></div>";
           }
           else if(json[i]["favourable"]=="notfavourable"){
             dept_unfav_prob_count++;
-            dept_unfav_prob="<br><div>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><div id='Problem"+json[i]["problem_id"]+"' style='margin-left:70px;display:none;'></div>";
+            dept_unfav_prob="<div style='margin-top:10px;'>&emsp;&emsp;&emsp;<b>Subject: "+json[i]["subject"]+"</b>&emsp;&emsp;<b>Date: </b>"+json[i]["date"]+"-"+json[i]["month"]+"-"+json[i]["year"]+"&emsp;&emsp;<b>Time: </b>"+json[i]["time"]+"<span class=\"addbtn\" onclick='showproblem(\""+json[i]["problem_id"]+"\")'>+</span><br>&emsp;&emsp;&emsp;<b>Category: </b>"+json[i]["category"]+"</div><div id='Problem"+json[i]["problem_id"]+"' style='margin-left:70px;display:none;'></div>";
           }
           else{
             dept_unseen_prob_count++;
@@ -542,29 +542,29 @@ function report(){
             
             //alert(divid)
             if(json[i]["status"]=="Available"){
-              $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br><br>");
+              $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br>");
             }
             else{
-              $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><br>");
+              $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br>");
                 
             }
 
           }
          else if(json[i]["stage"]==2){
               if(json[i]["status"]=="Available"){
-                  $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br><b>Institute Level Committee Solution:</b><br>"+json[i]["dean_solution"]+"<br><br>");
+                  $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br><b>Institute Level Committee Solution:</b><br>"+json[i]["dean_solution"]+"<br>");
             
             }
             else{
-                $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br><br>");   
+                $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br>");   
             }
           }
           else{
                 if(json[i]["status"]=="Available"){
-                                    $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br><b>Institute Level Committee Solution:</b><br>"+json[i]["dean_solution"]+"<br><b>Central Level Committee Solution:</b><br>"+json[i]["principal_solution"]+"<br><br>");
+                                    $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br><b>Institute Level Committee Solution:</b><br>"+json[i]["dean_solution"]+"<br><b>Central Level Committee Solution:</b><br>"+json[i]["principal_solution"]+"<br>");
               }
               else{
-                                  $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br><b>Institute Level Committee Solution:</b><br>"+json[i]["dean_solution"]+"<br><br>"); 
+                                  $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br><b>Institute Level Committee Solution:</b><br>"+json[i]["dean_solution"]+"<br>"); 
               }
           }
         
