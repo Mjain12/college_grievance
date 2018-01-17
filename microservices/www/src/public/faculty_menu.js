@@ -582,9 +582,28 @@ function report(){
   
 }
 function filedownload(){
-        var pdf = new jsPDF('p', 'pt', 'a4');
-        var options = {};
-        pdf.addHTML($("#datareport"), 15, 15, options, function() {
-        pdf.save('pageContent.pdf');
-  });
+        var doc = new jsPDF();
+        var specialElementHandlers = {
+      '#[id^=Problem]': function (element, renderer) {
+      return true;
+      }
+      };
+      margins = {
+            top: 80,
+            bottom: 60,
+            left: 40,
+            width: 100
+        };
+      doc.fromHTML($('#datareport'),margins.left, // x coord
+            margins.top, { // y coord
+                'width': margins.width, // max width of content on PDF
+                'elementHandlers': specialElementHandlers
+            },
+
+            function (dispose) {
+                // dispose: object with X, Y of the last line add to the PDF 
+                //          this allow the insertion of new lines after html
+                doc.save('report.pdf');
+            }, margins
+        );
 }
