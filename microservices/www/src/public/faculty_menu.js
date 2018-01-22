@@ -582,8 +582,15 @@ function report(){
   
 }
 function filedownload(){
-      var options = {};
+
       var pdf = new jsPDF('p', 'pt', 'a4');
+      var specialElementHandlers = {
+      '#[id^=Problem]': function (element, renderer) {
+      return true;
+      }
+      };
+      var options = {'elementHandlers': specialElementHandlers};
+      
       pdf.addHTML($("#datareport"), 15, 15, options, function() {
         pdf.save('pageContent.pdf');
       });
