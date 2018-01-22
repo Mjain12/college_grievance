@@ -583,19 +583,6 @@ function report(){
 }
 function filedownload(){
 
-
-	var doc = new jsPDF();
-var specialElementHandlers = {
-    '#editor': function (element, renderer) {
-        return true;
-    }
-};
-doc.fromHTML($('#datareport').html(), 15, 15, {
-        'width': 170,
-            'elementHandlers': specialElementHandlers
-});
-    doc.save('sample-file.pdf');
-
       /*var options = {};
       var doc = new jsPDF('p', 'pt', 'a4');
       /*pdf.addHTML($("#datareport"), 15, 15, options, function() {
@@ -612,8 +599,8 @@ doc.fromHTML($('#datareport').html(), 15, 15, {
             'elementHandlers': specialElementHandlers
     });
     doc.save('sample-file.pdf');
-    
-      /*  var doc = new jsPDF();
+    */
+        var doc = new jsPDF();
         var specialElementHandlers = {
       '#[id^=Problem]': function (element, renderer) {
       return true;
@@ -636,5 +623,5 @@ doc.fromHTML($('#datareport').html(), 15, 15, {
                 //          this allow the insertion of new lines after html
                 doc.save('report.pdf');
             }, margins
-        );*/
+        );
 }
