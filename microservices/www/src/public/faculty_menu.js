@@ -612,7 +612,7 @@ function filedownload(){
             left: 40,
             width: 100
         };
-      alert($('#datareport')[0].toSource());
+      alert($('#datareport')[0].value);
       doc.fromHTML($('#datareport')[0],margins.left, // x coord
             margins.top, { // y coord
                 'width': margins.width, // max width of content on PDF
