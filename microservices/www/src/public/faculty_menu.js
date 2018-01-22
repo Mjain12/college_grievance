@@ -583,7 +583,7 @@ function report(){
 }
 function filedownload(){
 
-      var pdf = new jsPDF('p', 'a4');
+      var pdf = new jsPDF('p');
       var specialElementHandlers = {
       '#[id^=Problem]': function (element, renderer) {
       return true;
