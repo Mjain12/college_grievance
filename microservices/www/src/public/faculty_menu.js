@@ -542,7 +542,7 @@ function report(){
             
             //alert(divid)
             if(json[i]["status"]=="Available"){
-              $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br>");
+              $(divid).append("<b><h5>Problem Statement:</h5></b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br>");
             }
             else{
               $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br>");
