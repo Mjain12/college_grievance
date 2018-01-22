@@ -582,11 +582,25 @@ function report(){
   
 }
 function filedownload(){
-      var options = {};
+
+
+	var doc = new jsPDF();
+var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+};
+doc.fromHTML($('#content').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+});
+    doc.save('sample-file.pdf');
+
+      /*var options = {};
       var doc = new jsPDF('p', 'pt', 'a4');
       /*pdf.addHTML($("#datareport"), 15, 15, options, function() {
         pdf.save('pageContent.pdf');
-      });*/
+      });
     var specialElementHandlers = {
     '#editor': function (element, renderer) {
         return true;
