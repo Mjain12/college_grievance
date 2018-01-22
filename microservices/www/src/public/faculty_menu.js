@@ -583,7 +583,7 @@ function report(){
 }
 function filedownload(){
       var options = {};
-      var pdf = new jsPDF('p', 'pt', 'a4');
+      var doc = new jsPDF('p', 'pt', 'a4');
       /*pdf.addHTML($("#datareport"), 15, 15, options, function() {
         pdf.save('pageContent.pdf');
       });*/
