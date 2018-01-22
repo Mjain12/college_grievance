@@ -583,7 +583,7 @@ function report(){
 }
 function filedownload(){
 
-      /*var pdf = new jsPDF('p', 'pt', 'a4');
+      var pdf = new jsPDF('p', 'a4');
       var specialElementHandlers = {
       '#[id^=Problem]': function (element, renderer) {
       return true;
@@ -593,8 +593,8 @@ function filedownload(){
       
       pdf.addHTML($("#datareport"), 15, 15, options, function() {
         pdf.save('pageContent.pdf');
-      });*/
-        var doc = new jsPDF();
+      });
+        /*var doc = new jsPDF();
         var specialElementHandlers = {
       '#[id^=Problem]': function (element, renderer) {
       return true;
@@ -617,5 +617,5 @@ function filedownload(){
                 //          this allow the insertion of new lines after html
                 doc.save('report.pdf');
             }, margins
-        );
+        );*/
 }
