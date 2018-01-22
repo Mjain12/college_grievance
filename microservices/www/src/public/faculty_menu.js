@@ -542,7 +542,7 @@ function report(){
             
             //alert(divid)
             if(json[i]["status"]=="Available"){
-              $(divid).append("<b><h5>Problem Statement:</h5></b><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br>");
+              $(divid).append("</b><h5>Problem Statement:</h5><br>"+json[i]["problem_description"]+"<br><b>Department Level Committee Solution:</b><br>"+json[i]["hod_solution"]+"<br>");
             }
             else{
               $(divid).append("<b>Problem Statement:</b><br>"+json[i]["problem_description"]+"<br>");
@@ -584,9 +584,21 @@ function report(){
 function filedownload(){
       var options = {};
       var pdf = new jsPDF('p', 'pt', 'a4');
-      pdf.addHTML($("#datareport"), 15, 15, options, function() {
+      /*pdf.addHTML($("#datareport"), 15, 15, options, function() {
         pdf.save('pageContent.pdf');
-      });
+      });*/
+    var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+	};
+
+    doc.fromHTML($('#datareport').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+    });
+    doc.save('sample-file.pdf');
+    
       /*  var doc = new jsPDF();
         var specialElementHandlers = {
       '#[id^=Problem]': function (element, renderer) {
