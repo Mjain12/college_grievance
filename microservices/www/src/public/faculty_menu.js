@@ -590,7 +590,7 @@ var specialElementHandlers = {
         return true;
     }
 };
-doc.fromHTML($('#content').html(), 15, 15, {
+doc.fromHTML($('#datareport').html(), 15, 15, {
         'width': 170,
             'elementHandlers': specialElementHandlers
 });
